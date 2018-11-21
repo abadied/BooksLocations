@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "title":"",
+        "cover-url": "www.sdfsdf.com",
+        "genre":"",
+        "release-date":"",
+        "lang":"",
+        "author":"",
+        "illustrator":"",
+        "category":""
+      },
+      "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-73, 45],
+        [-76, 46],
+        [-75, 47]
+      ]
+      }
+    }
+  ]
+}
