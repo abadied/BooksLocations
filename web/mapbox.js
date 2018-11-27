@@ -6,6 +6,11 @@ const map = new mapboxgl.Map({
     zoom: 1.0
 });
 
+//filter by name
+var books_search_list = []; // Will contain a list used to filter against.
+var filterInput = document.getElementById('filter-input');
+//end filter by name
+
 map.on('click', function (e) {
     var features = map.queryRenderedFeatures(e.point, {
         layers: ['books-layer']
@@ -159,6 +164,22 @@ map.on('click', function (e) {
     renderListings([]);
 });
 
+//filter by name
+filterInput.addEventListener('keyup', function(e) {
+    var value = normalize(e.target.value);
+
+    // Filter visible features that don't match the input value.
+    var filtered = books_search_list.filter(function(feature) {
+        var name = normalize(feature.properties.title);
+        return name.indexOf(value) > -1 || code.indexOf(value) > -1;
+    });
+
+    // Set the filter to populate features into the layer.
+    map.setFilter('books_search_list', ['match', ['get', 'title'], filtered.map(function (feature) {
+        return feature.properties.title;
+    }), true, false]);
+});
+//end filter by name
 
 var last_line ="0";
 
