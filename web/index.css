@@ -1,17 +1,23 @@
-body { margin:0; padding:0; }
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #wrap {
-    margin:0 auto;
-    background:#99c;
-    }
+    margin: 0 auto;
+}
+
 #header {
     padding: 10px;
 }
+
 #map {
     position: absolute;
     width: 75%;
     height: 100%;
-    left:25%;
+    left: 25%;
 }
+
 .map-overlay {
     position: absolute;
     width: 25%;
@@ -44,7 +50,7 @@ body { margin:0; padding:0; }
     max-height: 100%;
 }
 
-.map-overlay .listing > * {
+.map-overlay .listing>* {
     display: block;
     padding: 5px 10px;
     margin: 0;
@@ -66,19 +72,37 @@ body { margin:0; padding:0; }
 
 /* Marker tweaks */
 .mapboxgl-popup-close-button {
-    background-color: blue;
     font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
-  }
+}
 
-  
-  .mapboxgl-popup-content {
-    display: block;
+img {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.mapboxgl-popup-content {
+  display: grid;
     text-align: center;
     font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
-    padding: 0;
-    background-color: bisque;
-  }
-  
-  .mapboxgl-popup-content-wrapper {
-    padding: 1%;
-  }
+ margin: 0 auto;
+ padding: 0px;
+ text-align: center;
+/* border-radius */
+ -webkit-border-radius: 20px;
+ -moz-border-radius: 20px;
+ border-radius: 20px;
+/* box-shadow */
+ -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+ -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+ box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+}
+
+.left-half {
+    grid-column: 1;
+}
+
+.right-half {
+    background-image: url(./Paper-Texture.jpg);
+    grid-column: 2;
+    border-radius: 0px 20px 20px 0px;
+}
+

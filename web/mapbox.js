@@ -16,13 +16,25 @@ map.on('click', function (e) {
     }
 
     var feature = features[0];
-    var popup_html = '<h5>title:</h5><h2>' +
-        feature.properties.title +
-        '</h2><p><h5>author:</h5><h3>x ' +
-        feature.properties.author +
-        '</h3></p><img src="' +
-        feature.properties.cover_url +
-        '" />';
+    // var popup_html = '<h2>' +
+    //     feature.properties.title +
+    //     '</h2><p><h3>' +
+    //     feature.properties.author +
+    //     '</h3></p><img src="' +
+    //     feature.properties.cover_url +
+    //     '" />';
+    var popup_html = ' <div class="left-half">'+
+                       '<img src="' +
+                        feature.properties.cover_url +
+                       '" /></div>' + 
+                       '<div class="right-half">' +
+                       '<h3>' +
+                        feature.properties.title +
+                        '</h3><h5>' +
+                        feature.properties.author +
+                        '</h5>'+
+                        '</div>';
+
 
     // Holds visible books features for filtering
     var books = [];
@@ -179,8 +191,9 @@ function drawPolygon(line) {
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#888",
-            "line-width": 8
+            "line-color": "#972e2e",
+            "line-width": 4,
+            "line-opacity": 0.7
         }
     });
 
