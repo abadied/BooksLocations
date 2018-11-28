@@ -6,128 +6,127 @@ const map = new mapboxgl.Map({
     zoom: 1.0
 });
 
-//filter by name
-var books_search_list = []; // Will contain a list used to filter against.
-var filterInput = document.getElementById('filter-input');
-//end filter by name
 
-map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, {
-        layers: ['books-layer']
-   });
+// Holds visible books features for filtering
+var books = [];
+var popup = new mapboxgl.Popup({});
+var last_line = "0";
 
-    if (!features.length) {
-        return;
-    }
-
-    var feature = features[0];
-    // var popup_html = '<h2>' +
-    //     feature.properties.title +
-    //     '</h2><p><h3>' +
-    //     feature.properties.author +
-    //     '</h3></p><img src="' +
-    //     feature.properties.cover_url +
-    //     '" />';
-    var popup_html = ' <div class="left-half">'+
-                       '<img src="' +
-                        feature.properties.cover_url +
-                       '" /></div>' + 
-                       '<div class="right-half">' +
-                       '<h3>' +
-                        feature.properties.title +
-                        '</h3><h5>' +
-                        feature.properties.author +
-                        '</h5>'+
-                        '</div>';
+var filterEl = document.getElementById('feature-filter');
+var listingEl = document.getElementById('feature-listing');
 
 
-    // Holds visible books features for filtering
-    var books = [];
-
-    var filterEl = document.getElementById('feature-filter');
-    var listingEl = document.getElementById('feature-listing');
-
-    function renderListings(features) {
-        // Clear any existing listings
-        listingEl.innerHTML = '';
-        if (features.length) {
-            features.forEach(function (feature) {
-                var prop = feature.properties;
-                var item = document.createElement('a');
-                //item.href = prop.wikipedia;
-                //item.target = '_blank';
-                item.textContent = prop.title;
-                item.addEventListener('mouseover', function () {
-                    // Highlight corresponding feature on the map
-                    popup.setLngLat(feature.geometry.coordinates)
-                        //.setLngLat(feature.geometry.coordinates)
-                        .setHTML(popup_html)
-                        .setLngLat(feature.geometry.coordinates)
-                        .addTo(map);
-                        
-                    //add(feature);
-                });
-                item.addEventListener('mouseleave', function () {
-                    popup.remove();
-                });
-
-                listingEl.appendChild(item);
-            });
-
-            // Show the filter input
-            filterEl.parentNode.style.display = 'block';
-        } else {
-            var empty = document.createElement('p');
-            empty.textContent = 'Drag the map to populate results';
-            listingEl.appendChild(empty);
-
-            // Hide the filter input
-            filterEl.parentNode.style.display = 'none';
-
-            // remove features filter
-            map.setFilter('books-layer', ['has', 'title']);
-        }
-    }
-
-    function normalize(string) {
-        return string.trim().toLowerCase();
-    }
-
-    function getUniqueFeatures(array, comparatorProperty) {
-        var existingFeatureKeys = {};
-        // Because features come from tiled vector data, feature geometries may be split
-        // or duplicated across tile boundaries and, as a result, features may appear
-        // multiple times in query results.
-        var uniqueFeatures = array.filter(function (el) {
-            if (existingFeatureKeys[el.properties[comparatorProperty]]) {
-                return false;
-            } else {
-                existingFeatureKeys[el.properties[comparatorProperty]] = true;
-                return true;
-            }
-        });
-
-        return uniqueFeatures;
-    }
-    // Create a popup
-    var popup = new mapboxgl.Popup({
-            offset: [0, -15]
-        })
-        .setLngLat(feature.geometry.coordinates)
+function showPopAndLine(feature_) {
+    var popup_html = ' <div class="left-half">' +
+        '<img src="' +
+        feature_.properties.cover_url +
+        '" /></div>' +
+        '<div class="right-half">' +
+        '<h3>' +
+        feature_.properties.title +
+        '</h3><h5>' +
+        feature_.properties.author +
+        '</h5>' +
+        '</div>';
+    // Highlight corresponding feature on the map
+    popup.setLngLat(feature_.geometry.coordinates)
+        //.setLngLat(feature.geometry.coordinates)
         .setHTML(popup_html)
-        .setLngLat(feature.geometry.coordinates)
         .addTo(map);
-        drawPolygon(feature.properties.line);
-       
+    drawPolygon(feature_.properties.line);
+};
 
-        map.on('moveend', function () {
+function removePopAndLine() {
+    popup.remove();
+    map.removeLayer(last_line);
+    last_line="0"
+}
+
+function renderListings(features) {
+    // Clear any existing listings
+    listingEl.innerHTML = '';
+    if (features.length) {
+        features.forEach(function (feature) {
+            var prop = feature.properties;
+            var item = document.createElement('a');
+            //item.href = prop.wikipedia;
+            //item.target = '_blank';
+            item.textContent = prop.title;
+            item.addEventListener('mouseover', function () {
+                showPopAndLine(feature)
+            });
+            item.addEventListener('mouseleave', function () {
+                removePopAndLine()
+            });
+            listingEl.appendChild(item);
+        });
+        // Show the filter input
+        filterEl.parentNode.style.display = 'block';
+    }
+    else {
+        // var empty = document.createElement('p');
+        // empty.textContent = 'Drag the map to populate results';
+        // listingEl.appendChild(empty);
+
+        // Hide the filter input
+        //filterEl.parentNode.style.display = 'none';
+
+        // remove features filter
+        //map.setFilter('books-layer', ['has', 'author']);
+    }
+}
+
+function normalize(string) {
+    return string.trim().toLowerCase();
+}
+
+function getUniqueFeatures(array, comparatorProperty) {
+    var existingFeatureKeys = {};
+    // Because features come from tiled vector data, feature geometries may be split
+    // or duplicated across tile boundaries and, as a result, features may appear
+    // multiple times in query results.
+    var uniqueFeatures = array.filter(function (el) {
+        if (existingFeatureKeys[el.properties[comparatorProperty]]) {
+            return false;
+        } else {
+            existingFeatureKeys[el.properties[comparatorProperty]] = true;
+            return true;
+        }
+    });
+    return uniqueFeatures;
+}
+
+map.on('load', function () {
+
+    map.addLayer({
+        "id": "books-layer",
+        "source": {
+            "type": "vector",
+            "url": "mapbox://amitur91.cjoxb8xa00rkf2qrvj68j57kf-5dqeo"
+        },
+        "source-layer": "book_0.1",
+        "type": "symbol",
+        "layout": {
+            "icon-image": "book-icon",
+            "icon-padding": 0,
+            "icon-allow-overlap":true
+        }
+    });
+
+    var empty = document.createElement('p');
+    empty.textContent = 'Drag the map to populate results';
+    listingEl.appendChild(empty);
+    // Hide the filter input
+    //filterEl.parentNode.style.display = 'none';
+
+    
+
+    map.on('moveend', function () {
         var features = map.queryRenderedFeatures({
             layers: ['books-layer']
         });
-
-
         if (features) {
-            var uniqueFeatures = getUniqueFeatures(features, "id");
+            var uniqueFeatures = getUniqueFeatures(features, "title");
             // Populate features for the listing overlay.
             renderListings(uniqueFeatures);
 
@@ -141,57 +140,52 @@ map.on('click', function (e) {
     });
 
 
-    filterEl.addEventListener('keyup', function (e) {
+    map.on('click', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {
+            layers: ['books-layer']
+        });
+        var feature = features[0];
+        if (feature)
+            showPopAndLine(feature);
+            map.flyTo({center: feature.geometry.coordinates});
+    });
+
+    filterEl.addEventListener('keyup', function(e) {
         var value = normalize(e.target.value);
 
         // Filter visible features that don't match the input value.
-        var filtered = books.filter(function (feature) {
-            var name = normalize(feature.properties.title);
-            return name.indexOf(value) > -1;
+        var filtered = books.filter(function(feature) {
+            var name1 = normalize(feature.properties.title);
+            var author1 = normalize(feature.properties.author);
+            return name1.indexOf(value) > -1 || author1.indexOf(value) > -1;
         });
+        console.log(filtered)
 
         // Populate the sidebar with filtered results
         renderListings(filtered);
 
         // Set the filter to populate features into the layer.
-        map.setFilter('books', ['match', ['get', 'title'], filtered.map(function (feature) {
+        if (filtered){
+        let filter = ['match', ['get', 'title'], filtered.map(function(feature) {
             return feature.properties.title;
-        }), true, false]);
+        }), true, false];
+        map.setFilter('books-layer', filter,true);
+    }
+
     });
 
     // Call this function on initialization
     // passing an empty array to render an empty state
-    renderListings([]);
+    
 });
-
-//filter by name
-filterInput.addEventListener('keyup', function(e) {
-    var value = normalize(e.target.value);
-
-    // Filter visible features that don't match the input value.
-    var filtered = books_search_list.filter(function(feature) {
-        var name = normalize(feature.properties.title);
-        return name.indexOf(value) > -1 || code.indexOf(value) > -1;
-    });
-
-    // Set the filter to populate features into the layer.
-    map.setFilter('books_search_list', ['match', ['get', 'title'], filtered.map(function (feature) {
-        return feature.properties.title;
-    }), true, false]);
-});
-//end filter by name
-
-var last_line ="0";
-
+renderListings([]);
 function drawPolygon(line) {
 
-
- if (last_line!="0"){
-     map.removeLayer(last_line);
- }
- last_line =(Math.floor((Math.random() * 10000) + 1)).toString();;;
+    if (last_line != "0") {
+        map.removeLayer(last_line);
+    }
+    last_line = (Math.floor((Math.random() * 10000) + 1)).toString();;;
     var list1 = JSON.parse(line);
-    //console.log(list1);
 
     map.addLayer({
         "id": last_line,
@@ -219,8 +213,6 @@ function drawPolygon(line) {
     });
 
 };
-
-
 //search locations
 map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
