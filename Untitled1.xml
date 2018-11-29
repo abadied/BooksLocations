@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>
+               רון-פדר-עמית, גלילה           
+               (1949)
+               סופרת ועורכת
+            </title>
+            <author>רון לסרי</author>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>רון לסרי</publisher>
+         </publicationStmt>
+         <sourceDesc>
+            <listBibl>
+              <bibl>
+                 <address><name> תל אביב: זמורה-בית</name></address>
+                 <author>אופק אוריאל</author>
+                 <name> לקסיקון אופק לספרות ילדים ב</name>
+                 <date>1985</date>
+                 
+              </bibl> 
+               <bibl>
+                  <author>תום שגב</author>
+                  <name>הנוער על פי גלילה רון פדר</name>
+                  <date>1985</date>
+                  <biblScope>33­-35</biblScope>
+               </bibl> 
+            </listBibl>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <div type="bio">
+         <p>    
+            נולדה ב
+            <placeName>חיפה</placeName>
+            . כבר בהיותה בת 
+            <num value="9">תשע</num> 
+            החלה לכתוב סיפורי הרפתקאות. למדה במגמה הביולוגית בבית הספר "הריאלי" ב
+            <placeName>חיפה</placeName>
+            . למרות היותה בת למשפחה שנשבו בה רוחות מפא"י כתבה רומן על נערה שאחיה נמנה עם כוחות האצ"ל, ואף שלחה את טיוטתו ל
+            <persName>מנחם בגין</persName>
+            , שבתגובה הזמינה ובירכה על פעולתה. ב-
+            <date>2010</date>
+            פירסמה את הספר 
+            <name type="book">בעוז ובהדר: סיפורו של</name>
+            <persName>מנחם בגין</persName>
+            . שירתה כחיילת בנח"ל, ולאחר שחרורה למדה ספרות ומקרא ב
+            אוניברסיטה העברית ב
+            <placeName>ירושלים</placeName>
+            . 
+            <persName>רון-פדר-עמית</persName>
+            היא אם ל
+            <num value="3">שלושה</num>
+            ילדים, ובשנים 
+            <date>1972­-1979</date>
+            אימצה 
+            <num value="12">שנים-עשר</num>
+            ילדים ממשפחות קשות יום. פרט זה השפיע רבות על כתיבתה והיווה השראה לסדרת הספרים
+            <name type="book">"ציון"</name>
+            , שנכתבה בשנים 
+            <date>1976­-1981</date>
+            .
+            </p>
+            <p>
+            <persName>רון-פדר-עמית</persName>
+            היא מהיוצרות הפופולריות והפורות בספרות הילדים העברית. עד כה פירסמה כ
+            <num value="300">שלוש מאות</num>
+               ספרים, רובם המכריע לילדים. ספריה תורגמו לשפות שונות, ובהן: אנגלית, גרמנית, צרפתית ויפנית. כמה מספריה עובדו לסרטים, ובהם: 
+            בחינת בגרות
+            , בבימויו של 
+            <persName>אסי דיין</persName>
+            (
+            <date>1983</date>
+            ). בנוסף לכך, היתה העורכת הראשונה של עיתון הילדים לטבע 
+               <name type="newspaper">פשוש</name>
+            , ובהמשך ערכה את השבועון 
+               <name type="newspaper">ראש צעיר</name>
+            . כמו כן פירסמה סיפורים בהמשכים בשבועונים לילדים וכתבה מאמרים בכתבי עת ובעיתונות העוסקים ברובם בחינוך ובספרות ילדים. ספרה הראשון, 
+               <name type="book">ילדי השכונה במחתרת</name>
+            , שראה אור ב-
+            <date>1971</date>
+            (קרני), מתאר את קורותיה של קבוצת ילדים ירושלמים בתקופת המנדט. אחריו כתבה את סדרת הספרים ה
+            <num value="1">ראשונה</num>
+            שלה: "
+            <name type="book">ילדים אלמונים</name>
+            ", המספרת על הרפתקאותיהם של ילדים חיפאים המסייעים ללוחמי 
+            <num value="3">שלוש</num>
+            המחתרות במלחמתם בבריטים. ב-
+            <date>1976</date>
+            ראה אור ספרה ה
+            <num value="1">ראשון</num>
+            בסדרת 
+            <name type="book">"ציון"</name>
+            , 
+            <name type="book">אל עצמי</name>
+            , המתאר את חוויותיו של 
+            <persName>ציון</persName>
+            , ילד שנפלט ממשפחתו קשת היום ב
+            <placeName>בית שאן</placeName>
+            ומגיע למשפחה אומנת ב
+            <placeName>חיפה</placeName>
+            . "
+            <name type="book">ג'ינג'י</name>
+            ", סדרת הספרים המצליחה ביותר של הסופרת, נכתבה בשנים 
+            <date>1980­-2010</date>
+            ועוסקת בהרפתקאותיהם המסתוריות של 
+            <persName>אודי שחר</persName>
+            וחבריו. מבחר מסדרות ספריה הבולטות: "
+            <name type="book">כס"ח חברי כוח סיירות חוקר</name>
+               " הפותרים תעלומות ברחבי הארץ, "
+            <name type="book">מנהרת הזמן</name>
+            " המתארת אירועים משמעותיים בהיסטוריה היהודית והציונית, "
+            <name type="book">טולי תעלולי</name>
+            ", קורותיה של ילדה שובבה בכפר נופש המנוהל על ידי אביה, ו"
+            <name type="book">סיירת המדע</name>
+            " המפרה את הקוראים בהשכלה מדעית בסיסית. מרבה לכתוב ספרי הרפתקאות, שחלקם מתרחשים בהקשרים היסטוריים או מדעיים, אך ככלל קיימת בכתיבתה מגמה חינוכית המעלה לדיון נושאים כגון: חינוך מיני ושימוש בסמים ובאלכוהול. כמו כן, היא משתמשת בשפה המכילה סלנג ומתקרבת אל שפת הדיבור המקובלת בקרב קהל היעד של הספר.
+               </p>
+            <p>
+            פירסמה עד כה 
+            <num value="7">שבעה</num>
+            ספרים למבוגרים. הראשון מתוכם: 
+            <name type="book">יש אישה אחרת</name>
+            , יצא לאור ב-
+            <date>1994</date>
+            (מודן) והוא עוקב אחר דמותה של 
+            <persName>יעלי</persName>
+            , שסוד בחיי בעלה מביא אותה לבחינת חייה ויחסיה מחדש. ספרה האחרון למבוגרים, 1
+            <name type="book">חיפושים</name>
+            (
+            <date>2006</date>
+            ), מתאר את מסעה של 
+            <persName>רננה רז</persName>
+            , שחקנית מצליחה, היוצאת למרכז מדיטציה ב
+            <placeName>בורמה</placeName>
+            , ואת חברתה 
+            <persName>נעמי</persName>
+            , פרופסור למקרא, המתחקה אחריה. הרומן ממשיך מגמה בכתיבתה על מסעות נשיים לחיפוש עצמי ב
+            <placeName>מזרח הרחוק</placeName>
+            , המתגלה גם בספרה 
+            <name type="book">אמא של תרמילאי</name>
+            (
+            <date>2002</date>
+            ). ב-
+            <date>2012</date>
+            פירסמה את הספר 
+            <name type="book">אומרים אהבה יש: סיפורו של
+            <persName>חיים נחמן ביאליק</persName></name>
+            .
+         </p>
+         </div>
+      </body>
+  </text>
+</TEI>
