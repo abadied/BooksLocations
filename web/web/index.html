@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Display a map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+<link href='./index.css' rel='stylesheet' />
+</head>
+
+<body>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    
+<div id='wrap'>
+
+<div id='map'></div>
+<div class='filter-ctrl'>
+   
+</div>
+<div class='map-overlay'>
+        <fieldset>
+
+                <input id='filter-input' type='text' name='filter' placeholder='Filter by name' />
+            </fieldset>
+                <fieldset>
+                <input id='feature-filter' type='text' placeholder='Filter books by name' />
+        </fieldset>
+        <div id='feature-listing' class='listing'></div>
+    </div>
+</div>
+<script type="text/javascript" src="mapbox.js" ></script>
+
+</body>
+</html>
