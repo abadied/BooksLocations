@@ -12,10 +12,12 @@ def get_main_page():
     # will render main js page
     pass
 
-def __main__():
+
+def main():
     host = '0.0.0.0'
     port = 8080
     app.run(host=host, port=port)
+
 
 if __name__ == "__main__":
     main()
