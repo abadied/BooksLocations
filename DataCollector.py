@@ -24,9 +24,20 @@ class DataCollector(object):
                 print(e)
                 continue
 
-            # TODO: add author title and date parsing
+            def find_specific_word(split_by_word, inner_split):
+                word_to_find = ''
+                lines = content.split('\n')
+                for line in lines:
+                    if split_by_word in line:
+                        inner_lines = line.split(inner_split)
+                        word_to_find = inner_lines[1].replace('\r', '')
+                        break
+                return word_to_find
 
-            reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*'
+            author = find_specific_word('Author', ': ')
+            title = find_specific_word('Title', ': ')
+            release_date = find_specific_word('Release Date', ': ')
+            reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*\d*[A-z]*'
             addresses = re.findall(reg_exp, content)
             geo = geotext.GeoText(content)
             countries = set(geo.countries)
