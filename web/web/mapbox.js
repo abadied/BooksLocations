@@ -165,11 +165,16 @@ map.on('load', function () {
         renderListings(filtered);
 
         // Set the filter to populate features into the layer.
-        if (filtered){
+        if (filtered.length > 0){
         let filter = ['match', ['get', 'title'], filtered.map(function(feature) {
             return feature.properties.title;
         }), true, false];
+    
         map.setFilter('books-layer', filter,true);
+        map.setLayoutProperty('books-layer', 'visibility', 'visible');
+    }
+    else{
+        map.setLayoutProperty('books-layer', 'visibility', 'none');
     }
 
     });

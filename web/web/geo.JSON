@@ -27,6 +27,33 @@
         [-75, 47]
       ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 58356,
+        "title":"The Passing of Empire",
+        "cover_url": "https://www.gutenberg.org/cache/epub/58356/pg58356.cover.medium.jpg",
+        "genre":"",
+        "release_date":"Nov 25, 2018",
+        "lang":"English",
+        "author":"Fielding, H. (Harold), 1859-1917",
+        "illustrator":"",
+        "category":"Text",
+        "line": [
+          [-53, 45],
+          [-56, 46],
+          [-55, 47]
+        ]
+      },
+      "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-53, 45],
+        [-56, 46],
+        [-55, 47]
+      ]
+      }
     }
   ]
 }
