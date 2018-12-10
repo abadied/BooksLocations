@@ -8,8 +8,7 @@
         "title":"Sea Scouts up-Channel",
         "cover_url": "https://www.gutenberg.org/cache/epub/58336/pg58336.cover.medium.jpg",
         "genre":"",
-        "release_date":"Nov 24, 2018",
-        "release_year":"2018",
+        "release_year":"2016",
         "lang":"English",
         "author":"Westerman, Percy F. (Percy Francis), 1876-1959",
         "illustrator":"Padday, C. M. (Charles Murray), 1868-1954",
@@ -36,8 +35,7 @@
         "title":"The Passing of Empire",
         "cover_url": "https://www.gutenberg.org/cache/epub/58356/pg58356.cover.medium.jpg",
         "genre":"",
-        "release_date":"Nov 25, 2018",
-        "release_year":"2018",
+        "release_year":"1950",
         "lang":"English",
         "author":"Fielding, H. (Harold), 1859-1917",
         "illustrator":"",
@@ -54,6 +52,60 @@
         [-53, 45],
         [-56, 46],
         [-55, 47]
+      ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "title":"Sea Scouts up-Channel",
+        "cover_url": "https://www.gutenberg.org/cache/epub/58336/pg58336.cover.medium.jpg",
+        "genre":"",
+        "release_year":"1999",
+        "lang":"English",
+        "author":"Westerman, Percy F. (Percy Francis), 1876-1959",
+        "illustrator":"Padday, C. M. (Charles Murray), 1868-1954",
+        "category":"Text",
+        "line": [
+          [-13, 55],
+        [-46, 26],
+        [-53, 67]
+        ]
+      },
+      "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-13, 55],
+        [-46, 26],
+        [-53, 67]
+      ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "title":"Sea Scouts up-Channel",
+        "cover_url": "https://www.gutenberg.org/cache/epub/58336/pg58336.cover.medium.jpg",
+        "genre":"",
+        "release_year":"1640",
+        "lang":"English",
+        "author":"Westerman, Percy F. (Percy Francis), 1876-1959",
+        "illustrator":"Padday, C. M. (Charles Murray), 1868-1954",
+        "category":"Text",
+        "line": [
+          [-43, 47],
+        [-78, 66],
+        [-35, 43]
+        ]
+      },
+      "geometry": {
+      "type": "MultiPoint",
+      "coordinates": [
+        [-43, 47],
+        [-78, 66],
+        [-35, 43]
       ]
       }
     }
