@@ -22,21 +22,37 @@
                  <address><name> תל אביב: זמורה-בית</name></address>
                  <author>אופק אוריאל</author>
                  <name> לקסיקון אופק לספרות ילדים ב</name>
-                 <date>1985</date>
+                 <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
                  
               </bibl> 
                <bibl>
                   <author>תום שגב</author>
                   <name>הנוער על פי גלילה רון פדר</name>
-                  <date>1985</date>
+                  <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
                   <biblScope>33­-35</biblScope>
                </bibl> 
             </listBibl>
          </sourceDesc>
          
       </fileDesc>
+
      <profileDesc>
         <particDesc>
+           <org xml:id="MPI">
+              <name>מפא"י</name>
+           </org>
+           <org xml:id="AZL">
+              <name>אצ"ל</name>
+           </org>
+           <org xml:id="HA">
+              <name>חיפאים</name>
+           </org>
+           <org xml:id="BR">
+              <name>בריטים</name>
+           </org>
+           <org xml:id="JER">
+              <name>ירושלמים</name>
+           </org>
            <listPerson>
 <person xml:id="RN">
    <persName>
@@ -95,7 +111,7 @@
             <num value="9">תשע</num> 
             החלה לכתוב סיפורי הרפתקאות. למדה במגמה הביולוגית בבית הספר "הריאלי" ב
             <placeName>חיפה</placeName>
-            . למרות היותה בת למשפחה שנשבו בה רוחות מפא"י כתבה רומן על נערה שאחיה נמנה עם כוחות האצ"ל, ואף שלחה את טיוטתו ל
+            . למרות היותה בת למשפחה שנשבו בה רוחות <orgName ref="#MPI">מפא"י</orgName> כתבה רומן על נערה שאחיה נמנה עם <orgName ref="#AZL">כוחות האצ"ל</orgName>, ואף שלחה את טיוטתו ל
               <persName ref="#MB"><surname>
                  מנחם
                </surname><forename>בגין</forename></persName>
@@ -105,7 +121,7 @@
             <name type="book">בעוז ובהדר: סיפורו של</name>
             <persName ref="#MB">מנחם בגין</persName>
             . שירתה כ<roleName>חיילת</roleName> בנח"ל, ולאחר שחרורה למדה ספרות ומקרא ב
-            אוניברסיטה העברית ב
+            <placeName>אוניברסיטה העברית</placeName> ב
             <placeName>ירושלים</placeName>
             . 
             <persName ref="#RN"><forename>
@@ -143,13 +159,13 @@
                <name type="book">ילדי השכונה במחתרת</name>
             , שראה אור ב-
             <date notBefore="1971-01-01" notAfter="1971-12-31">1971</date>
-            (קרני), מתאר את קורותיה של קבוצת ילדים ירושלמים בתקופת המנדט. אחריו כתבה את סדרת הספרים ה
+            (קרני), מתאר את קורותיה של קבוצת ילדים <orgName ref="#JER">ירושלמים</orgName> בתקופת המנדט. אחריו כתבה את סדרת הספרים ה
             <num value="1">ראשונה</num>
             שלה: "
             <name type="book">ילדים אלמונים</name>
-            ", המספרת על הרפתקאותיהם של ילדים חיפאים המסייעים ללוחמי 
+            ", המספרת על הרפתקאותיהם של ילדים <orgName ref="#HA">חיפאים</orgName> המסייעים ללוחמי 
             <num value="3">שלוש</num>
-            המחתרות במלחמתם בבריטים. ב-
+            המחתרות במלחמתם ב<orgName ref="#BR">בריטים</orgName>. ב-
             <date notBefore="1976-01-01" notAfter="1976-12-31">1976</date>
             ראה אור ספרה ה
             <num value="1">ראשון</num>

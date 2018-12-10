@@ -1,19 +1,16 @@
 import geotext
 import requests
 import Constants
-from newspaper import fulltext
-import pyap
 import re
-import googlemaps
-
+from geopy.geocoders import Nominatim
+import spacy
 
 class DataCollector(object):
+
     @staticmethod
     def collect_data_from_source(url):
         first_book_num = 844
-        gmaps = googlemaps.Client(key='AIzaSyDaNo8TFfI8cdfDHxGlX_t0HOHxNq3wkPY')
         books_dict = {}
-
         for curr_book_num in range(first_book_num, 1000):
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
             image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
@@ -34,12 +31,27 @@ class DataCollector(object):
                         break
                 return word_to_find
 
+            geolocator = Nominatim(user_agent="specify_your_app_name_here")
+
+            def get_address_coordinates(address: str):
+                try:
+                    location = geolocator.geocode(address)
+                    return [location.latitude, location.longitude]
+                except Exception as e:
+                    return -1
+
             author = find_specific_word('Author', ': ')
             title = find_specific_word('Title', ': ')
             release_date = find_specific_word('Release Date', ': ')
-            reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*\d*[A-z]*'
-            addresses = re.findall(reg_exp, content)
+            # reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*\d*[A-z]*'
+            # addresses = re.findall(reg_exp, content)
             geo = geotext.GeoText(content)
+            nlp = spacy.load('en_core_web_sm')
+            doc = nlp(content)
+            nlp_geo_results = []
+            for ent in doc.ents:
+                if ent.label_ == 'GPE':
+                    nlp_geo_results.append(ent.text)
             countries = set(geo.countries)
             cities = set(geo.cities)
             content = content.replace('\r', '')
@@ -68,30 +80,25 @@ class DataCollector(object):
             sorted(cities_idx, key=lambda x: x[1])
 
             # create city country tuples
-            used_countries = set()
-            city_country_pairs = []
-            for city_tup in cities_idx:
-                city_name = city_tup[0]
-                city_idx = city_tup[1]
-                chosen_country_tup = None
-                for country_tup in country_idx:
-                    if country_tup[1] < city_idx and(chosen_country_tup is None or country_tup[1] > chosen_country_tup[1]):
-                        chosen_country_tup = country_tup
-                if chosen_country_tup is not None:
-                    used_countries.add(chosen_country_tup[0])
-                    city_country_pairs.append((chosen_country_tup[0], city_name))
+            # used_countries = set()
+            # country_city_pairs = []
+            # for city_tup in cities_idx:
+            #     city_name = city_tup[0]
+            #     city_idx = city_tup[1]
+            #     chosen_country_tup = None
+            #     for country_tup in country_idx:
+            #         if country_tup[1] < city_idx and(chosen_country_tup is None or country_tup[1] > chosen_country_tup[1]):
+            #             chosen_country_tup = country_tup
+            #     if chosen_country_tup is not None:
+            #         used_countries.add(chosen_country_tup[0])
+            #         country_city_pairs.append((chosen_country_tup[0], city_name))
 
-            print(countries.difference(used_countries))
-
-            # Geocoding an address
-            # geocode_result = gmaps.geocode('London')
-
-            print('regualr expressions:')
-            print(addresses)
-            print('countries:')
-            print(countries)
-            print('cities:')
-            print(cities)
+            country_city_sets = set(nlp_geo_results)
+            coord_dict = {}
+            for country_city_tup in country_city_sets:
+                coords = get_address_coordinates(country_city_tup)
+                if coords != -1:
+                    coord_dict[country_city_tup] = coords
 
 
 def main():
