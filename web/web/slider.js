@@ -8,7 +8,7 @@ function getVals(){
     if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
     
     var displayElement = parent.getElementsByClassName("rangeValues")[0];
-        displayElement.innerHTML = "from year " + slide1 + " to year " + slide2 + "!";
+        displayElement.innerHTML = "Year " + slide1 + " to year " + slide2;
   }
   
   window.onload = function(){
