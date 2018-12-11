@@ -6,6 +6,10 @@
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
 <link href='./index.css' rel='stylesheet' />
+
+<!-- draggable range -->
+  <script src="https://code.jquery.com/jquery-1.7.1.js"></script>
+  <script src='./slider.js'></script>
 </head>
 
 <body>
@@ -16,11 +20,20 @@
 
 <div id='map'></div>
 <div class='filter-ctrl'>
-   
 </div>
+
+<div class='map-overlay2 top'>
+        <div class='map-overlay-inner2'>
+                <section class="range-slider">
+                        <span class="rangeValues"></span>
+                        <input id="years-after" value="1770" min="1770" max="2018" step="1" type="range">
+                        <input id="years-before" value="2018" min="1770" max="2018" step="1" type="range">
+                      </section>
+        </div>
+    </div>
+
 <div class='map-overlay'>
         <fieldset>
-
                 <input id='filter-input' type='text' name='filter' placeholder='Filter by name' />
             </fieldset>
                 <fieldset>

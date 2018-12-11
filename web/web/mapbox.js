@@ -15,6 +15,9 @@ var last_line = "0";
 var filterEl = document.getElementById('feature-filter');
 var listingEl = document.getElementById('feature-listing');
 
+var filterYears1 = document.getElementById('years-after');
+var filterYears1 = document.getElementById('years-before');
+
 
 function showPopAndLine(feature_) {
     var popup_html = ' <div class="left-half">' +
@@ -27,7 +30,9 @@ function showPopAndLine(feature_) {
         '</h3><h5>' +
         feature_.properties.author +
         '</h5>' +
-        '</div>';
+        '<h5>' +
+        feature_.properties.release_year +
+        '</h5></div>';
     // Highlight corresponding feature on the map
     popup.setLngLat(feature_.geometry.coordinates)
         //.setLngLat(feature.geometry.coordinates)
@@ -39,7 +44,7 @@ function showPopAndLine(feature_) {
 function removePopAndLine() {
     popup.remove();
     map.removeLayer(last_line);
-    last_line="0"
+    last_line = "0"
 }
 
 function renderListings(features) {
@@ -62,8 +67,7 @@ function renderListings(features) {
         });
         // Show the filter input
         filterEl.parentNode.style.display = 'block';
-    }
-    else {
+    } else {
         // var empty = document.createElement('p');
         // empty.textContent = 'Drag the map to populate results';
         // listingEl.appendChild(empty);
@@ -109,7 +113,7 @@ map.on('load', function () {
         "layout": {
             "icon-image": "book-icon",
             "icon-padding": 0,
-            "icon-allow-overlap":true
+            "icon-allow-overlap": true
         }
     });
 
@@ -119,7 +123,7 @@ map.on('load', function () {
     // Hide the filter input
     //filterEl.parentNode.style.display = 'none';
 
-    
+
 
     map.on('moveend', function () {
         var features = map.queryRenderedFeatures({
@@ -147,14 +151,16 @@ map.on('load', function () {
         var feature = features[0];
         if (feature)
             showPopAndLine(feature);
-            map.flyTo({center: feature.geometry.coordinates});
+        map.flyTo({
+            center: feature.geometry.coordinates
+        });
     });
 
-    filterEl.addEventListener('keyup', function(e) {
+    filterEl.addEventListener('keyup', function (e) {
         var value = normalize(e.target.value);
 
         // Filter visible features that don't match the input value.
-        var filtered = books.filter(function(feature) {
+        var filtered = books.filter(function (feature) {
             var name1 = normalize(feature.properties.title);
             var author1 = normalize(feature.properties.author);
             return name1.indexOf(value) > -1 || author1.indexOf(value) > -1;
@@ -165,25 +171,56 @@ map.on('load', function () {
         renderListings(filtered);
 
         // Set the filter to populate features into the layer.
-        if (filtered.length > 0){
-        let filter = ['match', ['get', 'title'], filtered.map(function(feature) {
-            return feature.properties.title;
-        }), true, false];
-    
-        map.setFilter('books-layer', filter,true);
-        map.setLayoutProperty('books-layer', 'visibility', 'visible');
-    }
-    else{
-        map.setLayoutProperty('books-layer', 'visibility', 'none');
-    }
+        if (filtered.length > 0) {
+            let filter = ['match', ['get', 'title'], filtered.map(function (feature) {
+                return feature.properties.title;
+            }), true, false];
+
+            map.setFilter('books-layer', filter, true);
+            map.setLayoutProperty('books-layer', 'visibility', 'visible');
+        } else {
+            map.setLayoutProperty('books-layer', 'visibility', 'none');
+        }
 
     });
 
-    // Call this function on initialization
-    // passing an empty array to render an empty state
-    
+    //range years filters
+    var years_before = '2018';
+    var years_after = '1770';
+    document.getElementById('years-after').addEventListener('input', function (e) {
+        years_after = e.target.value;
+        filterByYears();
+    });
+
+    document.getElementById('years-before').addEventListener('input', function (e) {
+        years_before = e.target.value;
+        filterByYears();
+    });
+
+    function filterByYears() {
+        var filter1;
+        if (years_after < years_before) {
+            console.log(years_after + '-' + years_before);
+            filter1 = ["all",
+                [">=", ["get", "release_year"], years_after],
+                ["<=", ["get", "release_year"], years_before]
+            ];
+        } else {
+            console.log(years_before + '-' + years_after);
+            filter1 = ["all",
+                ["<=", ["get", "release_year"], years_after],
+                [">=", ["get", "release_year"], years_before]
+            ];
+        };
+        map.setFilter('books-layer', filter1);
+
+    };
+
+
+
 });
 renderListings([]);
+
 function drawPolygon(line) {
 
     if (last_line != "0") {
