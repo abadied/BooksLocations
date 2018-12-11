@@ -4,6 +4,8 @@ import Constants
 import re
 from geopy.geocoders import Nominatim
 import spacy
+import json
+
 
 class DataCollector(object):
 
@@ -35,6 +37,7 @@ class DataCollector(object):
 
             def get_address_coordinates(address: str):
                 try:
+                    # TODO: check importance inside raw parameter is bigger then some threshold for accuracy
                     location = geolocator.geocode(address)
                     return [location.latitude, location.longitude]
                 except Exception as e:
@@ -42,7 +45,16 @@ class DataCollector(object):
 
             author = find_specific_word('Author', ': ')
             title = find_specific_word('Title', ': ')
-            release_date = find_specific_word('Release Date', ': ')
+            title_for_scarpping = title.replace(' ', '+')
+            author_for_scrapping = author.replace(' ', '+')
+            # get book data if exists
+            try:
+                book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '+by+' + author_for_scrapping, allow_redirects=True).text
+            except Exception as e:
+                print(e)
+                continue
+            book_dict_data = json.loads(book_json_data)
+            release_date = book_dict_data['docs'][0]['first_publish_year']
             # reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*\d*[A-z]*'
             # addresses = re.findall(reg_exp, content)
             geo = geotext.GeoText(content)
