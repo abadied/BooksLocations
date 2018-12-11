@@ -7,14 +7,14 @@
       <fileDesc>
          <titleStmt>
             <title>
-               רון-פדר-עמית, גלילה           
-               (1949)
-               סופרת ועורכת
+               <persName ref="#RF">רון-פדר-עמית, גלילה</persName>           
+               (<date notBefore="1949-01-01" notAfter="1949-12-31">1949</date>)
+               <roleName>סופרת</roleName> ו<roleName>עורכת</roleName>
             </title>
-            <author>רון לסרי</author>
+            <author>><persName ref="#RL">רון לסרי</persName></author>
          </titleStmt>
          <publicationStmt>
-            <publisher>רון לסרי</publisher>
+            <publisher><persName ref="#RL">רון לסרי</persName></publisher>
          </publicationStmt>
          <sourceDesc>
             <listBibl>
@@ -78,6 +78,16 @@
                     משה
                  </surname>
               </persName>
+              </person>
+              <person>
+                 <persName xml:id="RL">
+                    <forename>
+                       רון
+                    </forename>
+                    <surname>
+                       לסרי
+                    </surname>
+                 </persName>
               </person>
               
               <person xml:id="MB">
