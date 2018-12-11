@@ -11,6 +11,8 @@ class DataCollector(object):
 
     @staticmethod
     def collect_data_from_source(url):
+        final_json = {"type": "FeatureCollection",
+                      "features": []}
         first_book_num = 844
         books_dict = {}
         for curr_book_num in range(first_book_num, 1000):
@@ -111,6 +113,37 @@ class DataCollector(object):
                 coords = get_address_coordinates(country_city_tup)
                 if coords != -1:
                     coord_dict[country_city_tup] = coords
+
+            # create json format
+            # TODO: fix locations list with duplicates
+            final_json['features'].append(convert_data_to_json(id=curr_book_num,
+                                                               location_coord_list=list(coord_dict.values()),
+                                                               title=title,
+                                                               author=author, books_data_dict=book_dict_data,
+                                                               cover_url=image_url))
+
+        with open(Constants.json_file_path, 'w') as fp:
+            json.dump(final_json, fp)
+
+
+def convert_data_to_json(id, location_coord_list, title, author, books_data_dict, cover_url):
+    json_dict = {'type': 'Feature',
+                 'properties': {'id': id,
+                                'title': title,
+                                'cover_url': cover_url,
+                                'genre': 'None',
+                                'release_year': books_data_dict['docs'][0]['first_publish_year'],
+                                'lang': books_data_dict['docs'][0]['language'],
+                                'author': author,
+                                'illustrator': None,
+                                'category': None,
+                                'line': location_coord_list
+                                },
+                 'geometry': {'type': "MultiPoint",
+                              "coordinates": location_coord_list
+                              }
+                 }
+    return json_dict
 
 
 def main():
