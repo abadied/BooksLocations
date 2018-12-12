@@ -68,15 +68,7 @@ function renderListings(features) {
         // Show the filter input
         filterEl.parentNode.style.display = 'block';
     } else {
-        // var empty = document.createElement('p');
-        // empty.textContent = 'Drag the map to populate results';
-        // listingEl.appendChild(empty);
 
-        // Hide the filter input
-        //filterEl.parentNode.style.display = 'none';
-
-        // remove features filter
-        //map.setFilter('books-layer', ['has', 'author']);
     }
 }
 
@@ -213,6 +205,13 @@ map.on('load', function () {
             ];
         };
         map.setFilter('books-layer', filter1);
+        
+        // var filtered = books.filter(function (feature) {
+        //     var name1 = normalize(feature.properties.title);
+        //     var author1 = normalize(feature.properties.author);
+        //     return name1.indexOf(value) > -1 || author1.indexOf(value) > -1;
+        // });
+        // renderListings(filtered);
 
     };
 

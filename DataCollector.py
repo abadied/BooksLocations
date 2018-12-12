@@ -1,7 +1,6 @@
 import geotext
 import requests
 import Constants
-import re
 from geopy.geocoders import Nominatim
 import spacy
 import json
@@ -15,7 +14,7 @@ class DataCollector(object):
                       "features": []}
         first_book_num = 844
         books_dict = {}
-        for curr_book_num in range(first_book_num, 1000):
+        for curr_book_num in range(first_book_num, 845):
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
             image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 
@@ -41,7 +40,7 @@ class DataCollector(object):
                 try:
                     # TODO: check importance inside raw parameter is bigger then some threshold for accuracy
                     location = geolocator.geocode(address)
-                    return [location.latitude, location.longitude]
+                    return [location.longitude,location.latitude]
                 except Exception as e:
                     return -1
 
@@ -133,7 +132,7 @@ def convert_data_to_json(id, location_coord_list, title, author, books_data_dict
                                 'cover_url': cover_url,
                                 'genre': 'None',
                                 'release_year': books_data_dict['docs'][0]['first_publish_year'],
-                                'lang': books_data_dict['docs'][0]['language'],
+                                'lang': str(books_data_dict['docs'][0]['language']),
                                 'author': author,
                                 'illustrator': None,
                                 'category': None,
