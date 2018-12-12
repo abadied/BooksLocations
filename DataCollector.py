@@ -14,7 +14,7 @@ class DataCollector(object):
                       "features": []}
         first_book_num = 844
         books_dict = {}
-        for curr_book_num in range(first_book_num, 845):
+        for curr_book_num in range(first_book_num, 855):
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
             image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 

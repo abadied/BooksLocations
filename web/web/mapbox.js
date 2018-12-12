@@ -1,9 +1,9 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW1pdHVyOTEiLCJhIjoiY2pvbzhkeHN1MGx0ZzNwbHd6cmVkMXFiMyJ9.pXauUkubGnbAUaewUAJ42Q';
 const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/amitur91/cjoo8efrd2tbi2squnueoz7kv',
-    center: [34.841999, 31.847261],
-    zoom: 1.0
+container: 'map',
+style: 'mapbox://styles/amitur91/cjpl9tkca0qru2sryt2p06f2d',
+center: [-90.405077, 24.283965],
+zoom: 1.0
 });
 
 
@@ -93,29 +93,9 @@ function getUniqueFeatures(array, comparatorProperty) {
 }
 
 map.on('load', function () {
-
-    map.addLayer({
-        "id": "books-layer",
-        "source": {
-            "type": "vector",
-            "url": "mapbox://amitur91.cjoxb8xa00rkf2qrvj68j57kf-5dqeo"
-        },
-        "source-layer": "book_0.1",
-        "type": "symbol",
-        "layout": {
-            "icon-image": "book-icon",
-            "icon-padding": 0,
-            "icon-allow-overlap": true
-        }
-    });
-
     var empty = document.createElement('p');
     empty.textContent = 'Drag the map to populate results';
     listingEl.appendChild(empty);
-    // Hide the filter input
-    //filterEl.parentNode.style.display = 'none';
-
-
 
     map.on('moveend', function () {
         var features = map.queryRenderedFeatures({
@@ -141,11 +121,13 @@ map.on('load', function () {
             layers: ['books-layer']
         });
         var feature = features[0];
-        if (feature)
+        console.log(feature)
+        if (feature!=undefined){
             showPopAndLine(feature);
         map.flyTo({
             center: feature.geometry.coordinates
         });
+        }
     });
 
     filterEl.addEventListener('keyup', function (e) {
@@ -178,7 +160,7 @@ map.on('load', function () {
 
     //range years filters
     var years_before = '2018';
-    var years_after = '1770';
+    var years_after = '1600';
     document.getElementById('years-after').addEventListener('input', function (e) {
         years_after = e.target.value;
         filterByYears();
@@ -205,14 +187,6 @@ map.on('load', function () {
             ];
         };
         map.setFilter('books-layer', filter1);
-        
-        // var filtered = books.filter(function (feature) {
-        //     var name1 = normalize(feature.properties.title);
-        //     var author1 = normalize(feature.properties.author);
-        //     return name1.indexOf(value) > -1 || author1.indexOf(value) > -1;
-        // });
-        // renderListings(filtered);
-
     };
 
 
