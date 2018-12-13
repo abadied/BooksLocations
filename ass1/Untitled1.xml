@@ -7,9 +7,7 @@
       <fileDesc>
          <titleStmt>
             <title>
-               <persName ref="#RF">רון-פדר-עמית, גלילה</persName>           
-               (<date notBefore="1949-01-01" notAfter="1949-12-31">1949</date>)
-               <roleName>סופרת</roleName> ו<roleName>עורכת</roleName>
+               <persName ref="#RF">רון-פדר-עמית, גלילה</persName>(<date notBefore="1949-01-01" notAfter="1949-12-31">1949</date>)<roleName>סופרת</roleName> ו<roleName>עורכת</roleName>
             </title>
             <author>><persName ref="#RL">רון לסרי</persName></author>
          </titleStmt>
@@ -26,6 +24,7 @@
                  
               </bibl> 
                <bibl>
+                  <address><name></name></address>
                   <author>תום שגב</author>
                   <name>הנוער על פי גלילה רון פדר</name>
                   <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
@@ -69,18 +68,18 @@
       </placeName>
    </birth>
 </person>      
-              <person>
-                 <persName xml:id="AD">
+              <person xml:id="AD">
+                 <persName>
                  <forename>
                     אסי
                  </forename>
                  <surname>
-                    משה
+                    דיין
                  </surname>
               </persName>
               </person>
-              <person>
-                 <persName xml:id="RL">
+              <person xml:id="RL">
+                 <persName>
                     <forename>
                        רון
                     </forename>
@@ -92,9 +91,26 @@
               
               <person xml:id="MB">
                  <persName>
-                    מנחם בגין
+                    <forename>
+                       מנחם
+                    </forename>
+                    <surname>
+                       בגין
+                    </surname>
                  </persName>
               </person> 
+              
+              <person xml:id="HNB">
+                 <persName>
+                    <forename>
+                       חיים נחמן
+                    </forename>
+                    <surname>
+                       ביאליק
+                    </surname>
+                 </persName>
+              </person> 
+               
            </listPerson>
            
         </particDesc>
@@ -150,7 +166,7 @@
             .
             </p>
             </div>
-         <div type="publications">
+         <div type="publications1">
          <p>
             <persName ref="#RN"><forename>רון-פדר-עמית</forename></persName>
             היא מהיוצרות הפופולריות והפורות בספרות הילדים העברית. עד כה פירסמה כ
@@ -205,6 +221,8 @@
             <name type="book">סיירת המדע</name>
             " המפרה את הקוראים בהשכלה מדעית בסיסית. מרבה לכתוב ספרי הרפתקאות, שחלקם מתרחשים בהקשרים היסטוריים או מדעיים, אך ככלל קיימת בכתיבתה מגמה חינוכית המעלה לדיון נושאים כגון: חינוך מיני ושימוש בסמים ובאלכוהול. כמו כן, היא משתמשת בשפה המכילה סלנג ומתקרבת אל שפת הדיבור המקובלת בקרב קהל היעד של הספר.
                </p>
+            </div>
+         <div type="publications2">
             <p>
             פירסמה עד כה 
             <num value="7">שבעה</num>
@@ -219,11 +237,11 @@
             (
                <date notBefore="2006-01-01" notAfter="2006-12-31">2006</date>
             ), מתאר את מסעה של 
-            <persName>רננה רז</persName>
+            <persName type="fiction">רננה רז</persName>
             , <roleName>שחקנית</roleName> מצליחה, היוצאת למרכז מדיטציה ב
             <placeName>בורמה</placeName>
             , ואת חברתה 
-            <persName>נעמי</persName>
+               <persName type="fiction">נעמי</persName>
             , <roleName>פרופסור למקרא</roleName>, המתחקה אחריה. הרומן ממשיך מגמה בכתיבתה על מסעות נשיים לחיפוש עצמי ב
             <placeName>מזרח הרחוק</placeName>
             , המתגלה גם בספרה 
