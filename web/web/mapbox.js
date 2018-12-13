@@ -222,10 +222,10 @@ function drawPolygon(line) {
         },
         "paint": {
             "line-color": "#972e2e",
-            "line-width": 4,
-            "line-opacity": 0.7
+            "line-width": 3,
+            "line-opacity": 0.5
         }
-    });
+    }, "books-layer");
 
 };
 //search locations
