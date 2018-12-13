@@ -14,7 +14,7 @@ class DataCollector(object):
                       "features": []}
         first_book_num = 844
         books_dict = {}
-        for curr_book_num in range(first_book_num, 851):
+        for curr_book_num in range(first_book_num, 850):
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
             image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 
@@ -129,7 +129,7 @@ def convert_data_to_json(id, location_coord_list, title, author, books_data_dict
     json_dict = {'type': 'Feature',
                  'properties': {'id': id,
                                 'title': title,
-                                'cover_url': cover_url,
+                                'cover_url': 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg',
                                 'genre': 'None',
                                 'release_year': str(books_data_dict['docs'][0]['first_publish_year']),
                                 'lang': books_data_dict['docs'][0]['language'],
