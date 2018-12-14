@@ -36,6 +36,41 @@
       </fileDesc>
 
      <profileDesc>
+        <settingDesc>
+           <listPlace>
+              <place xml:id="HAIFA">
+                 <placeName>
+                    חיפה
+                 </placeName>
+              </place>
+              <place xml:id="BEIT-S">
+                 <placeName>
+                    בית שאן
+                 </placeName>
+              </place>
+              <place xml:id="BOR">
+                 <placeName>
+                    בורמה
+                 </placeName>
+              </place>
+              <place xml:id="JERUSALEM">
+                 <placeName>
+                    ירושלים    
+                 </placeName>
+              </place>
+              <place xml:id="HEB-UN"> 
+                 <placeName>
+                    אוניברסיטה העברית  
+                 </placeName>
+              </place>
+              <place xml:id="EAST"> 
+                 <placeName>
+                    המזרח הרחוק  
+                 </placeName>
+              </place>
+           </listPlace>
+        </settingDesc>
+        
         <particDesc>
            <org xml:id="MPI">
               <name>מפא"י</name>
@@ -132,11 +167,11 @@
          <div type="bio">
          <p>    
             נולדה ב
-            <placeName>חיפה</placeName>
+            <placeName ref="#HAIFA">חיפה</placeName>
             . כבר בהיותה בת 
             <num value="9">תשע</num> 
             החלה לכתוב סיפורי הרפתקאות. למדה במגמה הביולוגית בבית הספר "הריאלי" ב
-            <placeName>חיפה</placeName>
+            <placeName ref="#HAIFA">חיפה</placeName>
             . למרות היותה בת למשפחה שנשבו בה רוחות <orgName ref="#MPI">מפא"י</orgName> כתבה רומן על נערה שאחיה נמנה עם <orgName ref="#AZL">כוחות האצ"ל</orgName>, ואף שלחה את טיוטתו ל
               <persName ref="#MB"><surname>
                  מנחם
@@ -147,8 +182,8 @@
             <name type="book">בעוז ובהדר: סיפורו של</name>
             <persName ref="#MB">מנחם בגין</persName>
             . שירתה כ<roleName>חיילת</roleName> בנח"ל, ולאחר שחרורה למדה ספרות ומקרא ב
-            <placeName>אוניברסיטה העברית</placeName> ב
-            <placeName>ירושלים</placeName>
+            <placeName ref="#HEB-UN">אוניברסיטה העברית</placeName> ב
+            <placeName ref="#JERUSALEM">ירושלים</placeName>
             . 
             <persName ref="#RN"><forename>
                רון-פדר-עמית
@@ -202,9 +237,9 @@
             , המתאר את חוויותיו של 
             <persName>ציון</persName>
             , ילד שנפלט ממשפחתו קשת היום ב
-            <placeName>בית שאן</placeName>
+            <placeName ref="#BEIT-S">בית שאן</placeName>
             ומגיע למשפחה אומנת ב
-            <placeName>חיפה</placeName>
+            <placeName ref="#HAIFA">חיפה</placeName>
             . "
             <name type="book">ג'ינג'י</name>
             ", סדרת הספרים המצליחה ביותר של ה<roleName>סופרת</roleName>, נכתבה בשנים 
@@ -243,7 +278,7 @@
             , ואת חברתה 
                <persName type="fiction">נעמי</persName>
             , <roleName>פרופסור למקרא</roleName>, המתחקה אחריה. הרומן ממשיך מגמה בכתיבתה על מסעות נשיים לחיפוש עצמי ב
-            <placeName>מזרח הרחוק</placeName>
+            <placeName ref="#EAST">מזרח הרחוק</placeName>
             , המתגלה גם בספרה 
             <name type="book">אמא של תרמילאי</name>
             (
