@@ -38,7 +38,8 @@ function showPopAndLine(feature_) {
         //.setLngLat(feature.geometry.coordinates)
         .setHTML(popup_html)
         .addTo(map);
-    drawPolygon(feature_.properties.line);
+        //drawPolygon(feature_.properties.line)
+        drawCircles(feature_.properties.line);
 };
 
 function removePopAndLine() {
@@ -228,6 +229,43 @@ function drawPolygon(line) {
     }, "books-layer");
 
 };
+
+function drawCircles(line){
+    if (last_line != "0") {
+        map.removeLayer(last_line);
+    }
+    last_line = (Math.floor((Math.random() * 10000) + 1)).toString();;;
+    var list1 = JSON.parse(line);
+
+    const allPoints = list1.map(point => ({
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: point
+        }
+    }));
+
+    map.addLayer({
+        "id": last_line,
+        "type": "circle",
+        "source": {
+            "type": 'geojson',
+            "data": {
+                "type": 'FeatureCollection',
+                "features": allPoints
+            }
+        },
+        "paint": {
+        'circle-color': '#972e2e',
+      'circle-radius': 10,
+      'circle-pitch-scale': 'map',
+      'circle-stroke-width': 0,
+      'circle-blur': 0.5,
+        }
+    }, "books-layer");
+
+};
+
 //search locations
 map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
