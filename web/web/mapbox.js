@@ -257,7 +257,8 @@ function drawCircles(line){
         },
         "paint": {
         'circle-color': '#972e2e',
-      'circle-radius': 10,
+      'circle-radius': {'base': 15,
+      'stops': [[12, 15], [18, 180]]},
       'circle-pitch-scale': 'map',
       'circle-stroke-width': 0,
       'circle-blur': 0.5,
