@@ -1,0 +1,41 @@
+﻿type,value,English Name and WikiData,date of birth,date of death,place of birth,Geo location,id,VIAF,National Library
+organisation," מפא""י",Mapai,,,,,MPI,,
+organisation," אצ""ל",Irgun,,,,,AZL,,
+organisation, חיפאים,,,,,,HA,,
+organisation, בריטים,British,,,,,BR,,
+person,אסי דיין,Assi Dayan,1945-11-23T00:00:00Z,2014-05-01T00:00:00Z,Nahalal,,AD,"Dayan, Assaf",
+"date
+",1949,,,,,,,,
+place,חיפה,Haifa,,,,"32.81841,34.9885",,142967242,
+"book
+",בעוז ובהדר: סיפורו של מנחם בגין,The story of Menachem Begin,,,,,,,http://beta.nli.org.il/he/books/NNL_ALEPH002760115/NLI
+place,אוניברסיטה העברית,The Hebrew university of Jerusalem,,,,"31.79456,35.2414",,133172413,
+place,ירושלים,Jerusalem,,,,"31.78199,35.21961",,131280745,
+book,ציון,Zion,,,,,,,
+place,תל אביב,Tel Aviv,,,,"32.08088,34.78057",,158264203,
+person,אופק אוריאל,Uriel Ofek,1926-06-30T00:00:00Z,1987-01-23T00:00:00Z,,,,,
+organisation, ירושלמים,,,,,,JER,,
+person,"רון-פדר-עמית גלילה
+",Galila Ron-Feder Amit,1949-01-01T00:00:00Z,,Haifa,,RN,"Ron-Feder-Amit, Galila, 1949-",
+person,מנחם בגין,Menachem Begin,1913-08-16T00:00:00Z,1992-03-09T00:00:00Z,Brest,,MB,"Begin, Menachem, 1913-1992.",
+person,"רון לסרי
+",Ron Lasri,,,,,RL,,
+person,"חיים נחמן ביאליק
+",Hayim Nahman Bialik,1873-01-06T00:00:00Z,1934-07-04T00:00:00Z,Rady,,HNB,"Bialik, Ḥayyim Naḥman 1873-1934",
+organisation,"נח""ל",Nahal,,,Ivnitsia,,,,
+date,1976­-1981,,,,,,,,
+book, יש אישה אחרת,There is another women,,,,,,,http://beta.nli.org.il/he/books/NNL_ALEPH002589339/NLI
+lang, אנגלית,English,,,,,,,
+lang, גרמנית,German,,,,,,,
+lang, צרפתית,French,,,,,,,
+lang,יפנית,Japanese,,,,,,,
+book, בחינת בגרות,Graduation test,,,,,,,http://beta.nli.org.il/he/books/NNL_ALEPH000873682/NLI
+newspaper, פשוש,Pashush,,,,,,,
+newspaper, ראש צעיר,Young head,,,,,,,http://beta.nli.org.il/he/journals/NNL_ALEPH002371553/NLI
+book, ילדי השכונה במחתרת,The children of the neighborhood at the resistance,,,,,,,http://beta.nli.org.il/he/Books/NNL_ALEPH001294837/NLI
+book, ילדים אלמונים,Anonymous kids,,,,,,,"http://search.nli.org.il/primo-explore/search?query=any,contains,%D7%99%D7%9C%D7%93%D7%99%D7%9D%20%D7%90%D7%9C%D7%9E%D7%95%D7%A0%D7%99%D7%9D&tab=default_tab&search_scope=Local&vid=NLI&mfacet=creator,include,%D7%A8%D7%95%D7%9F-%D7%A4%D7%93%D7%A8-%D7%A2%D7%9E%D7%99%D7%AA%20%D7%92%D7%9C%D7%99%D7%9C%D7%94,1&lang=iw_IL&offset=0"
+book," כס""ח חברי כוח סיירות חוקר",,,,,,,,"http://search.nli.org.il/primo-explore/search?query=any,contains,%D7%9B%D7%A1%22%D7%97%20%D7%97%D7%91%D7%A8%D7%99%20%D7%9B%D7%95%D7%97%20%D7%A1%D7%99%D7%99%D7%A8%D7%95%D7%AA%20%D7%97%D7%95%D7%A7%D7%A8&tab=default_tab&search_scope=Local&sortby=rank&vid=NLI&mfacet=creator,include,%D7%A8%D7%95%D7%9F-%D7%A4%D7%93%D7%A8-%D7%A2%D7%9E%D7%99%D7%AA%20%D7%92%D7%9C%D7%99%D7%9C%D7%94,1&lang=iw_IL&offset=0"
+book, מנהרת הזמן,The time tunnel,,,,,,,"http://search.nli.org.il/primo-explore/search?query=any,contains,%D7%9E%D7%A0%D7%94%D7%A8%D7%AA%20%D7%94%D7%96%D7%9E%D7%9F&tab=default_tab&search_scope=Local&sortby=rank&vid=NLI&mfacet=creator,include,%D7%A8%D7%95%D7%9F-%D7%A4%D7%93%D7%A8-%D7%A2%D7%9E%D7%99%D7%AA%20%D7%92%D7%9C%D7%99%D7%9C%D7%94,1&mfacet=rtype,include,books,1&lang=iw_IL&offset=0"
+book, טולי תעלולי,Tuli Ta'alooli,,,,,,,http://beta.nli.org.il/he/books/NNL_ALEPH001168653/NLI
+book, סיירת המדע,,,,,,,,"http://search.nli.org.il/primo-explore/search?query=any,contains,%D7%A1%D7%99%D7%99%D7%A8%D7%AA%20%D7%94%D7%9E%D7%93%D7%A2&sortby=rank&vid=NLI&mfacet=creator,include,%D7%A8%D7%95%D7%9F-%D7%A4%D7%93%D7%A8-%D7%A2%D7%9E%D7%99%D7%AA%20%D7%92%D7%9C%D7%99%D7%9C%D7%94,1&lang=iw_IL"
+book, ג'ינג'י,Gingi,,,,,,,"http://search.nli.org.il/primo-explore/search?query=any,contains,%D7%92%D7%99%D7%A0%D7%92%D7%99&tab=default_tab&search_scope=Local&sortby=rank&vid=NLI&mfacet=creator,include,%D7%A8%D7%95%D7%9F-%D7%A4%D7%93%D7%A8-%D7%A2%D7%9E%D7%99%D7%AA%20%D7%92%D7%9C%D7%99%D7%9C%D7%94,1&lang=iw_IL&offset=0"
