@@ -4,6 +4,7 @@ import Constants
 from geopy.geocoders import Nominatim
 import spacy
 import json
+import time
 
 
 class DataCollector(object):
@@ -12,9 +13,21 @@ class DataCollector(object):
     def collect_data_from_source(url):
         final_json = {"type": "FeatureCollection",
                       "features": []}
-        first_book_num = 844
-        books_dict = {}
-        for curr_book_num in range(first_book_num, 850):
+
+        first_book_num = 850
+        try:
+            with open(Constants.json_file_path, "r") as read_file:
+                final_json = json.load(read_file)
+        except Exception as e:
+            final_json = {'features': []}
+
+        for curr_book_num in range(first_book_num, 855):
+
+            if curr_book_num in final_json.keys():
+                continue
+
+            print("started fetching book number: " + str(curr_book_num))
+            starting_time = time.time()
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
             image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 
@@ -55,9 +68,6 @@ class DataCollector(object):
                 print(e)
                 continue
             book_dict_data = json.loads(book_json_data)
-            release_date = book_dict_data['docs'][0]['first_publish_year']
-            # reg_exp = '[A-z]*\s\d+\s[A-Z][a-z]+\s[A-z]*\d*[A-z]*'
-            # addresses = re.findall(reg_exp, content)
             geo = geotext.GeoText(content)
             nlp = spacy.load('en_core_web_sm')
             doc = nlp(content)
@@ -92,20 +102,6 @@ class DataCollector(object):
                         cities_idx.append((city, idx))
             sorted(cities_idx, key=lambda x: x[1])
 
-            # create city country tuples
-            # used_countries = set()
-            # country_city_pairs = []
-            # for city_tup in cities_idx:
-            #     city_name = city_tup[0]
-            #     city_idx = city_tup[1]
-            #     chosen_country_tup = None
-            #     for country_tup in country_idx:
-            #         if country_tup[1] < city_idx and(chosen_country_tup is None or country_tup[1] > chosen_country_tup[1]):
-            #             chosen_country_tup = country_tup
-            #     if chosen_country_tup is not None:
-            #         used_countries.add(chosen_country_tup[0])
-            #         country_city_pairs.append((chosen_country_tup[0], city_name))
-
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
             for country_city_tup in country_city_sets:
@@ -121,15 +117,23 @@ class DataCollector(object):
                                                                author=author, books_data_dict=book_dict_data,
                                                                cover_url=image_url))
 
+            finish_time = time.time()
+            print("finished fetching, took: " + str((finish_time - starting_time)))
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
+            print("saved json file.")
 
 
 def convert_data_to_json(id, location_coord_list, title, author, books_data_dict, cover_url):
+    try:
+        cover_value = 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg'
+    except KeyError as ke:
+        print("Error occurred: " + str(ke))
+        cover_value = "default_cover.png"
     json_dict = {'type': 'Feature',
                  'properties': {'id': id,
                                 'title': title,
-                                'cover_url': 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg',
+                                'cover_url': cover_value,
                                 'genre': 'None',
                                 'release_year': str(books_data_dict['docs'][0]['first_publish_year']),
                                 'lang': books_data_dict['docs'][0]['language'],
