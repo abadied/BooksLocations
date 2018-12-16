@@ -17,8 +17,8 @@
          <sourceDesc>
             <listBibl>
               <bibl>
-                 <address><name> תל אביב: זמורה-בית</name></address>
-                 <author>אופק אוריאל</author>
+                 <address><name> <placeName ref="#TEL-AVIV">תל אביב</placeName>: זמורה-בית</name></address>
+                 <author><persName ref="#OO">אופק אוריאל</persName></author>
                  <name> לקסיקון אופק לספרות ילדים ב</name>
                  <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
                  
@@ -26,7 +26,7 @@
                <bibl>
                   <address><name></name></address>
                   <author>תום שגב</author>
-                  <name>הנוער על פי גלילה רון פדר</name>
+                  <name>הנוער על פי <persName ref="#RN">גלילה רון פדר</persName></name>
                   <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
                   <biblScope>33­-35</biblScope>
                </bibl> 
@@ -46,6 +46,11 @@
               <place xml:id="BEIT-S">
                  <placeName>
                     בית שאן
+                 </placeName>
+              </place>
+              <place xml:id="TEL-AVIV">
+                 <placeName>
+                    תל אביב
                  </placeName>
               </place>
               <place xml:id="BOR">
@@ -77,6 +82,9 @@
            </org>
            <org xml:id="AZL">
               <name>אצ"ל</name>
+           </org>
+           <org xml:id="NHAL">
+              <name>נח"ל</name>
            </org>
            <org xml:id="HA">
               <name>חיפאים</name>
@@ -112,6 +120,16 @@
                     דיין
                  </surname>
               </persName>
+              </person>
+              <person xml:id="OO">
+                 <persName>
+                    <forename>
+                       אופק
+                    </forename>
+                    <surname>
+                       אריאל
+                    </surname>
+                 </persName>
               </person>
               <person xml:id="RL">
                  <persName>
@@ -181,7 +199,7 @@
             פירסמה את הספר 
             <name type="book">בעוז ובהדר: סיפורו של</name>
             <persName ref="#MB">מנחם בגין</persName>
-            . שירתה כ<roleName>חיילת</roleName> בנח"ל, ולאחר שחרורה למדה ספרות ומקרא ב
+            . שירתה כ<roleName>חיילת</roleName> ב<orgName ref="#NHAL">נח"ל</orgName>, ולאחר שחרורה למדה ספרות ומקרא ב
             <placeName ref="#HEB-UN">אוניברסיטה העברית</placeName> ב
             <placeName ref="#JERUSALEM">ירושלים</placeName>
             . 
@@ -197,7 +215,7 @@
             ילדים ממשפחות קשות יום. פרט זה השפיע רבות על כתיבתה והיווה השראה לסדרת הספרים
             <name type="book">"ציון"</name>
             , שנכתבה בשנים 
-            <date>1976­-1981</date>
+            <date notBefore="1976-01-01" notAfter="1981-12-31">1976­-1981</date>
             .
             </p>
             </div>
