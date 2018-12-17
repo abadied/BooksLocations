@@ -14,14 +14,15 @@ class DataCollector(object):
         final_json = {"type": "FeatureCollection",
                       "features": []}
 
-        first_book_num = 858
+        first_book_num = 850
         try:
             with open(Constants.json_file_path, "r") as read_file:
                 final_json = json.load(read_file)
         except Exception as e:
-            final_json = {'features': []}
+            final_json = {"type": "FeatureCollection",
+                          "features": []}
 
-        for curr_book_num in range(first_book_num, 859):
+        for curr_book_num in range(first_book_num, 858):
 
             if curr_book_num in final_json.keys():
                 continue
@@ -127,8 +128,7 @@ class DataCollector(object):
             final_json['features'].append(convert_data_to_json(id=curr_book_num,
                                                                location_coord_list=list(coord_dict.values()),
                                                                title=title,
-                                                               author=author, books_data_dict=book_dict_data,
-                                                               cover_url=image_url))
+                                                               author=author, books_data_dict=book_dict_data))
 
             finish_time = time.time()
             print("finished fetching, took: " + str((finish_time - starting_time)))
@@ -137,20 +137,30 @@ class DataCollector(object):
             print("saved json file.")
 
 
-def convert_data_to_json(id, location_coord_list, title, author, books_data_dict, cover_url):
+def convert_data_to_json(id, location_coord_list, title, author, books_data_dict):
+    cover_value = "no_cover.jpg"
+    author_key = ""
+    release_year = ""
+    lang = ""
     try:
-        cover_value = 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg'
+        if books_data_dict['docs']:
+            # print(books_data_dict['docs'][0])
+            cover_value = 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg'
+            author_key = str(books_data_dict['docs'][0]['author_key'][0])
+            print(author_key)
+            release_year = str(books_data_dict['docs'][0]['first_publish_year'])
+            lang = books_data_dict['docs'][0]['language']
     except KeyError as ke:
         print("Error occurred: " + str(ke))
-        cover_value = "default_cover.png"
     json_dict = {'type': 'Feature',
                  'properties': {'id': id,
                                 'title': title,
                                 'cover_url': cover_value,
                                 'genre': 'None',
-                                'release_year': str(books_data_dict['docs'][0]['first_publish_year']),
-                                'lang': books_data_dict['docs'][0]['language'],
+                                'release_year': release_year,
+                                'lang': lang,
                                 'author': author,
+                                'author_key': author_key,
                                 'illustrator': None,
                                 'category': None,
                                 'line': location_coord_list

@@ -18,18 +18,18 @@ var listingEl = document.getElementById('feature-listing');
 var filterYears1 = document.getElementById('years-after');
 var filterYears1 = document.getElementById('years-before');
 
-
 function showPopAndLine(feature_) {
     var popup_html = ' <div class="left-half">' +
         '<img src="' +
         feature_.properties.cover_url +
-        '" /></div>' +
+        '" onerror="this.onerror=null;this.src="./no_cover.jpg";" /></div>' +
         '<div class="right-half">' +
         '<h3>' +
         feature_.properties.title +
-        '</h3><h5>' +
+        '</h3>' +
         feature_.properties.author +
-        '</h5>' +
+        '<img  style="float:right;" src="http://covers.openlibrary.org/a/olid/' +
+        feature_.properties.author_key + '-S.jpg" />'+
         '<h5>' +
         feature_.properties.release_year +
         '</h5></div>';
@@ -40,6 +40,7 @@ function showPopAndLine(feature_) {
         .addTo(map);
         //drawPolygon(feature_.properties.line)
         drawCircles(feature_.properties.line);
+        console.log(feature_.properties.author_key);
 };
 
 function removePopAndLine() {
@@ -126,7 +127,7 @@ map.on('load', function () {
             layers: ['books-layer']
         });
         var feature = features[0];
-        console.log(feature)
+        //console.log(feature)
         if (feature!=undefined){
             showPopAndLine(feature);
         map.flyTo({
@@ -147,11 +148,11 @@ map.on('load', function () {
             var inRange;
             if (years_after < years_before) {
                 inRange = (year_released >= years_after) && (year_released < years_before);
-                console.log( "years_after<years_before, inrange is "+ inRange)
+                //console.log( "years_after<years_before, inrange is "+ inRange)
             }
             else{
                 inRange = (year_released <= years_after) && (year_released > years_before);
-                console.log( "years_after>years_before, inrange is "+ inRange)
+                //console.log( "years_after>years_before, inrange is "+ inRange)
             }
             return (name1.indexOf(value) > -1 || author1.indexOf(value) > -1) && inRange;
         });
@@ -210,8 +211,6 @@ map.on('load', function () {
         filtered_by_years = map.setFilter('books-layer', filter1);
         //console.log(filtered_by_years);
     };
-
-
 
 });
 renderListings([]);
@@ -277,12 +276,13 @@ function drawCircles(line){
             }
         },
         "paint": {
-        'circle-color': '#972e2e',
+        'circle-color': '#f4d742',
       'circle-radius': {'base': 15,
       'stops': [[12, 15], [18, 180]]},
       'circle-pitch-scale': 'map',
       'circle-stroke-width': 0,
       'circle-blur': 0.5,
+      'circle-opacity':0.5,
         }
     }, "books-layer");
 
