@@ -14,14 +14,14 @@ class DataCollector(object):
         final_json = {"type": "FeatureCollection",
                       "features": []}
 
-        first_book_num = 850
+        first_book_num = 858
         try:
             with open(Constants.json_file_path, "r") as read_file:
                 final_json = json.load(read_file)
         except Exception as e:
             final_json = {'features': []}
 
-        for curr_book_num in range(first_book_num, 855):
+        for curr_book_num in range(first_book_num, 859):
 
             if curr_book_num in final_json.keys():
                 continue
@@ -67,13 +67,26 @@ class DataCollector(object):
             except Exception as e:
                 print(e)
                 continue
+
+            # split content main text
+            main_content = content.split('***')[2]
+            main_content = main_content.replace('\r', ' ')
+            main_content = main_content.replace('\n', ' ')
+
+            new_main = main_content
+            first_run = True
+            while new_main != main_content or first_run:
+                first_run = False
+                main_content = new_main
+                new_main = main_content.replace('  ', ' ')
+
             book_dict_data = json.loads(book_json_data)
-            geo = geotext.GeoText(content)
+            geo = geotext.GeoText(main_content)
             nlp = spacy.load('en_core_web_sm')
-            doc = nlp(content)
+            doc = nlp(main_content)
             nlp_geo_results = []
             for ent in doc.ents:
-                if ent.label_ == 'GPE':
+                if ent.label_ == 'GPE' and ' ' not in ent.text:
                     nlp_geo_results.append(ent.text)
             countries = set(geo.countries)
             cities = set(geo.cities)
