@@ -108,12 +108,16 @@ map.on('load', function () {
             renderListings(uniqueFeatures);
 
             // Clear the input container
-            filterEl.value = '';
+            //filterEl.value = '';
 
             // Store the current features in sn `airports` variable to
             // later use for filtering on `keyup`.
             books = uniqueFeatures;
         }
+        else if (filterEl.value==''){
+            
+        }      
+
     });
 
 
@@ -138,9 +142,19 @@ map.on('load', function () {
         var filtered = books.filter(function (feature) {
             var name1 = normalize(feature.properties.title);
             var author1 = normalize(feature.properties.author);
-            return name1.indexOf(value) > -1 || author1.indexOf(value) > -1;
+            var year_released = normalize(feature.properties.release_year);
+            
+            var inRange;
+            if (years_after < years_before) {
+                inRange = (year_released >= years_after) && (year_released < years_before);
+                console.log( "years_after<years_before, inrange is "+ inRange)
+            }
+            else{
+                inRange = (year_released <= years_after) && (year_released > years_before);
+                console.log( "years_after>years_before, inrange is "+ inRange)
+            }
+            return (name1.indexOf(value) > -1 || author1.indexOf(value) > -1) && inRange;
         });
-        console.log(filtered)
 
         // Populate the sidebar with filtered results
         renderListings(filtered);
@@ -154,7 +168,12 @@ map.on('load', function () {
             map.setFilter('books-layer', filter, true);
             map.setLayoutProperty('books-layer', 'visibility', 'visible');
         } else {
-            map.setLayoutProperty('books-layer', 'visibility', 'none');
+           // map.setLayoutProperty('books-layer', 'visibility', 'none');
+           //filterEl.value=='';
+           //listingEl.innerHTML = '';
+
+           // map.setFilter('books-layer', ['has', 'title']);
+            filterByYears();
         }
 
     });
@@ -162,6 +181,7 @@ map.on('load', function () {
     //range years filters
     var years_before = '2018';
     var years_after = '1600';
+    var filtered_by_years;
     document.getElementById('years-after').addEventListener('input', function (e) {
         years_after = e.target.value;
         filterByYears();
@@ -187,7 +207,8 @@ map.on('load', function () {
                 [">=", ["get", "release_year"], years_before]
             ];
         };
-        map.setFilter('books-layer', filter1);
+        filtered_by_years = map.setFilter('books-layer', filter1);
+        //console.log(filtered_by_years);
     };
 
 
