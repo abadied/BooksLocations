@@ -63,11 +63,7 @@
                     ירושלים    
                  </placeName>
               </place>
-              <place xml:id="HEB-UN"> 
-                 <placeName>
-                    אוניברסיטה העברית  
-                 </placeName>
-              </place>
+
               <place xml:id="EAST"> 
                  <placeName>
                     המזרח הרחוק  
@@ -85,6 +81,11 @@
            </org>
            <org xml:id="NHAL">
               <name>נח"ל</name>
+           </org>
+           <org xml:id="HEB-UN"> 
+              <orgName>
+                 אוניברסיטה העברית  
+              </orgName>
            </org>
            <org xml:id="HA">
               <name>חיפאים</name>
@@ -200,7 +201,7 @@
             <name type="book">בעוז ובהדר: סיפורו של</name>
             <persName ref="#MB">מנחם בגין</persName>
             . שירתה כ<roleName>חיילת</roleName> ב<orgName ref="#NHAL">נח"ל</orgName>, ולאחר שחרורה למדה ספרות ומקרא ב
-            <placeName ref="#HEB-UN">אוניברסיטה העברית</placeName> ב
+            <orgName ref="#HEB-UN">אוניברסיטה העברית</orgName> ב
             <placeName ref="#JERUSALEM">ירושלים</placeName>
             . 
             <persName ref="#RN"><forename>
