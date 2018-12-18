@@ -11,8 +11,7 @@ class DataCollector(object):
 
     @staticmethod
     def collect_data_from_source(url):
-        final_json = {"type": "FeatureCollection",
-                      "features": []}
+
         nlp = spacy.load('en_core_web_sm')
 
         first_book_num = 869
@@ -20,7 +19,11 @@ class DataCollector(object):
             with open(Constants.json_file_path, "r") as read_file:
                 final_json = json.load(read_file)
         except Exception as e:
-            final_json = {'features': []}
+            final_json = {"type": "FeatureCollection",
+                          "features": []}
+        final_json = {"type": "FeatureCollection",
+                      "features": []}
+
         json_current_ids = [inner_dict['properties']['id'] for inner_dict in final_json['features']]
         for curr_book_num in range(first_book_num, 900):
 
@@ -52,9 +55,12 @@ class DataCollector(object):
 
             def get_address_coordinates(address: str):
                 try:
-                    # TODO: check importance inside raw parameter is bigger then some threshold for accuracy
                     location = geolocator.geocode(address)
-                    return [location.longitude,location.latitude]
+                    curr_importance = location.raw['importance']
+                    if curr_importance > Constants.importance_threshold and address not in Constants.black_list:
+                        return [location.longitude, location.latitude]
+                    else:
+                        return -1
                 except Exception as e:
                     return -1
             try:
@@ -86,7 +92,12 @@ class DataCollector(object):
 
             book_dict_data = json.loads(book_json_data)
             # geo = geotext.GeoText(main_content)
-            doc = nlp(main_content)
+            # TODO: handle big text
+            try:
+                doc = nlp(main_content)
+            except ValueError as ve:
+                print(ve)
+                continue
             nlp_geo_results = []
             for ent in doc.ents:
                 if ent.label_ == 'GPE':
@@ -142,14 +153,13 @@ class DataCollector(object):
                 final_json['features'].append(convert_data_to_json(id=curr_book_num,
                                                                    location_coord_list=list(coord_dict.values()),
                                                                    title=title,
-                                                                   author=author, books_data_dict=book_dict_data,
-                                                                   cover_url=image_url))
+                                                                   author=author, books_data_dict=book_dict_data))
             except Exception as e:
                 print("failed extracting: " + str(e))
                 continue
             finish_time = time.time()
             print("finished fetching, took: " + str((finish_time - starting_time)))
-            print(country_city_sets)
+            print(coord_dict.keys())
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
             print("saved json file.")
