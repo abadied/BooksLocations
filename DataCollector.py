@@ -13,17 +13,18 @@ class DataCollector(object):
     def collect_data_from_source(url):
         final_json = {"type": "FeatureCollection",
                       "features": []}
+        nlp = spacy.load('en_core_web_sm')
 
-        first_book_num = 858
+        first_book_num = 869
         try:
             with open(Constants.json_file_path, "r") as read_file:
                 final_json = json.load(read_file)
         except Exception as e:
             final_json = {'features': []}
+        json_current_ids = [inner_dict['properties']['id'] for inner_dict in final_json['features']]
+        for curr_book_num in range(first_book_num, 900):
 
-        for curr_book_num in range(first_book_num, 859):
-
-            if curr_book_num in final_json.keys():
+            if curr_book_num in json_current_ids:
                 continue
 
             print("started fetching book number: " + str(curr_book_num))
@@ -56,9 +57,12 @@ class DataCollector(object):
                     return [location.longitude,location.latitude]
                 except Exception as e:
                     return -1
-
-            author = find_specific_word('Author', ': ')
-            title = find_specific_word('Title', ': ')
+            try:
+                author = find_specific_word('Author', ': ')
+                title = find_specific_word('Title', ': ')
+            except IndexError as ie:
+                print('failed extracting - ' + str(ie))
+                continue
             title_for_scarpping = title.replace(' ', '+')
             author_for_scrapping = author.replace(' ', '+')
             # get book data if exists
@@ -81,39 +85,49 @@ class DataCollector(object):
                 new_main = main_content.replace('  ', ' ')
 
             book_dict_data = json.loads(book_json_data)
-            geo = geotext.GeoText(main_content)
-            nlp = spacy.load('en_core_web_sm')
+            # geo = geotext.GeoText(main_content)
             doc = nlp(main_content)
             nlp_geo_results = []
             for ent in doc.ents:
-                if ent.label_ == 'GPE' and ' ' not in ent.text:
+                if ent.label_ == 'GPE':
                     nlp_geo_results.append(ent.text)
-            countries = set(geo.countries)
-            cities = set(geo.cities)
+            # comp_str = ''
+            # for i in range(len(doc)):
+            #     if doc[i].ent_type_ != 'GPE' and comp_str != '':
+            #         nlp_geo_results.append(comp_str)
+            #         comp_str = ''
+            #     elif doc[i].ent_type_ == 'GPE' and ' ' not in doc[i].text:
+            #         if doc[i].ent_iob_ == 'B':
+            #             comp_str = doc[i].text
+            #         elif doc[i].ent_iob_ == 'I':
+            #             comp_str += ' ' + doc[i].text
+
+            # countries = set(geo.countries)
+            # cities = set(geo.cities)
             content = content.replace('\r', '')
             content = content.replace('\n', '')
 
             splitted_text = content.split(' ')
 
             # find countries indexes in text
-            country_idx = []
-            for country in countries:
-                splitted_country = country.split(' ')
-                for inner_word in splitted_country:
-                    indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
-                    for idx in indexes:
-                        country_idx.append((country, idx))
-            sorted(country_idx, key=lambda x: x[1])
+            # country_idx = []
+            # for country in countries:
+            #     splitted_country = country.split(' ')
+            #     for inner_word in splitted_country:
+            #         indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
+            #         for idx in indexes:
+            #             country_idx.append((country, idx))
+            # sorted(country_idx, key=lambda x: x[1])
 
             # find cities indexes in text
-            cities_idx = []
-            for city in cities:
-                splitted_city = city.split(' ')
-                for inner_word in splitted_city:
-                    indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
-                    for idx in indexes:
-                        cities_idx.append((city, idx))
-            sorted(cities_idx, key=lambda x: x[1])
+            # cities_idx = []
+            # for city in cities:
+            #     splitted_city = city.split(' ')
+            #     for inner_word in splitted_city:
+            #         indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
+            #         for idx in indexes:
+            #             cities_idx.append((city, idx))
+            # sorted(cities_idx, key=lambda x: x[1])
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
@@ -124,14 +138,18 @@ class DataCollector(object):
 
             # create json format
             # TODO: fix locations list with duplicates
-            final_json['features'].append(convert_data_to_json(id=curr_book_num,
-                                                               location_coord_list=list(coord_dict.values()),
-                                                               title=title,
-                                                               author=author, books_data_dict=book_dict_data,
-                                                               cover_url=image_url))
-
+            try:
+                final_json['features'].append(convert_data_to_json(id=curr_book_num,
+                                                                   location_coord_list=list(coord_dict.values()),
+                                                                   title=title,
+                                                                   author=author, books_data_dict=book_dict_data,
+                                                                   cover_url=image_url))
+            except Exception as e:
+                print("failed extracting: " + str(e))
+                continue
             finish_time = time.time()
             print("finished fetching, took: " + str((finish_time - starting_time)))
+            print(country_city_sets)
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
             print("saved json file.")
