@@ -143,9 +143,9 @@ def convert_data_to_json(id, location_coord_list, title, author, books_data_dict
     try:
         if books_data_dict['docs']:
             # print(books_data_dict['docs'][0])
-            cover_value = 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg'
+            cover_value = str(books_data_dict['docs'][0]['cover_i'])
             author_key = str(books_data_dict['docs'][0]['author_key'][0])
-            print(author_key)
+            # print(author_key)
             release_year = str(books_data_dict['docs'][0]['first_publish_year'])
             lang = books_data_dict['docs'][0]['language']
     except KeyError as ke:
