@@ -276,13 +276,13 @@ function drawCircles(line){
             }
         },
         "paint": {
-        'circle-color': '#f4d742',
+        'circle-color': '#e27c06',
       'circle-radius': {'base': 15,
       'stops': [[12, 15], [18, 180]]},
       'circle-pitch-scale': 'map',
       'circle-stroke-width': 0,
-      'circle-blur': 0.5,
-      'circle-opacity':0.5,
+      'circle-blur': 0.4,
+      'circle-opacity':0.7,
         }
     }, "books-layer");
 
