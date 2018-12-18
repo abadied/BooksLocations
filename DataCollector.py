@@ -8,24 +8,26 @@ import time
 
 
 class DataCollector(object):
-
+    # TODO: add illustrator,category
+    # TODO: change url cover id from open library
     @staticmethod
     def collect_data_from_source(url):
 
         nlp = spacy.load('en_core_web_sm')
 
-        first_book_num = 869
         try:
             with open(Constants.json_file_path, "r") as read_file:
-                final_json = json.load(read_file)
+                if not Constants.initialize_json:
+                    final_json = json.load(read_file)
+                else:
+                    final_json = {"type": "FeatureCollection",
+                                  "features": []}
         except Exception as e:
             final_json = {"type": "FeatureCollection",
                           "features": []}
-        final_json = {"type": "FeatureCollection",
-                      "features": []}
 
         json_current_ids = [inner_dict['properties']['id'] for inner_dict in final_json['features']]
-        for curr_book_num in range(first_book_num, 900):
+        for curr_book_num in range(Constants.lower_bound, Constants.upper_bound):
 
             if curr_book_num in json_current_ids:
                 continue
@@ -74,12 +76,12 @@ class DataCollector(object):
             # get book data if exists
             try:
                 book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '+by+' + author_for_scrapping, allow_redirects=True).text
+                main_content = content.split('***')[2]
             except Exception as e:
                 print(e)
                 continue
 
             # split content main text
-            main_content = content.split('***')[2]
             main_content = main_content.replace('\r', ' ')
             main_content = main_content.replace('\n', ' ')
 
@@ -102,43 +104,11 @@ class DataCollector(object):
             for ent in doc.ents:
                 if ent.label_ == 'GPE':
                     nlp_geo_results.append(ent.text)
-            # comp_str = ''
-            # for i in range(len(doc)):
-            #     if doc[i].ent_type_ != 'GPE' and comp_str != '':
-            #         nlp_geo_results.append(comp_str)
-            #         comp_str = ''
-            #     elif doc[i].ent_type_ == 'GPE' and ' ' not in doc[i].text:
-            #         if doc[i].ent_iob_ == 'B':
-            #             comp_str = doc[i].text
-            #         elif doc[i].ent_iob_ == 'I':
-            #             comp_str += ' ' + doc[i].text
 
-            # countries = set(geo.countries)
-            # cities = set(geo.cities)
             content = content.replace('\r', '')
             content = content.replace('\n', '')
 
             splitted_text = content.split(' ')
-
-            # find countries indexes in text
-            # country_idx = []
-            # for country in countries:
-            #     splitted_country = country.split(' ')
-            #     for inner_word in splitted_country:
-            #         indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
-            #         for idx in indexes:
-            #             country_idx.append((country, idx))
-            # sorted(country_idx, key=lambda x: x[1])
-
-            # find cities indexes in text
-            # cities_idx = []
-            # for city in cities:
-            #     splitted_city = city.split(' ')
-            #     for inner_word in splitted_city:
-            #         indexes = [i for i, x in enumerate(splitted_text) if x == inner_word]
-            #         for idx in indexes:
-            #             cities_idx.append((city, idx))
-            # sorted(cities_idx, key=lambda x: x[1])
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
