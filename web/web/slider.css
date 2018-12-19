@@ -47,3 +47,19 @@ section.range-slider input:last-of-type::-moz-range-track {
   section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
+
+.map-overlay2 {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    
+    top: 10px;
+    right: 10px;
+    padding: 0px;
+}
+
+.map-overlay2 .map-overlay-inner2 {
+    background-color: #fff;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    padding: 10px;
+}

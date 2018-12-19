@@ -15,14 +15,14 @@ var last_line = "0";
 var filterEl = document.getElementById('feature-filter');
 var listingEl = document.getElementById('feature-listing');
 
-var filterYears1 = document.getElementById('years-after');
-var filterYears1 = document.getElementById('years-before');
+// var filterYears1 = document.getElementById('years-after');
+// var filterYears1 = document.getElementById('years-before');
 
 function showPopAndLine(feature_) {
     var popup_html = ' <div class="left-half">' +
-        '<img src="' +
+        '<img  class="backup_picture" src="https://covers.openlibrary.org/w/id/' + 
         feature_.properties.cover_url +
-        '" onerror="this.onerror=null;this.src="./no_cover.jpg";" /></div>' +
+        '-M.jpg" /></div>' +
         '<div class="right-half">' +
         '<h3>' +
         feature_.properties.title +
@@ -94,32 +94,37 @@ function getUniqueFeatures(array, comparatorProperty) {
     return uniqueFeatures;
 }
 
+function renderListAfterAction(){
+    var features = map.queryRenderedFeatures({
+        layers: ['books-layer']
+    });
+    if (features) {
+        var uniqueFeatures = getUniqueFeatures(features, "title");
+        // Populate features for the listing overlay.
+        renderListings(uniqueFeatures);
+
+        // Clear the input container
+        //filterEl.value = '';
+
+        // Store the current features in sn `airports` variable to
+        // later use for filtering on `keyup`.
+        books = uniqueFeatures;
+    }
+    else if (filterEl.value==''){
+        
+    }      
+}
+
 map.on('load', function () {
     var empty = document.createElement('p');
     empty.textContent = 'Drag the map to populate results';
     listingEl.appendChild(empty);
 
     map.on('moveend', function () {
-        var features = map.queryRenderedFeatures({
-            layers: ['books-layer']
-        });
-        if (features) {
-            var uniqueFeatures = getUniqueFeatures(features, "title");
-            // Populate features for the listing overlay.
-            renderListings(uniqueFeatures);
-
-            // Clear the input container
-            //filterEl.value = '';
-
-            // Store the current features in sn `airports` variable to
-            // later use for filtering on `keyup`.
-            books = uniqueFeatures;
-        }
-        else if (filterEl.value==''){
-            
-        }      
-
+        renderListAfterAction();
     });
+
+    
 
 
     map.on('click', function (e) {
@@ -169,12 +174,12 @@ map.on('load', function () {
             map.setFilter('books-layer', filter, true);
             map.setLayoutProperty('books-layer', 'visibility', 'visible');
         } else {
-           // map.setLayoutProperty('books-layer', 'visibility', 'none');
+            //map.setLayoutProperty('books-layer', 'visibility', 'none');
            //filterEl.value=='';
            //listingEl.innerHTML = '';
 
            // map.setFilter('books-layer', ['has', 'title']);
-            filterByYears();
+            //filterByYears();
         }
 
     });
@@ -196,22 +201,47 @@ map.on('load', function () {
     function filterByYears() {
         var filter1;
         if (years_after < years_before) {
-            console.log(years_after + '-' + years_before);
+            //console.log(years_after + '-' + years_before);
             filter1 = ["all",
                 [">=", ["get", "release_year"], years_after],
                 ["<=", ["get", "release_year"], years_before]
             ];
         } else {
-            console.log(years_before + '-' + years_after);
+            //console.log(years_before + '-' + years_after);
             filter1 = ["all",
                 ["<=", ["get", "release_year"], years_after],
                 [">=", ["get", "release_year"], years_before]
             ];
         };
         filtered_by_years = map.setFilter('books-layer', filter1);
+        renderListAfterAction();
         //console.log(filtered_by_years);
     };
 
+
+
+
+
+
+
+
+    //filter by subject
+    document.getElementById('checkboxes').addEventListener('input', function (e) {
+        filterBySubjects();
+    });
+
+    function filterBySubjects(){
+        console.log(subjects_checked);
+    }
+
+
+
+
+
+
+
+
+    //
 });
 renderListings([]);
 
@@ -291,7 +321,7 @@ function drawCircles(line){
 //search locations
 map.addControl(new MapboxGeocoder({
     accessToken: mapboxgl.accessToken
-}));
+}),'top-left');
 
 // Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
