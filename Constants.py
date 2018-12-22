@@ -11,6 +11,6 @@ black_list = ['OR', 'I.', 'XV', 'Corn', 'Spartans:--"I', 'Sun', 'Pain', 'Philoso
               'bill.’', 'Green', 'Strand', 'Temple', 'the City', 'Black', '—City', 'Muslin']
 initialize_json = False
 version = '1.0'
-lower_bound = 844
-upper_bound = 900
+lower_bound = 1050
+upper_bound = 1051
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"

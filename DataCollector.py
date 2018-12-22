@@ -76,6 +76,7 @@ class DataCollector(object):
             # get book data if exists
             try:
                 book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '+by+' + author_for_scrapping, allow_redirects=True).text
+                book_dict_data = json.loads(book_json_data)
                 main_content = content.split('***')[2]
             except Exception as e:
                 print(e)
@@ -92,8 +93,6 @@ class DataCollector(object):
                 main_content = new_main
                 new_main = main_content.replace('  ', ' ')
 
-            book_dict_data = json.loads(book_json_data)
-            # geo = geotext.GeoText(main_content)
             # TODO: handle big text
             try:
                 doc = nlp(main_content)
