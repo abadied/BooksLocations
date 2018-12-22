@@ -9,7 +9,6 @@ import time
 
 class DataCollector(object):
     # TODO: add illustrator,category
-    # TODO: change url cover id from open library
     @staticmethod
     def collect_data_from_source(url):
 
@@ -58,7 +57,9 @@ class DataCollector(object):
             def get_address_coordinates(address: str):
                 try:
                     location = geolocator.geocode(address)
+                    # print(address)
                     curr_importance = location.raw['importance']
+                    # print(curr_importance)
                     if curr_importance > Constants.importance_threshold and address not in Constants.black_list:
                         return [location.longitude, location.latitude]
                     else:
@@ -111,6 +112,8 @@ class DataCollector(object):
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
+            # TODO:: add a 0.4 kilometer random move to cities and 20 kilometer move to countries
+            #  (in each up-down and left-right) to every position before putting it in the list.
             for country_city_tup in country_city_sets:
                 coords = get_address_coordinates(country_city_tup)
                 if coords != -1:
@@ -128,23 +131,29 @@ class DataCollector(object):
                 continue
             finish_time = time.time()
             print("finished fetching, took: " + str((finish_time - starting_time)))
-            print(coord_dict.keys())
+            # print(coord_dict.keys())
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
             print("saved json file.")
 
 
 def convert_data_to_json(id, location_coord_list, title, author, books_data_dict):
-    cover_value = "no_cover.jpg"
+    cover_value = "%" #important to leave "%" on not found
     author_key = ""
     release_year = ""
     lang = ""
+    # TODO:: add subjects of book and only leave the most common subjects from a list,
+    #  leave only one subject as value and not a list. one subject for book for easier filtering..
+
+    category = ""
     try:
         if books_data_dict['docs']:
             # print(books_data_dict['docs'][0])
-            cover_value = 'https://covers.openlibrary.org/w/id/'+str(books_data_dict['docs'][0]['cover_i'])+'-M.jpg'
+            cover_value = str(books_data_dict['docs'][0]['cover_i'])
+            if not cover_value:
+                cover_value = "%"
             author_key = str(books_data_dict['docs'][0]['author_key'][0])
-            print(author_key)
+            # print(author_key)
             release_year = str(books_data_dict['docs'][0]['first_publish_year'])
             lang = books_data_dict['docs'][0]['language']
     except KeyError as ke:

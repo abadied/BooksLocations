@@ -128,40 +128,4 @@ img {
     border-radius: 3px;
 }
 
-.map-overlay2 {
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    position: absolute;
-    
-    top: 10px;
-    right: 260px;
-    padding: 0px;
-}
-
-.map-overlay2 .map-overlay-inner2 {
-    background-color: #fff;
-    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
-    border-radius: 3px;
-    padding: 10px;
-}
-
-/* .map-overlay2 h2 {
-    line-height: 24px;
-    display: block;
-    margin: 0 0 10px;
-} */
-
-/* .map-overlay2 .legend .bar {
-    height: 10px;
-    width: 100%;
-    background: linear-gradient(to right, #FCA107, #7F3121);
-}
-
-.map-overlay2 input {
-    background-color: transparent;
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    margin: 0;
-    cursor: ew-resize;
-} */
 

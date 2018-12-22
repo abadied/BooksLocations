@@ -25,3 +25,12 @@ function getVals(){
           }
         }
   }
+
+//alternate image for cover
+
+$(document).ready(function()
+{
+    $(".backup_picture").on("error", function(){
+        $(this).attr('src', './no_cover.jpg');
+    });
+});
