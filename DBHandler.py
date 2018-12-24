@@ -10,9 +10,9 @@ class DBHandler(object):
         except Error as e:
             print(e)
 
-    def insert_to_books(self, *args):
-        sql = ''' INSERT INTO books(id,name,author,locations,genre,releaseDate,language,url)
-                  VALUES(?,?,?,?,?,?,?,?) '''
+    def insert_to_books(self, args):
+        sql = ''' INSERT INTO books(id,title,coverURL, genre, ReleaseDate, language, author, authorKey, illustrator, category, locations)
+                  VALUES(?,?,?,?,?,?,?,?,?,?,?) '''
         cur = self.conn.cursor()
         try:
             cur.execute(sql, args)
@@ -20,7 +20,7 @@ class DBHandler(object):
             print(e)
 
     def delete_from_books_by_name(self, name_key):
-        sql = ''' Delete FROM books Where name=?'''
+        sql = ''' Delete FROM books Where title=?'''
         cur = self.conn.cursor()
         try:
             cur.execute(sql, (name_key,))
@@ -36,7 +36,7 @@ class DBHandler(object):
             print(e)
 
     def get_from_books_by_name(self, name_key):
-        sql = ''' SELECT * FROM books WHERE name=? '''
+        sql = ''' SELECT * FROM books WHERE title=? '''
         cur = self.conn.cursor()
         try:
             cur.execute(sql, (name_key,))
@@ -45,16 +45,19 @@ class DBHandler(object):
             print(e)
             return None
 
-    def update_books_by_name(self, name, author, locations, genre, releaseDate, language, url):
-        sql = ''' UPDATE books SET author = ? ,
-                                   locations = ?,
+    def update_books_by_name(self, title, *args):
+        sql = ''' UPDATE books SET coverURL = ?,
                                    genre = ?,
-                                   releaseDate = ?,
+                                   ReleaseDate = ?,
                                    language = ?,
-                                   url = ?
-                  WHERE name = ? '''
+                                   author = ?,
+                                   authorKey = ?,
+                                   illustrator = ?,
+                                   category = ?,
+                                   locations = ?
+                  WHERE title = ''' + title
         cur = self.conn.cursor()
         try:
-            cur.execute(sql, (author, locations, genre, releaseDate, language, url,))
+            cur.execute(sql, args)
         except Error as e:
             print(e)

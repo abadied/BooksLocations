@@ -11,10 +11,13 @@ black_list = ['OR', 'I.', 'XV', 'Corn', 'Spartans:--"I', 'Sun', 'Pain', 'Philoso
               'St. So-and-So', 'Bang', 'monster.’', 'Opera', 'Port', 'pipe!’', 'NEWTON', 'Pit', 'City', 'White',
               'bill.’', 'Green', 'Strand', 'Temple', 'the City', 'Black', '—City', 'Muslin', 'XXII', 'Tree', 'XV', 'Codes', 'North', 'South', 'West', 'East', 'Spring', 'Bah', 'Solomon']
 initialize_json = True
-version = '1.0'
+version = '1.1'
 lower_bound = 1000
-upper_bound = 1100
+upper_bound = 1010
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"
 optional_categories_list = ['Fiction', 'Poetry', 'Science Fiction', 'Biography', 'History', 'Romance', 'Novel', 'Drama',
                             'Comedy', 'Action', 'Art', 'Recipes', 'Children', 'Fantasy', 'Medicine',
                             'Religion', 'Plays', 'Mythology']
+
+init_db = True
+db_path = 'books_db'

@@ -5,12 +5,13 @@ from geopy.geocoders import Nominatim
 import spacy
 import json
 import time
+from DBInit import DBInit
+from DBHandler import DBHandler
 
 
 class DataCollector(object):
-    # TODO: add illustrator,category
     @staticmethod
-    def collect_data_from_source(url):
+    def collect_data_from_source(url, db_handler):
 
         nlp = spacy.load('en_core_web_sm')
 
@@ -123,11 +124,13 @@ class DataCollector(object):
             # create json format
             # TODO: fix locations list with duplicates
             try:
-                final_json['features'].append(convert_data_to_json(id=curr_book_num,
-                                                                   location_coord_list=list(coord_dict.values()),
-                                                                   title=title,
-                                                                   author=author,illustrator=illustrator,
-                                                                   books_data_dict=book_dict_data))
+                final_json['features'].append(DataCollector.convert_data_to_json(id=curr_book_num,
+                                                                                 location_coord_list=list(coord_dict.values()),
+                                                                                 title=title,
+                                                                                 author=author,
+                                                                                 illustrator=illustrator,
+                                                                                 books_data_dict=book_dict_data,
+                                                                                 db_handler=db_handler))
             except Exception as e:
                 print("failed extracting: " + str(e))
                 continue
@@ -138,56 +141,63 @@ class DataCollector(object):
             json.dump(final_json, fp)
             print("saved json file.")
 
+    @staticmethod
+    def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict, db_handler):
+        cover_value = "%" #important to leave "%" on not found
+        author_key = ""
+        release_year = ""
+        lang = ""
+        # TODO:: add subjects of book and only leave the most common subjects from a list,
+        #  leave only one subject as value and not a list. one subject for book for easier filtering..
 
-def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict):
-    cover_value = "%" #important to leave "%" on not found
-    author_key = ""
-    release_year = ""
-    lang = ""
-    # TODO:: add subjects of book and only leave the most common subjects from a list,
-    #  leave only one subject as value and not a list. one subject for book for easier filtering..
-
-    category = ""
-    try:
-        if books_data_dict['docs']:
-            # print(books_data_dict['docs'][0])
-            cover_value = str(books_data_dict['docs'][0]['cover_i'])
-            if not cover_value:
-                cover_value = "%"
-            author_key = str(books_data_dict['docs'][0]['author_key'][0])
-            # print(author_key)
-            release_year = str(books_data_dict['docs'][0]['first_publish_year'])
-            lang = books_data_dict['docs'][0]['language']
-            category = 'Other'
-            category_list = books_data_dict['docs'][0]['subject']
-            for legit_category in Constants.optional_categories_list:
-                if legit_category in category_list:
-                    category = legit_category
-                    break
-    except KeyError as ke:
-        print("Error occurred: " + str(ke))
-    json_dict = {'type': 'Feature',
-                 'properties': {'id': id,
-                                'title': title,
-                                'cover_url': cover_value,
-                                'genre': 'None',
-                                'release_year': release_year,
-                                'lang': lang,
-                                'author': author,
-                                'author_key': author_key,
-                                'illustrator': illustrator,
-                                'category': category,
-                                'line': location_coord_list
-                                },
-                 'geometry': {'type': "MultiPoint",
-                              "coordinates": location_coord_list
-                              }
-                 }
-    return json_dict
+        category = ""
+        try:
+            if books_data_dict['docs']:
+                # print(books_data_dict['docs'][0])
+                cover_value = str(books_data_dict['docs'][0]['cover_i'])
+                if not cover_value:
+                    cover_value = "%"
+                author_key = str(books_data_dict['docs'][0]['author_key'][0])
+                # print(author_key)
+                release_year = str(books_data_dict['docs'][0]['first_publish_year'])
+                lang = books_data_dict['docs'][0]['language']
+                category = 'Other'
+                category_list = books_data_dict['docs'][0]['subject']
+                for legit_category in Constants.optional_categories_list:
+                    if legit_category in category_list:
+                        category = legit_category
+                        break
+        except KeyError as ke:
+            print("Error occurred: " + str(ke))
+        json_dict = {'type': 'Feature',
+                     'properties': {'id': id,
+                                    'title': title,
+                                    'cover_url': cover_value,
+                                    'genre': 'None',
+                                    'release_year': release_year,
+                                    'lang': lang,
+                                    'author': author,
+                                    'author_key': author_key,
+                                    'illustrator': illustrator,
+                                    'category': category,
+                                    'line': location_coord_list
+                                    },
+                     'geometry': {'type': "MultiPoint",
+                                  "coordinates": location_coord_list
+                                  }
+                     }
+        args_to_db = list(json_dict['properties'].values())
+        args_to_db = [str(arg) for arg in args_to_db]
+        db_handler.insert_to_books(args_to_db)
+        return json_dict
 
 
 def main():
-    DataCollector.collect_data_from_source(Constants.main_url)
+    if Constants.init_db:
+        DBInit.create_books_db(Constants.db_path)
+        DBInit.create_books_db(Constants.db_path)
+    db_handler = DBHandler(Constants.db_path)
+    DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
 if __name__ == '__main__':
