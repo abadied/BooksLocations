@@ -69,6 +69,7 @@ class DataCollector(object):
             try:
                 author = find_specific_word('Author', ': ')
                 title = find_specific_word('Title', ': ')
+                illustrator = find_specific_word('Illustrator', ': ')
             except IndexError as ie:
                 print('failed extracting - ' + str(ie))
                 continue
@@ -125,7 +126,8 @@ class DataCollector(object):
                 final_json['features'].append(convert_data_to_json(id=curr_book_num,
                                                                    location_coord_list=list(coord_dict.values()),
                                                                    title=title,
-                                                                   author=author, books_data_dict=book_dict_data))
+                                                                   author=author,illustrator=illustrator,
+                                                                   books_data_dict=book_dict_data))
             except Exception as e:
                 print("failed extracting: " + str(e))
                 continue
@@ -137,7 +139,7 @@ class DataCollector(object):
             print("saved json file.")
 
 
-def convert_data_to_json(id, location_coord_list, title, author, books_data_dict):
+def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict):
     cover_value = "%" #important to leave "%" on not found
     author_key = ""
     release_year = ""
@@ -156,6 +158,12 @@ def convert_data_to_json(id, location_coord_list, title, author, books_data_dict
             # print(author_key)
             release_year = str(books_data_dict['docs'][0]['first_publish_year'])
             lang = books_data_dict['docs'][0]['language']
+            category = 'Other'
+            category_list = books_data_dict['docs'][0]['subject']
+            for legit_category in Constants.optional_categories_list:
+                if legit_category in category_list:
+                    category = legit_category
+                    break
     except KeyError as ke:
         print("Error occurred: " + str(ke))
     json_dict = {'type': 'Feature',
@@ -168,7 +176,7 @@ def convert_data_to_json(id, location_coord_list, title, author, books_data_dict
                                 'author': author,
                                 'author_key': author_key,
                                 'illustrator': None,
-                                'category': None,
+                                'category': category,
                                 'line': location_coord_list
                                 },
                  'geometry': {'type': "MultiPoint",

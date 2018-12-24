@@ -15,3 +15,6 @@ version = '1.0'
 lower_bound = 1000
 upper_bound = 1100
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"
+optional_categories_list = ['Fiction', 'Poetry', 'Science Fiction', 'Biography', 'History', 'Romance', 'Novel', 'Drama',
+                            'Comedy', 'Action', 'Art', 'Recipes', 'Children', 'Fantasy', 'Medicine',
+                            'Religion', 'Plays', 'Mythology']
