@@ -175,7 +175,7 @@ def convert_data_to_json(id, location_coord_list, title, author, illustrator, bo
                                 'lang': lang,
                                 'author': author,
                                 'author_key': author_key,
-                                'illustrator': None,
+                                'illustrator': illustrator,
                                 'category': category,
                                 'line': location_coord_list
                                 },
