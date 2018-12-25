@@ -26,13 +26,13 @@
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
         <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css'
                 type='text/css' />
-                
+
         <div id='wrap'>
 
                 <div id='map'></div>
                 <div class='filter-ctrl'></div>
 
-                        
+
                 <div class='map-overlay2'>
                         <div class='map-overlay-inner2'>
                                 <section class="range-slider">
@@ -44,26 +44,75 @@
                 </div>
 
                 <div class='map-overlay3'>
-                                <div class='map-overlay-inner3'>
+                        <div class='map-overlay-inner3'>
                                 <form id="subjectList">
-                                                <div class="multiselect">
-                                                  <div class="selectBox" onclick="showCheckboxes()">
-                                                    <select>
-                                                      <option>Filter by book type</option>
-                                                    </select>
-                                                    <div class="overSelect"></div>
-                                                  </div>
-                                                  <div id="checkboxes">
-                                                    <label for="one">
-                                                      <input type="checkbox" id="subject1" name="one1" checked onclick="testCheckbox()" />First checkbox</label>
-                                                    <label for="two">
-                                                      <input type="checkbox" id="subject2" name="two1" checked onclick="testCheckbox()" />Second checkbox</label>
-                                                    <label for="three">
-                                                      <input type="checkbox" id="subject3" name="three" checked onclick="testCheckbox()" />Third checkbox</label>
-                                                  </div>
+                                        <div class="multiselect">
+                                                <div class="selectBox" onclick="showCheckboxes()">
+                                                        <select>
+                                                                <option>Filter by book type</option>
+                                                        </select>
+                                                        <div class="overSelect"></div>
                                                 </div>
-                                              </form>
+
+                                                <div id="checkboxes">
+                                                        <label for="Fiction">
+                                                                <input type="checkbox" id="subject1" name="Fiction"
+                                                                        checked onclick="testCheckbox()" />
+                                                                Fiction
+                                                        </label>
+                                                        <label for="Poetry">
+                                                                <input type="checkbox" id="subject2" name="Poetry"
+                                                                        checked onclick="testCheckbox()" />
+                                                                Poetry
+                                                        </label>
+                                                        <label for="Biography">
+                                                                <input type="checkbox" id="subject3" name="Biography"
+                                                                        checked onclick="testCheckbox()" />
+                                                                Biography
+                                                        </label>
+                                                        <label for="History">
+                                                                <input type="checkbox" id="subject4" name="History"
+                                                                        checked onclick="testCheckbox()" />
+                                                                History
+                                                        </label>
+                                                        <label for="Romance">
+                                                                <input type="checkbox" id="subject5" name="Romance"
+                                                                        checked onclick="testCheckbox()" />
+                                                                Romance
+                                                        </label>
+                                                        <label for="Novel">
+                                                                <input type="checkbox" id="subject6" name="Novel"
+                                                                        checked onclick="testCheckbox()" />
+                                                                Novel
+                                                        </label>
+                                                        <label for="Art">
+                                                                <input type="checkbox" id="subject7" name="Art" checked
+                                                                        onclick="testCheckbox()" />
+                                                                Art
+                                                        </label>
+                                                        <label for="Children">
+                                                                <input type="checkbox" id="subject8" name="Children"
+                                                                        checked onclick="testCheckbox()" />Children</label>
+                                                        <label for="Fantasy">
+                                                                <input type="checkbox" id="subject9" name="Fantasy"
+                                                                        checked onclick="testCheckbox()" />Fantasy</label>
+                                                        <label for="Medicine">
+                                                                <input type="checkbox" id="subject10" name="Medicine"
+                                                                        checked onclick="testCheckbox()" />Second
+                                                                Medicine</label>
+                                                        <label for="Religion">
+                                                                <input type="checkbox" id="subject11" name="Religion"
+                                                                        checked onclick="testCheckbox()" />Religion</label>
+                                                        <label for="Mythology">
+                                                                <input type="checkbox" id="subject12" name="Mythology"
+                                                                        checked onclick="testCheckbox()" />Mythology</label>
+                                                        <label for="Other">
+                                                                <input type="checkbox" id="subject13" name="Other"
+                                                                        checked onclick="testCheckbox()" />Other</label>
+                                                </div>
                                         </div>
+                                </form>
+                        </div>
                 </div>
 
                 <div class='map-overlay'>
@@ -78,7 +127,7 @@
         </div>
         <script src='./cat_dropdown2.js'></script>
         <script type="text/javascript" src="mapbox.js"></script>
-        
+
 </body>
 
 </html>

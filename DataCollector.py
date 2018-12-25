@@ -149,7 +149,10 @@ class DataCollector(object):
         lang = ""
         # TODO:: add subjects of book and only leave the most common subjects from a list,
         #  leave only one subject as value and not a list. one subject for book for easier filtering..
-
+        # TODO:: REMOVE items with no release year / title / author / locations
+        # TODO:: remove items with a repeating cover id.
+        # TODO:: after running about 1000 books, see which 10 most common categories are shown and put it as updated filters.
+        # TODO:: write description on the python part and NLP for the website front.
         category = ""
         try:
             if books_data_dict['docs']:
