@@ -29,7 +29,6 @@ class DBInit(object):
                                         id integer PRIMARY KEY,
                                         title text NOT NULL,
                                         coverURL text NOT NULL,
-                                        genre text,
                                         ReleaseDate text,
                                         language text,
                                         author text NOT NULL,

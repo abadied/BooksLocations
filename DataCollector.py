@@ -1,4 +1,3 @@
-import geotext
 import requests
 import Constants
 from geopy.geocoders import Nominatim
@@ -7,9 +6,14 @@ import json
 import time
 from DBInit import DBInit
 from DBHandler import DBHandler
+import random
+
+COVER_IDS = set()
+MAX_CORD_ADDITION = 0.003
 
 
 class DataCollector(object):
+
     @staticmethod
     def collect_data_from_source(url, db_handler):
 
@@ -114,7 +118,6 @@ class DataCollector(object):
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
-            # TODO:: add a 0.4 kilometer random move to cities and 20 kilometer move to countries
             #  (in each up-down and left-right) to every position before putting it in the list.
             for country_city_tup in country_city_sets:
                 coords = get_address_coordinates(country_city_tup)
@@ -122,15 +125,22 @@ class DataCollector(object):
                     coord_dict[country_city_tup] = coords
 
             # create json format
-            # TODO: fix locations list with duplicates
             try:
-                final_json['features'].append(DataCollector.convert_data_to_json(id=curr_book_num,
-                                                                                 location_coord_list=list(coord_dict.values()),
-                                                                                 title=title,
-                                                                                 author=author,
-                                                                                 illustrator=illustrator,
-                                                                                 books_data_dict=book_dict_data,
-                                                                                 db_handler=db_handler))
+                random_addition = random.uniform(0, MAX_CORD_ADDITION)
+                location_coord_list = list(coord_dict.values())
+                for loc_tuple in location_coord_list:
+                    loc_tuple[0] += random_addition
+                    loc_tuple[1] += random_addition
+
+                inner_json = DataCollector.convert_data_to_json(id=curr_book_num,
+                                                                location_coord_list=location_coord_list,
+                                                                title=title,
+                                                                author=author,
+                                                                illustrator=illustrator,
+                                                                books_data_dict=book_dict_data,
+                                                                db_handler=db_handler)
+                if inner_json is not None:
+                    final_json['features'].append(inner_json)
             except Exception as e:
                 print("failed extracting: " + str(e))
                 continue
@@ -147,13 +157,7 @@ class DataCollector(object):
         author_key = ""
         release_year = ""
         lang = ""
-        # TODO:: add subjects of book and only leave the most common subjects from a list,
-        #  leave only one subject as value and not a list. one subject for book for easier filtering..
-        # TODO:: REMOVE items with no release year / title / author / locations
-        # TODO:: remove items with a repeating cover id.
-        # TODO:: after running about 1000 books, see which 10 most common categories are shown and put it as updated filters.
-        # TODO:: write description on the python part and NLP for the website front.
-        category = ""
+        category = "Other"
         try:
             if books_data_dict['docs']:
                 # print(books_data_dict['docs'][0])
@@ -164,7 +168,6 @@ class DataCollector(object):
                 # print(author_key)
                 release_year = str(books_data_dict['docs'][0]['first_publish_year'])
                 lang = books_data_dict['docs'][0]['language']
-                category = 'Other'
                 category_list = books_data_dict['docs'][0]['subject']
                 for legit_category in Constants.optional_categories_list:
                     if legit_category in category_list:
@@ -176,7 +179,6 @@ class DataCollector(object):
                      'properties': {'id': id,
                                     'title': title,
                                     'cover_url': cover_value,
-                                    'genre': 'None',
                                     'release_year': release_year,
                                     'lang': lang,
                                     'author': author,
@@ -189,6 +191,14 @@ class DataCollector(object):
                                   "coordinates": location_coord_list
                                   }
                      }
+        # return none if missing important values
+        if author == "" or release_year == "" or title == "" or \
+                len(location_coord_list) == 0 or cover_value in COVER_IDS:
+            return None
+
+        if cover_value != "%":
+            COVER_IDS.add(cover_value)
+
         args_to_db = list(json_dict['properties'].values())
         args_to_db = [str(arg) for arg in args_to_db]
         try:
@@ -197,6 +207,7 @@ class DataCollector(object):
             print(e)
             print('update value')
             db_handler.update_books_by_name(title, args_to_db[2:])
+
         return json_dict
 
 
