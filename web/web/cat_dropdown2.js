@@ -2,7 +2,7 @@ var subjects_checked = [];
 function testCheckbox()
 {
   subjects_checked = [];
-  for (i = 1 ; i<4 ; i++){
+  for (i = 1 ; i<14 ; i++){
     //console.log("subject"+i.toString());
     var oCheckbox = subjectList.elements["subject"+i.toString()];
     var checkbox_val = oCheckbox.value;

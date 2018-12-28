@@ -17,7 +17,8 @@ var last_line = "0";
 var search_val="";
 var years_before = '2018';
 var years_after = '1600';
-var sunject_list = [];
+// var subject_list = ["Fiction", "Poetry","Biography", "History", "Romance", "Novel", "Art",
+// "Children", "Fantasy", "Medicine", "Religion", "Mythology","Other"]
 var years_filter1;
 var years_filter2;
 var subject_filter;
@@ -27,6 +28,15 @@ var filterEl = document.getElementById('feature-filter');
 var listingEl = document.getElementById('feature-listing');
 
 function showPopAndLine(feature_) {
+   var lang_arr = "Not available";
+   var illustrator = "";
+   if (feature_.properties.illustrator!=""){
+    illustrator = 'illustrator: '+ feature_.properties.illustrator;
+   }
+   
+   if (feature_.properties.lang!=""){
+    lang_arr = JSON.parse(feature_.properties.lang);
+   } 
     var popup_html = ' <div class="left-half">' +
         '<img  class="backup_picture" src="https://covers.openlibrary.org/w/id/' + 
         feature_.properties.cover_url +
@@ -35,12 +45,18 @@ function showPopAndLine(feature_) {
         '<h3>' +
         feature_.properties.title +
         '</h3>' +
-        feature_.properties.author +
+        feature_.properties.author + ' - ' +
+        feature_.properties.release_year +
         '<img  style="float:right;" src="http://covers.openlibrary.org/a/olid/' +
         feature_.properties.author_key + '-S.jpg" />'+
         '<h5>' +
-        feature_.properties.release_year +
-        '</h5></div>';
+        feature_.properties.category +
+        '</h5><h5>' +
+        illustrator +
+        '</h5><h6> Languages: ' +
+        lang_arr.join()
+        +
+        '</h6></div>';
     // Highlight corresponding feature on the map
     popup.setLngLat(feature_.geometry.coordinates)
         //.setLngLat(feature.geometry.coordinates)
@@ -48,7 +64,7 @@ function showPopAndLine(feature_) {
         .addTo(map);
         //drawPolygon(feature_.properties.line)
         drawCircles(feature_.properties.line);
-        console.log(feature_.properties.author_key);
+        //console.log(feature_.properties.author_key);
 };
 
 function removePopAndLine() {
@@ -60,6 +76,13 @@ function removePopAndLine() {
 function renderListings(features) {
     // Clear any existing listings
     listingEl.innerHTML = '';
+    var item_count = document.createElement('b');
+    item_count.textContent = features.length + ' books found!';
+    item_count.style.justifyContent = 'center';
+    //item_count.style;.justifyContent = 'center'
+    listingEl.appendChild(item_count);
+    //listingEl.childNode.style
+    //listingEl.parentNode
     if (features.length) {
         features.forEach(function (feature) {
             var prop = feature.properties;
@@ -105,7 +128,7 @@ function getUniqueFeatures(array, comparatorProperty) {
 //show get visible features to list.
 function renderListAfterAction(renderToo){
     var features = map.queryRenderedFeatures({layers: ['books-layer']});
-    console.log('rendered has found '+features.length)
+    //console.log('rendered has found '+features.length)
     if (features) {
         var uniqueFeatures = getUniqueFeatures(features, "title");
         // Populate features for the listing overlay.
@@ -180,6 +203,8 @@ function filterBySubjects(){
     //TODO
     subject_filter = true;
     //console.log(subjects_checked);
+    subject_filter = ['match', ["get", "category"], subjects_checked, true, false]
+
 }
 
 function filterByYears() {
@@ -211,7 +236,9 @@ function filterBySearch(){
         books_filtered = books.filter(function (feature) {
             var name1 = normalize(feature.properties.title);
             var author1 = normalize(feature.properties.author);
-            return (name1.indexOf(search_val) > -1 || author1.indexOf(search_val) > -1);
+            var category = normalize(feature.properties.category);
+            return (name1.indexOf(search_val) > -1 || author1.indexOf(search_val) > -1)
+                  //  && (subjects_checked.includes(category));
         });
         console.log('books filtered: ' +books_filtered.length)
         if (books_filtered.length > 0) {
@@ -239,8 +266,8 @@ function allFilters(){
 
     //search filter
     filterBySearch();
-    console.log(search_filter);
-    map.setFilter('books-layer', ["all", years_filter1,years_filter2,search_filter]); //,subject_filter,search_filter]);
+    //console.log(search_filter);
+    map.setFilter('books-layer', ["all", years_filter1,years_filter2,search_filter,subject_filter]);
     renderListAfterAction(false);
     renderListings(books_filtered);
     //console.log('books after search filter: ' + books.length);
@@ -310,7 +337,7 @@ function drawCircles(line){
         },
         "paint": {
         'circle-color': '#e27c06',
-      'circle-radius': {'base': 15,
+      'circle-radius': {'base': 18,
       'stops': [[12, 15], [18, 180]]},
       'circle-pitch-scale': 'map',
       'circle-stroke-width': 0,
