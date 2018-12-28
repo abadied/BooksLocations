@@ -188,7 +188,12 @@ class DataCollector(object):
                      }
         args_to_db = list(json_dict['properties'].values())
         args_to_db = [str(arg) for arg in args_to_db]
-        db_handler.insert_to_books(args_to_db)
+        try:
+            db_handler.insert_to_books(args_to_db)
+        except Exception as e:
+            print(e)
+            print('update value')
+            db_handler.update_books_by_name(title, args_to_db[2:])
         return json_dict
 
 
