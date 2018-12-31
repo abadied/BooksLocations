@@ -13,7 +13,7 @@ black_list = ['OR', 'I.', 'XV', 'Corn', 'Spartans:--"I', 'Sun', 'Pain', 'Philoso
 initialize_json = False
 version = '1.1'
 lower_bound = 1001
-upper_bound = 1010
+upper_bound = 1005
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"
 optional_categories_list = ['Fiction', 'Poetry', 'Science Fiction', 'Biography', 'History', 'Romance', 'Novel', 'Drama',
                             'Comedy', 'Action', 'Art', 'Recipes', 'Children', 'Fantasy', 'Medicine',

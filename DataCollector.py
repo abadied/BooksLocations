@@ -128,6 +128,7 @@ class DataCollector(object):
             try:
                 random_addition = random.uniform(0, MAX_CORD_ADDITION)
                 location_coord_list = list(coord_dict.values())
+                locations_cord_dict = {str(v): k for k, v in coord_dict.items()}
                 for loc_tuple in location_coord_list:
                     loc_tuple[0] += random_addition
                     loc_tuple[1] += random_addition
@@ -138,7 +139,8 @@ class DataCollector(object):
                                                                 author=author,
                                                                 illustrator=illustrator,
                                                                 books_data_dict=book_dict_data,
-                                                                db_handler=db_handler)
+                                                                db_handler=db_handler,
+                                                                location_coord_dict=locations_cord_dict)
                 if inner_json is not None:
                     final_json['features'].append(inner_json)
             except Exception as e:
@@ -152,7 +154,8 @@ class DataCollector(object):
             print("saved json file.")
 
     @staticmethod
-    def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict, db_handler):
+    def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict,
+                             db_handler, location_coord_dict):
         cover_value = "%" #important to leave "%" on not found
         author_key = ""
         release_year = ""
@@ -185,7 +188,8 @@ class DataCollector(object):
                                     'author_key': author_key,
                                     'illustrator': illustrator,
                                     'category': category,
-                                    'line': location_coord_list
+                                    'line': location_coord_list,
+                                    'locations': location_coord_dict
                                     },
                      'geometry': {'type': "MultiPoint",
                                   "coordinates": location_coord_list

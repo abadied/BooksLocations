@@ -11,7 +11,7 @@ class DBHandler(object):
             print(e)
 
     def insert_to_books(self, args):
-        sql = ''' INSERT INTO books(id,title,coverURL, ReleaseDate, language, author, authorKey, illustrator, category, locations)
+        sql = ''' INSERT INTO books(id,title,coverURL, ReleaseDate, language, author, authorKey, illustrator, category, locations, locationsDict)
                   VALUES(?,?,?,?,?,?,?,?,?,?) '''
         cur = self.conn.cursor()
         try:
@@ -53,7 +53,8 @@ class DBHandler(object):
                                    authorKey = ?,
                                    illustrator = ?,
                                    category = ?,
-                                   locations = ?
+                                   locations = ?,
+                                   locationsDict = ?
                   WHERE title = ''' + title
         cur = self.conn.cursor()
         try:
