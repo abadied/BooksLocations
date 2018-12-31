@@ -128,11 +128,10 @@ class DataCollector(object):
             try:
                 random_addition = random.uniform(0, MAX_CORD_ADDITION)
                 location_coord_list = list(coord_dict.values())
-                locations_cord_dict = {str(v): k for k, v in coord_dict.items()}
                 for loc_tuple in location_coord_list:
                     loc_tuple[0] += random_addition
                     loc_tuple[1] += random_addition
-
+                locations_cord_dict = {str(v): k for k, v in coord_dict.items()}
                 inner_json = DataCollector.convert_data_to_json(id=curr_book_num,
                                                                 location_coord_list=location_coord_list,
                                                                 title=title,

@@ -10,7 +10,7 @@ black_list = ['OR', 'I.', 'XV', 'Corn', 'Spartans:--"I', 'Sun', 'Pain', 'Philoso
               'Whitehall', 'Wapping', 'Painter', 'Don Diego', 'Hero', 'Bounty', 'up.’', 'Reading', 'Pug',
               'St. So-and-So', 'Bang', 'monster.’', 'Opera', 'Port', 'pipe!’', 'NEWTON', 'Pit', 'City', 'White',
               'bill.’', 'Green', 'Strand', 'Temple', 'the City', 'Black', '—City', 'Muslin', 'XXII', 'Tree', 'XV', 'Codes', 'North', 'South', 'West', 'East', 'Spring', 'Bah', 'Solomon']
-initialize_json = False
+initialize_json = True
 version = '1.1'
 lower_bound = 1001
 upper_bound = 1005
