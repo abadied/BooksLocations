@@ -17,8 +17,6 @@ var last_line = "0";
 var search_val="";
 var years_before = '2018';
 var years_after = '1600';
-// var subject_list = ["Fiction", "Poetry","Biography", "History", "Romance", "Novel", "Art",
-// "Children", "Fantasy", "Medicine", "Religion", "Mythology","Other"]
 var years_filter1;
 var years_filter2;
 var subject_filter;
@@ -37,34 +35,30 @@ function showPopAndLine(feature_) {
    if (feature_.properties.lang!=""){
     lang_arr = JSON.parse(feature_.properties.lang);
    } 
-    var popup_html = ' <div class="left-half">' +
-        '<img  class="backup_picture" src="https://covers.openlibrary.org/w/id/' + 
-        feature_.properties.cover_url +
-        '-M.jpg" /></div>' +
-        '<div class="right-half">' +
-        '<h3>' +
-        feature_.properties.title +
-        '</h3>' +
-        feature_.properties.author + ' - ' +
-        feature_.properties.release_year +
-        '<img  style="float:right;" src="http://covers.openlibrary.org/a/olid/' +
-        feature_.properties.author_key + '-S.jpg" />'+
-        '<h5>' +
-        feature_.properties.category +
-        '</h5><h5>' +
-        illustrator +
-        '</h5><h6> Languages: ' +
-        lang_arr.join()
-        +
-        '</h6></div>';
+   var cords = "["+feature_.geometry.coordinates+"]"
+   var locations = JSON.parse(feature_.properties.locations);
+   var final_loc =locations[cords];
+   console.log(locations);
+    var popup_html = `<div class="left-half">
+        <img  class="backup_picture"
+        src="https://covers.openlibrary.org/w/id/${feature_.properties.cover_url}-M.jpg" />
+        </div>
+        <div class="right-half">
+        <h3>${feature_.properties.title}</h3> 
+        ${feature_.properties.author} - ${feature_.properties.release_year}
+        <img style="float:right;"
+        src="http://covers.openlibrary.org/a/olid/${feature_.properties.author_key}-S.jpg" />
+        <h5>${feature_.properties.category}</h5>
+        <h5>${illustrator}</h5>
+        <h6> Languages: ${lang_arr.join()}</h6>
+        <h6> Location: ${final_loc}</h6>
+        </div> `;
     // Highlight corresponding feature on the map
     popup.setLngLat(feature_.geometry.coordinates)
-        //.setLngLat(feature.geometry.coordinates)
         .setHTML(popup_html)
         .addTo(map);
         //drawPolygon(feature_.properties.line)
         drawCircles(feature_.properties.line);
-        //console.log(feature_.properties.author_key);
 };
 
 function removePopAndLine() {
@@ -77,12 +71,9 @@ function renderListings(features) {
     // Clear any existing listings
     listingEl.innerHTML = '';
     var item_count = document.createElement('b');
-    item_count.textContent = features.length + ' books found!';
+    item_count.textContent = `${features.length} books found!`;
     item_count.style.justifyContent = 'center';
-    //item_count.style;.justifyContent = 'center'
     listingEl.appendChild(item_count);
-    //listingEl.childNode.style
-    //listingEl.parentNode
     if (features.length) {
         features.forEach(function (feature) {
             var prop = feature.properties;
@@ -123,7 +114,6 @@ function getUniqueFeatures(array, comparatorProperty) {
     });
     return uniqueFeatures;
 }
-
 
 //show get visible features to list.
 function renderListAfterAction(renderToo){
@@ -172,8 +162,6 @@ map.on('load', function () {
         }
     });
 
-
-
     //listeners
 
     filterEl.addEventListener('keyup', function (e) {
@@ -200,32 +188,27 @@ map.on('load', function () {
 
 
 function filterBySubjects(){
-    //TODO
     subject_filter = true;
     //console.log(subjects_checked);
     subject_filter = ['match', ["get", "category"], subjects_checked, true, false]
-
 }
 
 function filterByYears() {
     if (years_after < years_before) {
         years_filter1 = [">=", ["get", "release_year"], years_after];
         years_filter2 = ["<=", ["get", "release_year"], years_before];
-        // years_filter = ["all",
-        //     [">=", ["get", "release_year"], years_after],
-        //     ["<=", ["get", "release_year"], years_before]
-        // ];
-
     } else {
         years_filter1 = ["<=", ["get", "release_year"], years_after];
         years_filter2 = [">=", ["get", "release_year"], years_before];
     };
+        // years_filter = ["all",
+        //     [">=", ["get", "release_year"], years_after],
+        //     ["<=", ["get", "release_year"], years_before]
+        // ];
 };
 
 function filterBySearch(){
-
     renderListAfterAction(false);
-    
     if (search_val === "") {
         books_filtered = books;
         search_filter = true;
@@ -238,7 +221,7 @@ function filterBySearch(){
             var author1 = normalize(feature.properties.author);
             var category = normalize(feature.properties.category);
             return (name1.indexOf(search_val) > -1 || author1.indexOf(search_val) > -1)
-                  //  && (subjects_checked.includes(category));
+                    && (subjects_checked.includes(category));
         });
         console.log('books filtered: ' +books_filtered.length)
         if (books_filtered.length > 0) {
@@ -249,7 +232,6 @@ function filterBySearch(){
         else{
             search_filter=false; 
         }  
-
 }
 }
 
@@ -268,8 +250,10 @@ function allFilters(){
     filterBySearch();
     //console.log(search_filter);
     map.setFilter('books-layer', ["all", years_filter1,years_filter2,search_filter,subject_filter]);
-    renderListAfterAction(false);
-    renderListings(books_filtered);
+    //renderListAfterAction(false);
+    
+    renderListAfterAction(true);
+    //renderListings(books_filtered);
     //console.log('books after search filter: ' + books.length);
 }
 
