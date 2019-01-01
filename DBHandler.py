@@ -11,11 +11,13 @@ class DBHandler(object):
             print(e)
 
     def insert_to_books(self, args):
-        sql = ''' INSERT INTO books(id,title,coverURL, ReleaseDate, language, author, authorKey, illustrator, category, locations, locationsDict)
-                  VALUES(?,?,?,?,?,?,?,?,?,?) '''
+        sql = ''' INSERT INTO books(id,title,coverURL, ReleaseDate, language, author, authorKey,
+         illustrator, category, locations, locationsDict)
+                  VALUES(?,?,?,?,?,?,?,?,?,?,?) '''
         cur = self.conn.cursor()
         try:
             cur.execute(sql, args)
+            self.conn.commit()
         except Error as e:
             print(e)
 
@@ -24,6 +26,7 @@ class DBHandler(object):
         cur = self.conn.cursor()
         try:
             cur.execute(sql, (name_key,))
+            self.conn.commit()
         except Error as e:
             print(e)
 
@@ -32,6 +35,7 @@ class DBHandler(object):
         sql = 'DROP TABLE' + table_name
         try:
             cur.execute(sql)
+            self.conn.commit()
         except Error as e:
             print(e)
 
@@ -40,6 +44,16 @@ class DBHandler(object):
         cur = self.conn.cursor()
         try:
             cur.execute(sql, (name_key,))
+            return cur.fetchall()
+        except Error as e:
+            print(e)
+            return None
+
+    def get_all_books(self):
+        sql = ''' SELECT * FROM books'''
+        cur = self.conn.cursor()
+        try:
+            cur.execute(sql)
             return cur.fetchall()
         except Error as e:
             print(e)
@@ -59,5 +73,6 @@ class DBHandler(object):
         cur = self.conn.cursor()
         try:
             cur.execute(sql, args)
+            self.conn.commit()
         except Error as e:
             print(e)

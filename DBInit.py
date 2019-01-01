@@ -26,17 +26,17 @@ class DBInit(object):
         """
         conn = DBInit.create_connection(db_file)
         books_table_sql = """ CREATE TABLE IF NOT EXISTS books (
-                                        id integer PRIMARY KEY,
-                                        title text NOT NULL,
-                                        coverURL text NOT NULL,
-                                        ReleaseDate text,
-                                        language text,
-                                        author text NOT NULL,
-                                        authorKey text NOT NULL,
-                                        illustrator text,
-                                        category text NOT NULL,
-                                        locations text NOT NULL
-                                        locationsDict text NOT NULL                                       
+                                        id TEXT PRIMARY KEY,
+                                        title TEXT NOT NULL,
+                                        coverURL TEXT NOT NULL,
+                                        ReleaseDate TEXT,
+                                        language TEXT,
+                                        author TEXT NOT NULL,
+                                        authorKey TEXT NOT NULL,
+                                        illustrator TEXT,
+                                        category TEXT NOT NULL,
+                                        locations TEXT NOT NULL,
+                                        locationsDict TEXT NOT NULL                                       
                                     ); """
         DBInit.create_table(conn, books_table_sql)
         conn.close()

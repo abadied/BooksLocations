@@ -203,7 +203,7 @@ class DataCollector(object):
             COVER_IDS.add(cover_value)
 
         args_to_db = list(json_dict['properties'].values())
-        args_to_db = [str(arg) for arg in args_to_db]
+        args_to_db = tuple([str(arg) for arg in args_to_db])
         try:
             db_handler.insert_to_books(args_to_db)
         except Exception as e:
@@ -217,8 +217,9 @@ class DataCollector(object):
 def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
-        DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
+    # db_handler.insert_to_books(('1000', 'hello', 'hello', '[gdfgdfgdfg,dfgdfgdfgdfgdf,sdfsfsdf]', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello'))
+    books = db_handler.get_all_books()
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
