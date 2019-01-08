@@ -7,10 +7,12 @@ import time
 from DBInit import DBInit
 from DBHandler import DBHandler
 import random
+from collections import Counter
+
 
 COVER_IDS = set()
 MAX_CORD_ADDITION = 0.003
-
+counter_list = []
 
 class DataCollector(object):
 
@@ -100,7 +102,6 @@ class DataCollector(object):
                 main_content = new_main
                 new_main = main_content.replace('  ', ' ')
 
-            # TODO: handle big text
             try:
                 doc = nlp(main_content)
             except ValueError as ve:
@@ -113,8 +114,6 @@ class DataCollector(object):
 
             content = content.replace('\r', '')
             content = content.replace('\n', '')
-
-            splitted_text = content.split(' ')
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
@@ -131,7 +130,6 @@ class DataCollector(object):
                 for loc_tuple in location_coord_list:
                     loc_tuple[0] += random_addition
                     loc_tuple[1] += random_addition
-                locations_cord_dict = {str(v): k for k, v in coord_dict.items()}
                 inner_json = DataCollector.convert_data_to_json(id=curr_book_num,
                                                                 location_coord_list=location_coord_list,
                                                                 title=title,
@@ -139,7 +137,7 @@ class DataCollector(object):
                                                                 illustrator=illustrator,
                                                                 books_data_dict=book_dict_data,
                                                                 db_handler=db_handler,
-                                                                location_coord_dict=locations_cord_dict)
+                                                                )
                 if inner_json is not None:
                     final_json['features'].append(inner_json)
             except Exception as e:
@@ -148,13 +146,19 @@ class DataCollector(object):
             finish_time = time.time()
             print("finished fetching, took: " + str((finish_time - starting_time)))
             # print(coord_dict.keys())
+
+        # TODO: delete when done!
+        counter_object = Counter(counter_list)
+        print('Most common categories:')
+        print(counter_object.most_common(10))
+
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
             print("saved json file.")
 
     @staticmethod
     def convert_data_to_json(id, location_coord_list, title, author, illustrator, books_data_dict,
-                             db_handler, location_coord_dict):
+                             db_handler):
         cover_value = "%" #important to leave "%" on not found
         author_key = ""
         release_year = ""
@@ -171,10 +175,17 @@ class DataCollector(object):
                 release_year = str(books_data_dict['docs'][0]['first_publish_year'])
                 lang = books_data_dict['docs'][0]['language']
                 category_list = books_data_dict['docs'][0]['subject']
+
+                # TODO: delete when done!
+                counter_list.extend(category_list)
+                ##################################
+
                 for legit_category in Constants.optional_categories_list:
                     if legit_category in category_list:
                         category = legit_category
                         break
+                if author == "":
+                    author = books_data_dict['docs'][0]['author_name'][0]
         except KeyError as ke:
             print("Error occurred: " + str(ke))
         json_dict = {'type': 'Feature',
@@ -188,7 +199,6 @@ class DataCollector(object):
                                     'illustrator': illustrator,
                                     'category': category,
                                     'line': location_coord_list,
-                                    'locations': location_coord_dict
                                     },
                      'geometry': {'type': "MultiPoint",
                                   "coordinates": location_coord_list

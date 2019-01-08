@@ -35,8 +35,7 @@ class DBInit(object):
                                         authorKey TEXT NOT NULL,
                                         illustrator TEXT,
                                         category TEXT NOT NULL,
-                                        locations TEXT NOT NULL,
-                                        locationsDict TEXT NOT NULL                                       
+                                        locations TEXT NOT NULL                                     
                                     ); """
         DBInit.create_table(conn, books_table_sql)
         conn.close()
