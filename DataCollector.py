@@ -150,7 +150,7 @@ class DataCollector(object):
         # TODO: delete when done!
         counter_object = Counter(counter_list)
         print('Most common categories:')
-        print(counter_object.most_common(10))
+        print(counter_object.most_common(30))
 
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
@@ -228,7 +228,6 @@ def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
-    # db_handler.insert_to_books(('1000', 'hello', 'hello', '[gdfgdfgdfg,dfgdfgdfgdfgdf,sdfsfsdf]', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello', 'hello'))
     books = db_handler.get_all_books()
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
