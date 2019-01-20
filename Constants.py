@@ -15,9 +15,8 @@ version = '1.1'
 lower_bound = 9200
 upper_bound = 11000
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"
-optional_categories_list = ['Fiction', 'Poetry', 'OverDrive', 'Biography', 'English language', 'Accessible book', 'Novel',
-                            'Comedy', 'Dictionaries', 'Early works to 1800', 'Recipes', 'World War, 1914-1918', 'Fantasy', 'Diseases',
-                            'Religion', 'Classic Literature', 'Militia']
+optional_categories_list = ['Fiction', 'Early works to 1800', 'Classic Literature','Dictionaries',
+                            'World War, 1914-1918', 'Militia', 'Finance', 'History', 'Biography', 'Other']
 
 init_db = True
 db_path = 'books_db'

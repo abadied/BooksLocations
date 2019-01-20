@@ -14,6 +14,7 @@ COVER_IDS = set()
 MAX_CORD_ADDITION = 0.003
 counter_list = []
 
+
 class DataCollector(object):
 
     @staticmethod
@@ -32,10 +33,10 @@ class DataCollector(object):
             final_json = {"type": "FeatureCollection",
                           "features": []}
 
-        json_current_ids = [inner_dict['properties']['id'] for inner_dict in final_json['features']]
+        db_curr_idx = [tup[0] for tup in db_handler.get_all_ids()]
         for curr_book_num in range(Constants.lower_bound, Constants.upper_bound):
 
-            if curr_book_num in json_current_ids:
+            if str(curr_book_num) in db_curr_idx:
                 continue
 
             print("started fetching book number: " + str(curr_book_num))
@@ -207,6 +208,12 @@ class DataCollector(object):
         # return none if missing important values
         if author == "" or release_year == "" or title == "" or \
                 len(location_coord_list) == 0 or cover_value in COVER_IDS:
+            print('author: ' + author)
+            print('release_year: ' + release_year)
+            print('title: ' + title)
+            print('location_coord_list: ' + location_coord_list)
+            print('cover_value: ' + cover_value)
+
             return None
 
         if cover_value != "%":

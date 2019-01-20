@@ -59,6 +59,16 @@ class DBHandler(object):
             print(e)
             return None
 
+    def get_all_ids(self):
+        sql = ''' SELECT id FROM books'''
+        cur = self.conn.cursor()
+        try:
+            cur.execute(sql)
+            return cur.fetchall()
+        except Error as e:
+            print(e)
+            return None
+
     def update_books_by_name(self, title, *args):
         sql = ''' UPDATE books SET coverURL = ?,
                                    ReleaseDate = ?,
