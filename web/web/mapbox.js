@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYW1pdHVyOTEiLCJhIjoiY2pvbzhkeHN1MGx0ZzNwbHd6c
 const map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/amitur91/cjpl9tkca0qru2sryt2p06f2d',
-center: [-90.405077, 24.283965],
-zoom: 1.0
+center: [34.8516, 31.0461],
+zoom: 4.0
 });
 
 
@@ -38,7 +38,8 @@ function showPopAndLine(feature_) {
 //    var cords = "["+feature_.geometry.coordinates+"]"
 //    var locations = JSON.parse(feature_.properties.locations);
 //    var final_loc =locations[cords];
-//   console.log(locations);
+//    console.log(feature_.geometry.coordinates);
+//    console.log(locations);
     var popup_html = `<div class="left-half">
         <img  class="backup_picture"
         src="https://covers.openlibrary.org/w/id/${feature_.properties.cover_url}-M.jpg" />
@@ -50,7 +51,7 @@ function showPopAndLine(feature_) {
         src="http://covers.openlibrary.org/a/olid/${feature_.properties.author_key}-S.jpg" />
         <h5>${feature_.properties.category}</h5>
         <h5>${illustrator}</h5>
-        <h6> Languages: ${lang_arr.join()}</h6>
+        <h6> Languages: ${lang_arr.join(", ")}</h6>
         </div> `;
         ///<h6> Location: ${final_loc}</h6>
     // Highlight corresponding feature on the map
@@ -215,12 +216,12 @@ function filterBySearch(){
             //console.log(category);
             return  (subjects_checked.includes(category));
         });
-        console.log('books filtered: ' +books_filtered.length)
+       // console.log('books filtered: ' +books_filtered.length)
         search_filter = true;
         //renderListings(filtered);
     }
     else {
-        console.log('books: ' +books.length)
+        //console.log('books: ' +books.length)
         //console.log(subjects_checked);
         books_filtered = books.filter(function (feature) {
             var name1 = normalize(feature.properties.title);
@@ -229,7 +230,7 @@ function filterBySearch(){
             return (name1.indexOf(search_val) > -1 || author1.indexOf(search_val) > -1)
                     && (subjects_checked.includes(category));
         });
-        console.log('books filtered: ' +books_filtered.length)
+        //console.log('books filtered: ' +books_filtered.length)
         if (books_filtered.length > 0) {
             search_filter = ['match', ['get', 'title'], books_filtered.map(function (feature) {
                 return feature.properties.title;
@@ -244,7 +245,7 @@ function filterBySearch(){
 function allFilters(){
     map.setFilter('books-layer');
     renderListAfterAction(false);
-    console.log('books after null filter: ' + books.length);
+   // console.log('books after null filter: ' + books.length);
     //years filter
     filterByYears();
 
@@ -258,7 +259,7 @@ function allFilters(){
     //renderListAfterAction(false);
     
     renderListAfterAction(true);
-    //renderListings(books_filtered);
+    renderListings(books_filtered);
     //console.log('books after search filter: ' + books.length);
 }
 

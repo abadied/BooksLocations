@@ -104,6 +104,7 @@ img {
     background-image: url(./Paper-Texture.jpg);
     grid-column: 2;
     border-radius: 0px 20px 20px 0px;
+    overflow: auto;
 }
 
 /* search by place*/
