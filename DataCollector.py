@@ -42,7 +42,7 @@ class DataCollector(object):
             print("started fetching book number: " + str(curr_book_num))
             starting_time = time.time()
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
-            image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
+            # not needed - image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 
             try:
                 content = requests.get(txt_url, allow_redirects=True).text
@@ -76,13 +76,14 @@ class DataCollector(object):
                     return -1
             try:
                 author = find_specific_word('Author', ': ')
+                # TODO: should clean any "(some text)" after the title, for example "the king (vol2)" should become "the king"
                 title = find_specific_word('Title', ': ')
                 illustrator = find_specific_word('Illustrator', ': ')
             except IndexError as ie:
                 print('failed extracting - ' + str(ie))
                 continue
-            title_for_scarpping = title.replace(' ', '+')
-            author_for_scrapping = author.replace(' ', '+')
+            title_for_scarpping = title.replace(' ', '%20')
+            author_for_scrapping = author.replace(' ', '%20')
             # get book data if exists
             try:
                 book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '+by+' + author_for_scrapping, allow_redirects=True).text
@@ -103,6 +104,8 @@ class DataCollector(object):
                 main_content = new_main
                 new_main = main_content.replace('  ', ' ')
 
+            # TODO: before try to nlp the book for locations, we first need to see if openlibrbay part is valid
+            # TODO: which means if the open library fails we dont need to do the geo searching and just skip the book.
             try:
                 doc = nlp(main_content)
             except ValueError as ve:
@@ -168,12 +171,12 @@ class DataCollector(object):
         try:
             if books_data_dict['docs']:
                 # print(books_data_dict['docs'][0])
-                cover_value = str(books_data_dict['docs'][0]['cover_i'])
-                if not cover_value:
-                    cover_value = "%"
-                author_key = str(books_data_dict['docs'][0]['author_key'][0])
+
+
                 # print(author_key)
                 release_year = str(books_data_dict['docs'][0]['first_publish_year'])
+
+                # TODO: if language dont exist, it should keep going and not quit. some books lacks language tag.
                 lang = books_data_dict['docs'][0]['language']
                 category_list = books_data_dict['docs'][0]['subject']
 
@@ -187,6 +190,13 @@ class DataCollector(object):
                         break
                 if author == "":
                     author = books_data_dict['docs'][0]['author_name'][0]
+                cover_value = "%"
+
+                # TODO: here it should try both of them, not exit after the first failed. if one or both fails its ok.
+                author_key = str(books_data_dict['docs'][0]['author_key'][0])
+                if books_data_dict['docs'][0]['cover_i']:
+                    cover_value = str(books_data_dict['docs'][0]['cover_i'])
+
         except KeyError as ke:
             print("Error occurred: " + str(ke))
         json_dict = {'type': 'Feature',
@@ -207,12 +217,12 @@ class DataCollector(object):
                      }
         # return none if missing important values
         if author == "" or release_year == "" or title == "" or \
-                len(location_coord_list) == 0 or cover_value in COVER_IDS:
+                len(location_coord_list) == 0 or (cover_value != "%" and cover_value in COVER_IDS):
             print('author: ' + author)
             print('release_year: ' + release_year)
             print('title: ' + title)
-            print('location_coord_list: ' + location_coord_list)
-            print('cover_value: ' + cover_value)
+            print('location_coord_list: ' + str(location_coord_list))
+            print('cover_value: ' + str(cover_value))
 
             return None
 
