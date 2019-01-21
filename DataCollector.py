@@ -8,19 +8,62 @@ from DBInit import DBInit
 from DBHandler import DBHandler
 import random
 from collections import Counter
+from geopy.exc import GeocoderTimedOut
 
 
 COVER_IDS = set()
 MAX_CORD_ADDITION = 0.003
 counter_list = []
+MAX_TIME_FOR_LOC_RESPONSE = 1200
 
 
 class DataCollector(object):
 
     @staticmethod
-    def collect_data_from_source(url, db_handler):
+    def find_specific_word(split_by_word, inner_split, content):
+        word_to_find = ''
+        lines = content.split('\n')
+        for line in lines:
+            if split_by_word in line:
+                inner_lines = line.split(inner_split)
+                word_to_find = inner_lines[1].replace('\r', '')
+                break
+        return word_to_find
 
+    @staticmethod
+    def get_address_coordinates(address: str):
+        geolocator = Nominatim(user_agent="specify_your_app_name_here")
+        try:
+            location = geolocator.geocode(address, timeout=MAX_TIME_FOR_LOC_RESPONSE)
+        except GeocoderTimedOut as e:
+            print("Error: geocode failed with timeout error on input" + str(address))
+            return -1
+        if location is None:
+            return -1
+
+        curr_importance = location.raw['importance']
+
+        if curr_importance > Constants.importance_threshold and address not in Constants.black_list:
+            return [location.longitude, location.latitude]
+        else:
+            return -1
+
+    @staticmethod
+    def run_nlp_engine(content):
         nlp = spacy.load('en_core_web_sm')
+        try:
+            doc = nlp(content)
+        except ValueError as ve:
+            print(ve)
+            return None
+        nlp_geo_results = []
+        for ent in doc.ents:
+            if ent.label_ == 'GPE':
+                nlp_geo_results.append(ent.text)
+        return nlp_geo_results
+
+    @staticmethod
+    def collect_data_from_source(url, db_handler):
 
         try:
             with open(Constants.json_file_path, "r") as read_file:
@@ -34,6 +77,7 @@ class DataCollector(object):
                           "features": []}
 
         db_curr_idx = [tup[0] for tup in db_handler.get_all_ids()]
+
         for curr_book_num in range(Constants.lower_bound, Constants.upper_bound):
 
             if str(curr_book_num) in db_curr_idx:
@@ -54,42 +98,14 @@ class DataCollector(object):
                     continue
 
                 content = response.text
+                author = DataCollector.find_specific_word('Author', ': ', content)
+                title = DataCollector.find_specific_word('Title', ': ', content).split('(')[0]
+                illustrator = DataCollector.find_specific_word('Illustrator', ': ', content)
 
             except Exception as e:
                 print('failed getting response from gutenberg')
                 continue
 
-            def find_specific_word(split_by_word, inner_split):
-                word_to_find = ''
-                lines = content.split('\n')
-                for line in lines:
-                    if split_by_word in line:
-                        inner_lines = line.split(inner_split)
-                        word_to_find = inner_lines[1].replace('\r', '')
-                        break
-                return word_to_find
-
-            geolocator = Nominatim(user_agent="specify_your_app_name_here")
-
-            def get_address_coordinates(address: str):
-                try:
-                    location = geolocator.geocode(address)
-                    # print(address)
-                    curr_importance = location.raw['importance']
-                    # print(curr_importance)
-                    if curr_importance > Constants.importance_threshold and address not in Constants.black_list:
-                        return [location.longitude, location.latitude]
-                    else:
-                        return -1
-                except Exception as e:
-                    return -1
-            try:
-                author = find_specific_word('Author', ': ')
-                title = find_specific_word('Title', ': ').split('(')[0]
-                illustrator = find_specific_word('Illustrator', ': ')
-            except IndexError as ie:
-                print('failed extracting - ' + str(ie))
-                continue
             title_for_scarpping = title.replace(' ', '%20')
             author_for_scrapping = author.replace(' ', '%20')
             # get book data if exists
@@ -105,7 +121,6 @@ class DataCollector(object):
                 print(e)
                 continue
 
-            # split content main text
             main_content = main_content.replace('\r', ' ')
             main_content = main_content.replace('\n', ' ')
 
@@ -116,24 +131,16 @@ class DataCollector(object):
                 main_content = new_main
                 new_main = main_content.replace('  ', ' ')
 
-            try:
-                doc = nlp(main_content)
-            except ValueError as ve:
-                print(ve)
-                continue
-            nlp_geo_results = []
-            for ent in doc.ents:
-                if ent.label_ == 'GPE':
-                    nlp_geo_results.append(ent.text)
+            nlp_geo_results = DataCollector.run_nlp_engine(main_content)
 
-            content = content.replace('\r', '')
-            content = content.replace('\n', '')
+            if nlp_geo_results is None:
+                continue
 
             country_city_sets = set(nlp_geo_results)
             coord_dict = {}
             #  (in each up-down and left-right) to every position before putting it in the list.
             for country_city_tup in country_city_sets:
-                coords = get_address_coordinates(country_city_tup)
+                coords = DataCollector.get_address_coordinates(country_city_tup)
                 if coords != -1:
                     coord_dict[country_city_tup] = coords
 

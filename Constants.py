@@ -12,8 +12,8 @@ black_list = ['OR', 'I.', 'XV', 'Corn', 'Spartans:--"I', 'Sun', 'Pain', 'Philoso
               'bill.’', 'Green', 'Strand', 'Temple', 'the City', 'Black', '—City', 'Muslin', 'XXII', 'Tree', 'XV', 'Codes', 'North', 'South', 'West', 'East', 'Spring', 'Bah', 'Solomon']
 initialize_json = True
 version = '1.1'
-lower_bound = 50000
-upper_bound = 110000
+lower_bound = 40000
+upper_bound = 40020
 json_file_path = "books_" + str(lower_bound) + "_" + str(upper_bound) + "_version_" + version + ".json"
 optional_categories_list = ['Fiction', 'Early works to 1800', 'Classic Literature','Dictionaries',
                             'World War, 1914-1918', 'Militia', 'Finance', 'History', 'Biography', 'Other']
