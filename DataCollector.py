@@ -41,8 +41,9 @@ class DataCollector(object):
 
             print("started fetching book number: " + str(curr_book_num))
             starting_time = time.time()
+            # TODO: if text failes to load, try with this address: https://www.gutenberg.org/files/50002/50002-0.txt
+            # TODO: where 50002 is the ID. if still fails to load it should skip.
             txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
-            # not needed - image_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-h' + Constants.img_sec_url
 
             try:
                 content = requests.get(txt_url, allow_redirects=True).text
@@ -76,7 +77,7 @@ class DataCollector(object):
                     return -1
             try:
                 author = find_specific_word('Author', ': ')
-                # TODO: should clean any "(some text)" after the title, for example "the king (vol2)" should become "the king"
+                # TODO: should clean any "(some text)" after the title, for example "the king (a story of bla bla)" should become "the king"
                 title = find_specific_word('Title', ': ')
                 illustrator = find_specific_word('Illustrator', ': ')
             except IndexError as ie:
@@ -86,7 +87,7 @@ class DataCollector(object):
             author_for_scrapping = author.replace(' ', '%20')
             # get book data if exists
             try:
-                book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '+by+' + author_for_scrapping, allow_redirects=True).text
+                book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '%20' + author_for_scrapping, allow_redirects=True).text
                 book_dict_data = json.loads(book_json_data)
                 main_content = content.split('***')[2]
             except Exception as e:
@@ -152,9 +153,9 @@ class DataCollector(object):
             # print(coord_dict.keys())
 
         # TODO: delete when done!
-        counter_object = Counter(counter_list)
-        print('Most common categories:')
-        print(counter_object.most_common(30))
+        # counter_object = Counter(counter_list)
+        # print('Most common categories:')
+        # print(counter_object.most_common(30))
 
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
@@ -181,7 +182,7 @@ class DataCollector(object):
                 category_list = books_data_dict['docs'][0]['subject']
 
                 # TODO: delete when done!
-                counter_list.extend(category_list)
+                # counter_list.extend(category_list)
                 ##################################
 
                 for legit_category in Constants.optional_categories_list:
