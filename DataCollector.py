@@ -41,14 +41,22 @@ class DataCollector(object):
 
             print("started fetching book number: " + str(curr_book_num))
             starting_time = time.time()
-            # TODO: if text failes to load, try with this address: https://www.gutenberg.org/files/50002/50002-0.txt
-            # TODO: where 50002 is the ID. if still fails to load it should skip.
-            txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
 
+            txt_url = url + str(curr_book_num) + '/pg' + str(curr_book_num) + '.txt'
+            new_txt_url = Constants.img_base_url + str(curr_book_num) + '/' + str(curr_book_num) + '-0.txt'
             try:
-                content = requests.get(txt_url, allow_redirects=True).text
+                response = requests.get(txt_url, allow_redirects=True)
+                # second try
+                if not response.ok:
+                    response = requests.get(new_txt_url, allow_redirects=True)
+                # continue to the next book
+                if not response.ok:
+                    continue
+
+                content = response.text
+
             except Exception as e:
-                print(e)
+                print('failed getting response from gutenberg')
                 continue
 
             def find_specific_word(split_by_word, inner_split):
@@ -77,8 +85,7 @@ class DataCollector(object):
                     return -1
             try:
                 author = find_specific_word('Author', ': ')
-                # TODO: should clean any "(some text)" after the title, for example "the king (a story of bla bla)" should become "the king"
-                title = find_specific_word('Title', ': ')
+                title = find_specific_word('Title', ': ').split('(')[0]
                 illustrator = find_specific_word('Illustrator', ': ')
             except IndexError as ie:
                 print('failed extracting - ' + str(ie))
@@ -90,6 +97,10 @@ class DataCollector(object):
                 book_json_data = requests.get(Constants.open_library_base_url + title_for_scarpping + '%20' + author_for_scrapping, allow_redirects=True).text
                 book_dict_data = json.loads(book_json_data)
                 main_content = content.split('***')[2]
+
+                # checks if open library data is valid
+                if len(book_dict_data['docs']) == 0:
+                    continue
             except Exception as e:
                 print(e)
                 continue
@@ -105,8 +116,6 @@ class DataCollector(object):
                 main_content = new_main
                 new_main = main_content.replace('  ', ' ')
 
-            # TODO: before try to nlp the book for locations, we first need to see if openlibrbay part is valid
-            # TODO: which means if the open library fails we dont need to do the geo searching and just skip the book.
             try:
                 doc = nlp(main_content)
             except ValueError as ve:
@@ -152,11 +161,6 @@ class DataCollector(object):
             print("finished fetching, took: " + str((finish_time - starting_time)))
             # print(coord_dict.keys())
 
-        # TODO: delete when done!
-        # counter_object = Counter(counter_list)
-        # print('Most common categories:')
-        # print(counter_object.most_common(30))
-
         with open(Constants.json_file_path, 'w') as fp:
             json.dump(final_json, fp)
             print("saved json file.")
@@ -171,19 +175,10 @@ class DataCollector(object):
         category = "Other"
         try:
             if books_data_dict['docs']:
-                # print(books_data_dict['docs'][0])
-
-
-                # print(author_key)
                 release_year = str(books_data_dict['docs'][0]['first_publish_year'])
 
-                # TODO: if language dont exist, it should keep going and not quit. some books lacks language tag.
-                lang = books_data_dict['docs'][0]['language']
+                lang = books_data_dict['docs'][0]['language'] if 'language' in books_data_dict['docs'][0].keys() else ''
                 category_list = books_data_dict['docs'][0]['subject']
-
-                # TODO: delete when done!
-                # counter_list.extend(category_list)
-                ##################################
 
                 for legit_category in Constants.optional_categories_list:
                     if legit_category in category_list:
@@ -193,9 +188,11 @@ class DataCollector(object):
                     author = books_data_dict['docs'][0]['author_name'][0]
                 cover_value = "%"
 
-                # TODO: here it should try both of them, not exit after the first failed. if one or both fails its ok.
-                author_key = str(books_data_dict['docs'][0]['author_key'][0])
-                if books_data_dict['docs'][0]['cover_i']:
+                if 'author_key' in books_data_dict['docs'][0].keys() and \
+                        len(books_data_dict['docs'][0]['author_key']) > 0:
+                    author_key = str(books_data_dict['docs'][0]['author_key'][0])
+
+                if 'cover_i' in books_data_dict['docs'][0].keys() and books_data_dict['docs'][0]['cover_i']:
                     cover_value = str(books_data_dict['docs'][0]['cover_i'])
 
         except KeyError as ke:
@@ -246,7 +243,6 @@ def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
-    books = db_handler.get_all_books()
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
