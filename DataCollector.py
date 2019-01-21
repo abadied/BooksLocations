@@ -14,7 +14,7 @@ from geopy.exc import GeocoderTimedOut
 COVER_IDS = set()
 MAX_CORD_ADDITION = 0.003
 counter_list = []
-MAX_TIME_FOR_LOC_RESPONSE = 1200
+MAX_TIME_FOR_LOC_RESPONSE = 600
 
 
 class DataCollector(object):
