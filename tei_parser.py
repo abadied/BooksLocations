@@ -6,12 +6,12 @@ import copy
 MIN_NUM_OF_COLUMNS = 3
 
 
-def main():
+def tei_parser(predicted_file_path, correct_parsed_file_path):
     base_df = pd.DataFrame({'index': [], 'base_word': [], 'origin': [], 'prefix less': [], 'morphology': [],
                             'unspecified_6': [], 'unspecified_7': [], 'unspecified_8': [], 'unspecified_9': [],
                             'unspecified_10': [], 'unspecified_11': [], 'unspecified_12': []})
 
-    parsed_file = codecs.open('adler_parser.txt', 'r', 'utf8')
+    parsed_file = codecs.open(predicted_file_path, 'r', 'utf8')
     base_index = 0
     for line in parsed_file:
         splitted_line = line.split(' ')
@@ -27,7 +27,7 @@ def main():
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
     adler_org_list = base_df.loc[base_df['unspecified_12'] == 'I_ORG']['base_word'].tolist()
 
-    xml_file = codecs.open('ass1/Untitled1.xml', 'r', 'utf8')
+    xml_file = codecs.open(correct_parsed_file_path, 'r', 'utf8')
     xml_text = xml_file.read()
 
     xml_dict = xmltodict.parse(xml_text)
@@ -72,6 +72,12 @@ def main():
         conf_mat_for_type[list_key]['tn'] /= base_df.shape[0]
 
     print(conf_mat_for_type)
+
+
+def main():
+    predicted_file_path = 'adler_parser.txt'
+    true_labeled_file_path = 'ass1/Untitled1.xml'
+    tei_parser(predicted_file_path, true_labeled_file_path)
 
 
 if __name__ == '__main__':

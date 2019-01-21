@@ -95,6 +95,7 @@ class DataCollector(object):
                     response = requests.get(new_txt_url, allow_redirects=True)
                 # continue to the next book
                 if not response.ok:
+                    print('failed fetching - unable to get data from gutenberg')
                     continue
 
                 content = response.text
@@ -116,6 +117,7 @@ class DataCollector(object):
 
                 # checks if open library data is valid
                 if len(book_dict_data['docs']) == 0:
+                    print('failed fetching - open library data was empty')
                     continue
             except Exception as e:
                 print(e)
@@ -134,6 +136,7 @@ class DataCollector(object):
             nlp_geo_results = DataCollector.run_nlp_engine(main_content)
 
             if nlp_geo_results is None:
+                print('failed fetching - nlp algorithm failed')
                 continue
 
             country_city_sets = set(nlp_geo_results)
@@ -185,7 +188,7 @@ class DataCollector(object):
                 release_year = str(books_data_dict['docs'][0]['first_publish_year'])
 
                 lang = books_data_dict['docs'][0]['language'] if 'language' in books_data_dict['docs'][0].keys() else ''
-                category_list = books_data_dict['docs'][0]['subject']
+                category_list = books_data_dict['docs'][0]['subject'] if 'subject' in books_data_dict['docs'][0].keys() else []
 
                 for legit_category in Constants.optional_categories_list:
                     if legit_category in category_list:
