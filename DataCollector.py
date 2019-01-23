@@ -63,6 +63,35 @@ class DataCollector(object):
         return nlp_geo_results
 
     @staticmethod
+    def create_json_from_db(db_handler, json_path):
+        all_books = db_handler.get_all_books()
+        base_dict = {"type": "FeatureCollection",
+                     "features": []}
+
+        for row in all_books:
+            books_dict = {'type': 'Feature',
+                          'properties': {'id': int(row[0]),
+                                         'title': row[1],
+                                         'cover_url': row[2],
+                                         'release_year': row[3],
+                                         'lang': row[4],
+                                         'author': row[5],
+                                         'author_key': row[6],
+                                         'illustrator': row[7],
+                                         'category': row[8],
+                                         'line': row[9],
+                                         },
+                          'geometry': {'type': "MultiPoint",
+                                       "coordinates": row[9]
+                                       }
+                          }
+
+            base_dict["features"].append(books_dict)
+        with open(json_path, 'w') as fp:
+            json.dump(base_dict, fp)
+            print("saved json file.")
+
+    @staticmethod
     def collect_data_from_source(url, db_handler):
 
         try:
@@ -253,6 +282,7 @@ def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
+    DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json.json')
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
