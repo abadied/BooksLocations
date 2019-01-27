@@ -9,6 +9,7 @@ from DBHandler import DBHandler
 import random
 from collections import Counter
 from geopy.exc import GeocoderTimedOut
+from geopy.extra.rate_limiter import RateLimiter
 
 
 COVER_IDS = set()
@@ -32,9 +33,11 @@ class DataCollector(object):
 
     @staticmethod
     def get_address_coordinates(address: str):
-        geolocator = Nominatim(user_agent="specify_your_app_name_here")
+        geolocator = Nominatim(user_agent="we_try_things")
+        geocode = RateLimiter(geolocator.geocode, min_delay_seconds=2)
+
         try:
-            location = geolocator.geocode(address, timeout=MAX_TIME_FOR_LOC_RESPONSE)
+            location = geocode(address, timeout=MAX_TIME_FOR_LOC_RESPONSE)
         except GeocoderTimedOut as e:
             print("Error: geocode failed with timeout error on input" + str(address))
             return -1
