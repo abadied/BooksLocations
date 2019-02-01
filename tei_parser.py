@@ -4,6 +4,7 @@ import xmltodict
 import copy
 import re
 import requests
+import ast
 
 MIN_NUM_OF_COLUMNS = 3
 
@@ -26,7 +27,7 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
     print('done parsing adler file.')
 
     # try to improve tagger
-    improve_tagger(base_df)
+    # improve_tagger(base_df)
 
     adler_pers_list = base_df.loc[base_df['unspecified_12'] == 'I_PERS']['base_word'].tolist()
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
@@ -165,7 +166,7 @@ def improve_tagger(base_df):
     for i in range(base_df.shape[0]):
         curr_row = base_df.iloc[i]
         word_tag = curr_row['unspecified_12']
-        if word_tag != 'O':
+        if word_tag in ['I_ORG', 'I_PERS', 'I_LOC']:
 
             wiki_url = wiki_url_search_1 + curr_row['base_word'] + wiki_url_search_2
             try:
@@ -176,36 +177,48 @@ def improve_tagger(base_df):
                 # get list of description
                 desc_list = []
                 content = response.text
-                content_search = content['search']
+                content_search = ast.literal_eval(content)['search']
                 for inner_dict in content_search:
-                    desc_list.append(inner_dict['description'])
+                    if 'description' in inner_dict.keys():
+                        desc_list.append(inner_dict['description'])
 
             except Exception as e:
-                print('Exception occurred:' + e)
+                print('Exception occurred:' + str(e))
                 continue
 
-            found_tag = False
-            if word_tag == 'I_ORG':
+            if not desc_list:
+                continue
+
+            if word_tag in ['I_ORG', 'I_LOC', 'I_PERS']:
+                found_tag_pers = 0
+                found_tag_loc = 0
+                found_tag_org = 0
+
+                # get confidence for each
                 for desc in desc_list:
                     if 'name' in desc and 'organization' in desc:
-                        found_tag = True
+                        found_tag_loc += 1
+                    elif 'name' in desc and ('male' in desc or 'family' in desc or 'female' in desc):
+                        found_tag_pers += 1
+                    elif 'name' in desc and ('place' in desc or 'location' in desc):
+                        found_tag_org += 1
 
-                if not found_tag:
-                    curr_row['unspecified_12'] = 'O'
-            elif word_tag == 'I_PERS':
-                for desc in desc_list:
-                    if 'name' in desc and ('male' in desc or 'family' in desc or 'female' in desc):
-                        found_tag = True
+                # norm values
+                found_tag_pers /= len(desc_list)
+                found_tag_loc /= len(desc_list)
+                found_tag_org /= len(desc_list)
+                max_confidence = max(found_tag_loc, found_tag_pers, found_tag_org)
 
-                if not found_tag:
+                # improve decision rule
+                if max_confidence < 0.1:
                     curr_row['unspecified_12'] = 'O'
-            elif word_tag == 'I_LOC':
-                for desc in desc_list:
-                    if 'name' in desc and ('place' in desc or 'location' in desc):
-                        found_tag = True
-
-                if not found_tag:
-                    curr_row['unspecified_12'] = 'O'
+                else:
+                    if max_confidence == found_tag_org:
+                        curr_row['unspecified_12'] = 'I_ORG'
+                    elif max_confidence == found_tag_loc:
+                        curr_row['unspecified_12'] = 'I_LOC'
+                    elif max_confidence == found_tag_pers:
+                        curr_row['unspecified_12'] = 'I_PERS'
 
 
 def print_conf_mat_from_dict(res_dict):
@@ -216,8 +229,8 @@ def print_conf_mat_from_dict(res_dict):
 
 
 def main():
-    predicted_file_path = 'adler_files/116_אלמגור_דן.txt'
-    true_labeled_file_path = 'student_files/XML-DanAlmagor.xml'
+    predicted_file_path = 'adler_files/1171_רון-פדר-עמית_גלילה.txt'
+    true_labeled_file_path = 'student_files/ron_feder.xml'
     tei_parser(predicted_file_path, true_labeled_file_path)
 
 
