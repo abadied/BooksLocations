@@ -3,6 +3,7 @@ import codecs
 import xmltodict
 import copy
 import re
+import requests
 
 MIN_NUM_OF_COLUMNS = 3
 
@@ -23,6 +24,9 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
             # base_df.index = base_df.index + 1  # shifting index
             # base_df = base_df.sort_index()  # sorting by index
     print('done parsing adler file.')
+
+    # try to improve tagger
+    improve_tagger(base_df)
 
     adler_pers_list = base_df.loc[base_df['unspecified_12'] == 'I_PERS']['base_word'].tolist()
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
@@ -75,7 +79,7 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
         conf_mat_for_type[list_key]['fp'] /= len(pred_list)
         conf_mat_for_type[list_key]['tn'] /= len(negative_dict[list_key])
 
-    print(conf_mat_for_type)
+    print_conf_mat_from_dict(conf_mat_for_type)
 
 
 def parse_brute_force(xml_text):
@@ -151,6 +155,64 @@ def get_splitted_value_list(value):
     value_list = re.split("[, \-!?:]+", value)
     value_list = [x for x in value_list if x != '' and x != '.' and x != ' ']
     return value_list
+
+
+def improve_tagger(base_df):
+    wiki_url_search_1 = 'https://www.wikidata.org/w/api.php?action=wbsearchentities&search='
+    wiki_url_search_2 = '&language=he&format=json'
+
+    # first reduce false positive for each type
+    for i in range(base_df.shape[0]):
+        curr_row = base_df.iloc[i]
+        word_tag = curr_row['unspecified_12']
+        if word_tag != 'O':
+
+            wiki_url = wiki_url_search_1 + curr_row['base_word'] + wiki_url_search_2
+            try:
+                response = requests.get(wiki_url, allow_redirects=True)
+                # second try
+                if not response.ok:
+                    continue
+                # get list of description
+                desc_list = []
+                content = response.text
+                content_search = content['search']
+                for inner_dict in content_search:
+                    desc_list.append(inner_dict['description'])
+
+            except Exception as e:
+                print('Exception occurred:' + e)
+                continue
+
+            found_tag = False
+            if word_tag == 'I_ORG':
+                for desc in desc_list:
+                    if 'name' in desc and 'organization' in desc:
+                        found_tag = True
+
+                if not found_tag:
+                    curr_row['unspecified_12'] = 'O'
+            elif word_tag == 'I_PERS':
+                for desc in desc_list:
+                    if 'name' in desc and ('male' in desc or 'family' in desc or 'female' in desc):
+                        found_tag = True
+
+                if not found_tag:
+                    curr_row['unspecified_12'] = 'O'
+            elif word_tag == 'I_LOC':
+                for desc in desc_list:
+                    if 'name' in desc and ('place' in desc or 'location' in desc):
+                        found_tag = True
+
+                if not found_tag:
+                    curr_row['unspecified_12'] = 'O'
+
+
+def print_conf_mat_from_dict(res_dict):
+    for key in res_dict.keys():
+        print(key)
+        for inner_score_key in res_dict[key]:
+            print(inner_score_key + ': ' + str(res_dict[key][inner_score_key]))
 
 
 def main():
