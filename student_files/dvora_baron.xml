@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a" xml:lang="heb">דבורה בארון</title>
+            <title level="m">לקסיקון הקשרים לסופרים ישראלים</title>
+            <author xml:lang="heb">נורית גוברין</author>
+           <respStmt> 
+               <resp>
+                  <name>כהן שניר</name>
+                  <name>בורקוש שניר</name>
+               </resp>
+               <orgName>BGU</orgName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <p>DH CS Course in BGU year of 2018 semester bet</p>
+         </publicationStmt>
+         <sourceDesc>
+            <bibl></bibl>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+   <text xml:lang="he">
+      <body>
+         
+     <head>    <persName><surname>בארון</surname>, <forename>דבורה</forename></persName>
+         
+         (<date when="1887" type="birth">1887</date>-<date when="1956" type="death">­1956</date>)</head>
+         
+         <div><p>
+            נולדה ב<placeName type="city">באוּזדה</placeName>, פלך <placeName type="city">מינסק</placeName> שב<placeName type="country">רוסיה</placeName> הלבנה. בת שלישית במשפחה של ארבעה ילדים. מאביה, <roleName>רב</roleName> העיר שניהל חדר, קיבלה חינוך יהודי כבֵן ממקומה בעזרת הנשים. היא היתה עדה לבעיות שהובאו לפני האב-הרב בנושאים שבינו לבינה ובכל ענייני החיים. הווי זה הותיר בה את רישומו העז וניכר היטב ביצירתה, לרבות דמותו הנערצת של האב-ה<roleName>רב</roleName>, מנקודת המבט של הילדה המספרת. בגיל חמש-עשרה עזבה את בית ההורים ונסעה ללמוד ב<placeName type="city">מינסק</placeName>, שם שהה אחיה. היא פירנסה את עצמה מהוראה כמורת בית, והיה זה צעד נועז ובלתי שגרתי באותן שנים לנערה יהודייה, בתו של רב. שהתה לסירוגין בערים <placeName type="city">מאריאמפול</placeName> ו<placeName type="city">קובנה</placeName>, שם היתה פעילה כ<roleName>מדריכת</roleName> נוער ציוני. נמנתה עם חבורת סופרי עברית ויידיש ב<placeName type="city">ווילנה</placeName>.
+         </p></div>
+         <div><p>
+            סיפורה הראשון היה "משׂיחות במרכבה" (המליץ, <date when="1902">1902</date>). אירוסיה בשנים <date when="1904">1904</date>-<date when="1909">­1909</date> ל<roleName>סופר</roleName> <persName><forename>משה</forename> <surname>בן אליעזר</surname></persName> הסתיימו בפרֵדה. בתקופה הראשונה ליצירתה (<date when="1902">1902</date>-<date when="1920">­1920</date>) פירסמה כארבעים וחמישה סיפורים, כולל סיפורים ביידיש ותרגומים.
+         </p></div>
+         <div><p>
+            עם עלייתה לארץ (<date when="1910">1910</date>) התיישבה ב<placeName type="neigborhood">נווה צדק</placeName>, נעשתה לעורכת מדור הספרות ב<orgName>הפועל הצעיר</orgName> ונישאה ל<persName><forename>יוסף</forename> <surname>אהרונוביץ</surname></persName>, ממנהיגי המפלגה ו<roleName>עורך</roleName> ביטאונה (<date when="1911">1911</date>). בראשית <date when="1914">1914</date> נולדה בתם <persName><forename>צפורה</forename></persName>. בימי מלחמת העולם הראשונה, במאי <date when="1915">1915</date>, הוגלתה המשפחה על ידי הטורקים ל<placeName type="city">אלכסנדריה</placeName> ש<placeName type="country">במצרים</placeName>, וחזרה לארץ לאחר ארבע שנות גלות. באותה עת מת ב<placeName type="country">רוסיה</placeName> מטיפוס אחיה, ה<roleName>רופא</roleName> הנערץ, שעליו התאבלה כל חייה. על רקע הישיבה ב<placeName type="country">מצרים</placeName> והשיבה לארץ נכתבו הסיפורים "לעת עתה" (<date when="1946">1946</date>) ו"מאמש" (<date when="1955">1955</date>), שחוברו יחד לספר הגולים (<date when="1970">1970</date>). בדצמבר <date when="1922">1922</date> התפטרו בני הזוג מעריכת הפועל הצעיר. <persName><forename>דבורה</forename> <surname>בארון</surname></persName> הסתגרה בביתה עד סוף ימיה, שמרה על אורח חיים נזירי ותפריט ייחודי, עסקה בכתיבת סיפוריה, כשהבת, <persName><forename>צפורה</forename> <surname>אהרונוביץ</surname></persName>, משרתת אותה בהערצה, במיוחד בשנות מחלתה הממושכת. ידידיה ה<roleName>סופרים</roleName> הגיעו לביתה ובעזרתם היתה בקיאה ומעורבת בנעשה.
+         </p></div>
+         <div><p>
+            מספרה הראשון, סיפורים, שהופיע לראשונה רק ב-<date when="1927">1927</date> (דבר), נעדרו עשרות סיפוריה הראשונים, שכונסו על ידי <persName><forename>נורית</forename> <surname>גוברין</surname></persName> בספר פרשיות מוקדמות, לצד הביוגרפיה שלה (<date when="1988">1988</date>). ב-<date when="1932">1932</date> הופיע תרגומה מצרפתית למאדאם בובארי של <persName>פלובר</persName>. לאחר פטירת בעלה <persName><forename>יוסף</forename> <surname>אהרונוביץ</surname></persName> (<date when="1937">1937</date>) ערכה עם <persName><forename>אליעזר</forename> <surname>שוחט</surname></persName> את כתביו (<date when="1941">1941</date>). סיפוריה המקובצים המשיכו להופיע לאורך השנים, כשהם כוללים סיפורים ישנים וחדשים ופרקים מתוך סיפורים: מה שהיה (<date when="1939">1939</date>); לעת עתה (<date when="1943">1943</date>); משם (<date when="1946">1946</date>); הַלַּבָּן (<date when="1947">1947</date>); שברירים (<date when="1949">1949</date>). פרשיות (<date when="1951">1951</date>) הוא הכינוס המקיף ביותר של סיפוריה והופיע במהדורות רבות. אחריו חוליות (<date when="1953">1953</date>) ומאמש (<date when="1955">1955</date>). אגב אורחא (<date when="1961">1961</date>) נערך בידי בתה בחתימה "שבתאית", וכלל סיפורים מקוריים ומתורגמים, אמרות, מכתבים ורשימות זיכרון מתוך העיזבון. קיבלה את פרס ביאליק בחלוקה הראשונה שלו (<date when="1933">1933</date>) ואת פרס רופין של <orgName>עיריית חיפה</orgName> (<date when="1945">1945</date>). כמה מסיפוריה תורגמו לאנגלית.
+         </p></div>
+         <div><p>
+            <persName><forename>דבורה</forename> <surname>בארון</surname></persName> היא ה<roleName>סופרת</roleName> העברית הראשונה שהיתה שוות ערך לחבריה ה<roleName>סופרים</roleName> הגברים. היא המבשרת של ספרות הנשים העברית. עוד לפני עלייתה לארץ חזתה מבשרה את המחיר הכבד של היותה אישה-<roleName>סופרת</roleName>, בד בבד עם ההערצה שהיתה מנת חלקה. כבר בסיפוריה הראשונים ביטאה את רגישותה הרבה לחלשים ולסובלים. מקום מיוחד תופשות הנשים המקופחות, העקרות, הבלתי-אהובות והמגורשות. בסיפוריה הראשונים נתנה ביטוי על דרך הזעקה הישירה לקיפוח ולסבל, למתח המיני בתוך המשפחה ולעלבון. לימים גנזה אותם, הסתייגה מהם והכריזה עליהם כ"סמרטוטים". נושאים אלה נמשכו גם בסיפוריה המאוחרים, שבהם החליפה את הפואטיקה הישירה, שגבלה בסנטימנטליות ובמלודרמטיות, בפואטיקה של איפוק, כיסוי, רמיזה, צעקה בלומה, מבלי לוותר על הביקורת על העולם המתנהל שלא כהלכה. היא ראתה את המתרחש בעולם כתהליך מחזורי בעל חוקיות קבועה המתחדש תמיד. זוהי מחזוריות של לידה ומוות, בנייה והרס, גלות וגאולה, כדוגמת המחזוריות בטבע עצמו. הפרט ממשיך את מעשי אבותיו, ומה שקורה לציבור הוא גלגולם של מאורעות שהתרחשו בעבר.
+         </p></div>
+         <div><p>
+            בארץ <placeName type="country">ישראל</placeName> של ימי העלייה השנייה ואחריהם, בלבה של הפעילות החברתית והתרבותית, המשיכה לספר את סיפורי העיירה היהודית, יחד עם סיפורי התלושים, בערי <placeName type="country">רוסיה</placeName> הלבנה ו<placeName type="country">ליטא</placeName>. היו דרושים אומץ לב ועצמאות יתרה כדי שלא להיענות לתביעה החברתית לזנוח את הגולה ולכתוב סיפורים מן ההווי הארץ-ישראלי המתחדש. היא הפכה את העיירה היהודית למרכז העולם, וראתה את עצמה כמשַמרת העולם שהיה ואבד: "כמין זכוכית נגטיבית, שנשארה רק היא היחידה לאחר שאבד העצם המצולם", ולכן חובה עליה "להקים לַדברים זֵכר" (מה שהיה, <date when="1939">1939</date>). במקביל שתלה חומרי מציאות ארץ-ישראליים ב<placeName type="country">ליטא</placeName>, ונענתה לדופק הזמן בדרך של הרחקת עדות. כך, למשל, בסיפור "פראדל" (<date when="1947">1947</date>), שהרקע שלו הוא סוף המאה התשע-עשרה בעיירה היהודית ב<placeName type="country">ליטא</placeName>, נרמזו, תחת הסוואה כבדה, אפשרויות תיקון-החיים הפרטי והקולקטיבי לאחר השואה ועם מלחמת העצמאות. דמותה שימשה מקור השראה ל<roleName>משוררים</roleName> (<persName><forename>משה</forename> <surname>בן שאול</surname></persName>) ולסופרים (<persName><forename>עמיה</forename> <surname>ליבליך</surname></persName>, <persName><forename>נורית</forename> <surname>זרחי</surname></persName>, <persName><forename>יהודית</forename> <surname>קציר</surname></persName>).
+         </p></div>
+         <div type="bibliogrphy">
+            <listBibl>
+               <bibl><author>נורית גוברין</author><title> המחצית הראשונה, דבורה בארון – חייה ויצירתה תרמ"ח-תרפ"ג</title><date when="1988">1988</date><publisher>מוסד ביאליק</publisher><pubPlace>ירושלים</pubPlace></bibl>
+               <bibl><author>לובין, אורלי</author><title>"הגולים: הפה האוכל והפה המדבר כייצוגים לאומיים"מתוך אישה קוראת אישה</title><biblScope>116-­159</biblScope><date when="2003">2003</date><publisher>אוניברסיטת חיפה זמורה-ביתן</publisher><pubPlace>חיפה ואור יהודה</pubPlace></bibl>
+               <bibl><author>פגיס, עדה</author><title> דבורה בארון, מבחר מאמרי ביקורת על יצירתה</title><date when="1974"></date><publisher>עם עובד</publisher><pubPlace>תל אביב</pubPlace></bibl>
+               <bibl><author>פיינגולד, בן עמי</author><title>"דבורה בארון כסופרת פמיניסטית"</title><date when="2000">2000</date><biblScope>323­-351</biblScope></bibl>
+               <bibl><author>Jelen, Sheila E. , Shachar Pinsker (Editors)</author> <title>Hebrew, Gender, and Modernity: Critical Responses to Dvora Baron`s Fiction.</title> <pubPlace>Bethesda: University Press of Maryland.</pubPlace> <date when="2007">2007.</date></bibl>
+            </listBibl>
+         </div>
+      </body>
+  </text>
+</TEI>

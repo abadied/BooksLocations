@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="he-il">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a" xml:lang="heb">אוז, קובי (אוזן, יעקב)</title>
+            <title level="m">לקסיקון הקשרים לסופרים ישראלים</title>
+            <author xml:lang="heb">רינה ז'אן ברוך</author>
+            
+            <respStmt>
+               <resp>Tagging</resp>
+               <name>Hagar Livneh</name>
+               <name>Gal Abramovitz</name>
+               <orgName>BGU</orgName>
+            </respStmt>
+            
+         </titleStmt>
+         <publicationStmt>
+            <publisher>DH CS Course in BGU, December 2018</publisher>
+         </publicationStmt>
+         <sourceDesc>
+            <bibl>
+               <title>לקסיקון הקשרים לסופרים ישראלים</title>
+               <date when="2014">2014</date>
+               <publisher>הוצאת דביר ואוניברסיטת בן-גוריון בנגב</publisher>
+               <editor>
+                  <persName>
+                     <forename>זיסי</forename>
+                     <surname>סתוי</surname>
+                  </persName>                  
+               </editor>
+               <editor>
+                  <persName>
+                     <addName>פרופ'</addName>
+                     <forename>יגאל</forename>
+                     <surname>שוורץ</surname>
+                  </persName>                  
+               </editor>
+            </bibl>
+         </sourceDesc>
+      </fileDesc>
+     <profileDesc>
+        <particDesc>
+           <person xml:id="kobi_oz" role="musician" sex="M">
+             <persName><forename>קובי</forename> <surname>אוז</surname></persName>
+             <birth when="1969">
+                <placeName ref="#sderot">
+                   שדרות
+                </placeName>
+             </birth>
+             <residence>
+                <placeName ref="#tel-aviv">
+                   תל אביב
+                </placeName>
+             </residence>
+           </person>
+           <person>
+              <persName><forename>רינה</forename> <surname>ז'אן ברוך</surname></persName>
+           </person>
+        </particDesc>
+        <settingDesc>
+           <place xml:id="sderot">
+              <placeName>שדרות</placeName>
+              <country key="IL">ישראל</country>
+           </place>
+           <place xml:id="tel-aviv">
+              <placeName>תל אביב</placeName>
+              <country key="IL">ישראל</country>
+           </place>
+        </settingDesc>
+     </profileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <div>
+         <head>
+            <span>
+               <persName ref="#kobi_oz">אוז, קובי</persName> (<persName ref="#kobi_oz">אוזן, יעקב</persName>)
+            </span>
+            <span>
+               (<date when="1969">1969</date>)
+            </span>
+            <span>
+               סופר
+            </span>
+         </head>
+         <div n="1" type="chapter">
+            <p>
+               נולד כ<persName ref="#kobi_oz">יעקב אוזן</persName> בעיר <placeName ref="#sderot">שדרות</placeName>. כיום גר ב<placeName ref="#tel-aviv">תל אביב</placeName>. פירסם שני ספרים: <name type="book">משה חוואטו והעורב</name>
+            (<date when="1996">1996</date>) בהוצאת <orgName>קשת</orgName> ו<name type="book">עבריין צעצוע</name> (<date when="2002">2002</date>). בשניהם הוא מציב את השוליים החברתיים במרכז העלילה
+            ומעצב טיפוסים ביזאריים וצבעוניים. הביקורת העריכה את השימוש שעשה בשפה ואת השילוב של הומור
+            ורצינות, רגישות ובוטות, אותנטיות "ילידית" ותרבותיות. כמה מן המבקרים ציינו שלעתים ניסה
+            <persName ref="#kobi_oz">אוז</persName> להשיג בכתיבתו יותר ממה שהצליח להשיג בפועל.
+            </p>
+         </div>
+         <div n="2" type="chapter">
+            <p>
+               עיסוקו העיקרי הוא מוזיקה, שבה החל לעסוק בגיל חמש-עשרה, תחילה כנגן קלידים וסינתיסייזר.
+            באותו הזמן גם שינה את שמו ל<persName ref="#kobi_oz">קובי אוז</persName>. לאחר שירותו הצבאי הפך לסולן ולמנהיג של להקת "<name type="band" ref="#tipex">טיפקס</name>". ב-<date when="2000">2000</date> זכה בפרס "<name type="award">נוצת הזהב</name>" בקטגוריית "<name type="award_category">תמלילן השנה</name>", בזכות המילים שכתב לדיסק שלו <name type="album">דיסקו מנאייק</name>. ניהל את הלייבל "<name type="label">לבנטיני</name>", שביקש לייצר אליטת אמנים אלטרנטיבית. ב-<date when="2003">2003</date> החל לכתוב טור שבועי אקטואלי ביום שישי בעיתון <name type="newspaper">מעריב</name>, אך הפסיק כעבור כשלוש שנים. ב-<date when="2007">2007</date> נבחרה להקתו "<name type="band" ref="#tipex">טיפקס</name>" לייצג את <country key="IL">ישראל</country> בתחרות ה<name>אירוויזיון</name>.
+            </p>
+         </div>
+            <div type="bibliogrphy">
+               <listBibl>
+                  <bibl>
+                     <author>
+                        <persName>בוננו, מיכל</persName>
+                     </author>.
+                     <title level="a">"<name>להחזיר את האצבע המשולשת</name>"</title>. 
+                     <title level="j"><name ref="#haaretz_books" type="newspaper">הארץ ספרים</name>. </title>
+                     <date when="1997-02-26">26.2.1997</date>. <biblScope>1, 5</biblScope> ;
+                  </bibl>
+                  <bibl>
+                     <author><persName>בן-שמחון, קובי</persName></author>.
+                     <title level="a">"<name>ניר דמתי, ביאליק והאבטיח</name>". 
+                     </title>
+                     <title level="m"><name ref="#haaretz_books" type="newspaper">הארץ ספרים</name></title>. 
+                     <date when="2003-01-08">8.1.2003</date>. <biblScope>10</biblScope>.
+                  </bibl>
+               </listBibl>
+            </div>
+            <docAuthor>
+               <persName>
+                  רינה ז'אן ברוך
+               </persName>
+            </docAuthor>
+         </div>
+      </body>
+  </text>
+</TEI>

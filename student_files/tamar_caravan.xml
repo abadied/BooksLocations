@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+            <titleStmt>
+               <title level="a" xml:lang="heb">קרון, תמר</title>
+               <respStmt>
+                  <resp>
+                     <name>עדי מרנץ ואמבר אלמוג</name>
+                  </resp>
+                  <orgName>BGU</orgName>
+               </respStmt>
+            </titleStmt>
+		   <publicationStmt>
+			   <publisher>כנרת זמורה-ביתן דביר ואוניברסיטת בן-גוריון בנגב</publisher>
+			   <pubPlace>ישראל</pubPlace>
+			   <date>2014</date>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <head type="main"><hi rend="bold">קרון, תמר</hi></head>
+         <head type="sub"><hi rend="bold">(1937)</hi></head>
+         <head type="sub"><hi rend="bold">סופרת</hi></head>
+         <p>
+            <placeName>ירושלים</placeName>נולדה והתחנכה ב
+            ,<date when="1933">1933</date>-שהגיע לארץ ב<occupation>קבלן בניין</occupation>,<placeName>רוסיה</placeName>בת בכורה לאב יליד 
+            .במקצועה <occupation>ומנהלת חינוכית</occupation><occupation>גננת</occupation>,<placeName>אוסטריה</placeName> ולאם ילידת 
+         </p>
+         <p>
+            החליטה ללמוד פסיכולוגיה<rs><occupation>כחוקרת סעד</occupation>שירותה הצבאי</rs> בעקבות
+            ,<placeName>ירושלים</placeName>ב <orgName>אוניברסיטה העברית</orgName>ב 
+            .<date when="1970">1970</date>-ושם גם קיבלה תואר דוקטור בתחום זה ב
+            .<occupation>מדריכה בפסיכותרפיה ואנליטיקאית יונגיאנית</occupation>,<occupation><rs>לפסיכולוגיה קלינית</rs>פרופסורית</occupation>
+            .<orgName><placeName>תל אביב-יפו</placeName>מכללה האקדמית</orgName>ב <rs>לפסיכולוגיה קלינית</rs>מכהנת כראש המגמה
+            .<rs>פילוסופיה הדיאלוגית הבובריאנית בפסיכותרפיה</rs>חוקרת דיכאון לאחר לידה וחלומות במצבי מעבר, ומפתחת יישום של ה
+         </p>
+         <p>
+            <name type="book">אהבת דניאל: שתי נובלות </name> <num value ="1">הראשון</num> ספרי פרוזה. ספרה <num value ="3">שלושה</num> פירסמה
+            <rs>לספרות יפה</rs><placeName>ירושלים</placeName>הוא בעל מאפיינים אוטוביוגרפיים וזיכה אותה בפרס קרן ,(<date when="1989">1989</date> ,<orgName>עם עובד </orgName>)
+            <rs>חייה של סבתה</rs>והוא מבוסס על (<date when="2000">2000</date>)<name type="book">סיפור וינאי </name> שפירסמה נקרא <num value ="2">השני</num> הרומן
+            (<date when="2002">2002</date>)<name type="book">מי הולך הוא גם חוזר </name>נקרא <num value ="3">השלישי</num>ספרה
+            .סיפורים קצרים שבמרכזם נערים מתבגרים <num value ="2">שני</num> והוא מכיל
+         </p>
+         <p>
+            הם אנשים שעולמם הפנימי מורכב ומסוכסך, וניכר שהיא יונקת את ההשראה <rs>גיבורי סיפוריה</rs>
+            .מתוך מודעות לאופן שבו הסיפור הביוגרפי מעצב את האישיות הבוגרת<rs>האוריינטציה הטיפולית שלה</rs>מתוך<rs>לסיפוריה</rs>
+            .המיוחדת בשנים המעצבות<rs>חשיבותם</rs>היא מדגישה את המעגלים החברתיים והמשפחתיים שבהם נע האדם, ואת<rs>בסיפוריה</rs>
+            .כבית גידול ורקע להתרחשויות<placeName>ירושלים</placeName>ובמיוחד ב,<placeName>ארץ ישראל</placeName> מתהווים בתוך נופי<rs>סיפוריה</rs>
+         </p>
+         <p>
+            .מתלווה אל כתיבה מקצועית בנושאים עיוניים בתחומי התמחותה<rs>יצירתה הספרותית</rs>
+            <num value="3">שלושה</num><persName>קרון</persName>כתבה<name type="language">אנגלית</name>בנוסף למאמרים מקצועיים רבים שפירסמה, רובם ב
+            (<date when="1989">1989</date>)<name type="book">נשים ורודות</name> בנושא הפסיכואנליזה היונגיאנית:<name type="language">עברית</name>ספרים ב
+            ;העוסק בניתוח מקרי דיכאון לאחר לידה אצל נשים
+            ;(<date when="1999">1999</date>)<persName>חנוך ירושלמי</persName>שנכתב בשיתוף עם<name type="book">בין מדריך למודרך</name>
+            .שמתאר דפוסים שונים של זוגיות ומנתח אותם באמצעות המיתוסים המובילים של התרבות המערבית(<date when="2004">2004</date>)<name type="book">אנחנו אדם וחוה: זוגיות, מיתוסים, פסיכולוגיה</name>
+         </p>
+         <p>
+            .כתובים בלשון בהירה ופותחים צוהר אל עולמם האינטימי של מטופלים דרך הסיפורים שהם מספרים על עצמם<rs>הספרים הללו</rs>
+            .המתרחש בחדר הטיפולים ומחוץ לו <rs>התהליך הפסיכודינמי</rs>מאפשרת לקורא, גם זה המצוי מחוץ לעולם הפסיכולוגיה, להתוודע אל  <persName>קרון</persName>
+            <name type="book">הדרכה בפסיכותרפיה</name> :ערכה ספרים, ובהם
+            .(<date when="1994">1994</date>)<persName>חנוך ירושלמי</persName>עם
+            .העוסקת בנושאי מגדר וזוגיות בהוצאת הקיבוץ המאוחד<quote>איש/ אישה</quote><occupation>עורכת הסדרה</occupation>
+         </p>
+         <p>
+            <listBibl>
+               <bibl><author>בן דוד, יערה</author>. <title level="a">התבגרות קשה</title>
+                  <title level="j"> 279 עתון 77</title>
+                  <date>2003</date>
+                  <biblScope>11-10</biblScope>
+               </bibl>
+               <bibl><author>בן שאול, משה</author>. <title level="a">הסיפורים על ביניו ודודי</title>. 
+                  <title level="j">מאזניים</title>
+                  <biblScope>(ע"ט (2</biblScope>
+                  <date>2005</date>
+                  <biblScope>20-19</biblScope>
+               </bibl>
+               <bibl><author>גילולה, דבורה</author>
+                     <title level="m">רומן זעיר</title>
+                     <title level="j">מעריב ספרות</title>.
+                     <date>22.3.1990</date>
+                  <biblScope>13</biblScope>
+               </bibl>
+            </listBibl>
+         </p>
+         <p><hi rend="bold">ורד טוהר</hi></p>
+      </body>
+  </text>
+</TEI>

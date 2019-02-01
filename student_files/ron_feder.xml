@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>
+               <persName ref="#RF">רון-פדר-עמית, גלילה</persName>(<date notBefore="1949-01-01" notAfter="1949-12-31">1949</date>)<roleName>סופרת</roleName> ו<roleName>עורכת</roleName>
+            </title>
+            <author>><persName ref="#RL">רון לסרי</persName></author>
+         </titleStmt>
+         <publicationStmt>
+            <publisher><persName ref="#RL">רון לסרי</persName></publisher>
+         </publicationStmt>
+         <sourceDesc>
+            <listBibl>
+              <bibl>
+                 <address><name> <placeName ref="#TEL-AVIV">תל אביב</placeName>: זמורה-בית</name></address>
+                 <author><persName ref="#OO">אופק אוריאל</persName></author>
+                 <name> לקסיקון אופק לספרות ילדים ב</name>
+                 <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
+                 
+              </bibl> 
+               <bibl>
+                  <address><name></name></address>
+                  <author>תום שגב</author>
+                  <name>הנוער על פי <persName ref="#RN">גלילה רון פדר</persName></name>
+                  <date notBefore="1985-01-01" notAfter="1985-12-31">1985</date>
+                  <biblScope>33­-35</biblScope>
+               </bibl> 
+            </listBibl>
+         </sourceDesc>
+         
+      </fileDesc>
+
+     <profileDesc>
+        <settingDesc>
+           <listPlace>
+              <place xml:id="HAIFA">
+                 <placeName>
+                    חיפה
+                 </placeName>
+              </place>
+              <place xml:id="BEIT-S">
+                 <placeName>
+                    בית שאן
+                 </placeName>
+              </place>
+              <place xml:id="TEL-AVIV">
+                 <placeName>
+                    תל אביב
+                 </placeName>
+              </place>
+              <place xml:id="BOR">
+                 <placeName>
+                    בורמה
+                 </placeName>
+              </place>
+              <place xml:id="JERUSALEM">
+                 <placeName>
+                    ירושלים    
+                 </placeName>
+              </place>
+
+              <place xml:id="EAST"> 
+                 <placeName>
+                    המזרח הרחוק  
+                 </placeName>
+              </place>
+           </listPlace>
+        </settingDesc>
+        
+        <particDesc>
+           <org xml:id="MPI">
+              <name>מפא"י</name>
+           </org>
+           <org xml:id="AZL">
+              <name>אצ"ל</name>
+           </org>
+           <org xml:id="NHAL">
+              <name>נח"ל</name>
+           </org>
+           <org xml:id="HEB-UN"> 
+              <orgName>
+                 אוניברסיטה העברית  
+              </orgName>
+           </org>
+           <org xml:id="HA">
+              <name>חיפאים</name>
+           </org>
+           <org xml:id="BR">
+              <name>בריטים</name>
+           </org>
+           <org xml:id="JER">
+              <name>ירושלמים</name>
+           </org>
+           <listPerson>
+<person xml:id="RN">
+   <persName>
+      <forename>
+         רון-פדר-עמית
+      </forename>
+      <surname>
+         גלילה
+      </surname>
+   </persName>
+   <birth when="1949">
+      <placeName>
+         חיפה
+      </placeName>
+   </birth>
+</person>      
+              <person xml:id="AD">
+                 <persName>
+                 <forename>
+                    אסי
+                 </forename>
+                 <surname>
+                    דיין
+                 </surname>
+              </persName>
+              </person>
+              <person xml:id="OO">
+                 <persName>
+                    <forename>
+                       אופק
+                    </forename>
+                    <surname>
+                       אריאל
+                    </surname>
+                 </persName>
+              </person>
+              <person xml:id="RL">
+                 <persName>
+                    <forename>
+                       רון
+                    </forename>
+                    <surname>
+                       לסרי
+                    </surname>
+                 </persName>
+              </person>
+              
+              <person xml:id="MB">
+                 <persName>
+                    <forename>
+                       מנחם
+                    </forename>
+                    <surname>
+                       בגין
+                    </surname>
+                 </persName>
+              </person> 
+              
+              <person xml:id="HNB">
+                 <persName>
+                    <forename>
+                       חיים נחמן
+                    </forename>
+                    <surname>
+                       ביאליק
+                    </surname>
+                 </persName>
+              </person> 
+               
+           </listPerson>
+           
+        </particDesc>
+        
+     </profileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <div type="title"><p>
+            <persName ref="#RN"><surname>
+               גלילה
+            </surname>
+               <forename>
+                  רון-פדר-עמית
+               </forename>
+            </persName>
+            
+            (<date notBefore="1949-01-01" notAfter="1949-12-31">1949</date>)</p></div>
+         <div type="bio">
+         <p>    
+            נולדה ב
+            <placeName ref="#HAIFA">חיפה</placeName>
+            . כבר בהיותה בת 
+            <num value="9">תשע</num> 
+            החלה לכתוב סיפורי הרפתקאות. למדה במגמה הביולוגית בבית הספר "הריאלי" ב
+            <placeName ref="#HAIFA">חיפה</placeName>
+            . למרות היותה בת למשפחה שנשבו בה רוחות <orgName ref="#MPI">מפא"י</orgName> כתבה רומן על נערה שאחיה נמנה עם <orgName ref="#AZL">כוחות האצ"ל</orgName>, ואף שלחה את טיוטתו ל
+              <persName ref="#MB"><surname>
+                 מנחם
+               </surname><forename>בגין</forename></persName>
+            , שבתגובה הזמינה ובירכה על פעולתה. ב-
+            <date notBefore="2010-01-01" notAfter="2010-12-31">2010</date>
+            פירסמה את הספר 
+            <name type="book">בעוז ובהדר: סיפורו של</name>
+            <persName ref="#MB">מנחם בגין</persName>
+            . שירתה כ<roleName>חיילת</roleName> ב<orgName ref="#NHAL">נח"ל</orgName>, ולאחר שחרורה למדה ספרות ומקרא ב
+            <orgName ref="#HEB-UN">אוניברסיטה העברית</orgName> ב
+            <placeName ref="#JERUSALEM">ירושלים</placeName>
+            . 
+            <persName ref="#RN"><forename>
+               רון-פדר-עמית
+            </forename></persName>
+            היא אם ל
+            <num value="3">שלושה</num>
+            ילדים, ובשנים 
+            <date notBefore="1972-01-01" notAfter="1979-12-31">1972­-1979</date>
+            אימצה 
+            <num value="12">שנים-עשר</num>
+            ילדים ממשפחות קשות יום. פרט זה השפיע רבות על כתיבתה והיווה השראה לסדרת הספרים
+            <name type="book">"ציון"</name>
+            , שנכתבה בשנים 
+            <date notBefore="1976-01-01" notAfter="1981-12-31">1976­-1981</date>
+            .
+            </p>
+            </div>
+         <div type="publications1">
+         <p>
+            <persName ref="#RN"><forename>רון-פדר-עמית</forename></persName>
+            היא מהיוצרות הפופולריות והפורות בספרות הילדים העברית. עד כה פירסמה כ
+            <num value="300">שלוש מאות</num>
+               ספרים, רובם המכריע לילדים. ספריה תורגמו לשפות שונות, ובהן: <lang>אנגלית</lang>, <lang>גרמנית</lang>, <lang>צרפתית</lang> ו<lang>יפנית</lang>. כמה מספריה עובדו לסרטים, ובהם: 
+            <name type="book">בחינת בגרות</name>
+            , בבימויו של 
+            <persName ref="AD"><surname>אסי</surname> <forename>דיין</forename></persName>
+            (
+            <date notBefore="1983-01-01" notAfter="1983-12-31">1983</date>
+            ). בנוסף לכך, היתה ה<roleName>עורכת</roleName> הראשונה של עיתון הילדים לטבע 
+               <name type="newspaper">פשוש</name>
+            , ובהמשך ערכה את השבועון 
+               <name type="newspaper">ראש צעיר</name>
+            . כמו כן פירסמה סיפורים בהמשכים בשבועונים לילדים וכתבה מאמרים בכתבי עת ובעיתונות העוסקים ברובם בחינוך ובספרות ילדים. ספרה הראשון, 
+               <name type="book">ילדי השכונה במחתרת</name>
+            , שראה אור ב-
+            <date notBefore="1971-01-01" notAfter="1971-12-31">1971</date>
+            (קרני), מתאר את קורותיה של קבוצת ילדים <orgName ref="#JER">ירושלמים</orgName> בתקופת המנדט. אחריו כתבה את סדרת הספרים ה
+            <num value="1">ראשונה</num>
+            שלה: "
+            <name type="book">ילדים אלמונים</name>
+            ", המספרת על הרפתקאותיהם של ילדים <orgName ref="#HA">חיפאים</orgName> המסייעים ללוחמי 
+            <num value="3">שלוש</num>
+            המחתרות במלחמתם ב<orgName ref="#BR">בריטים</orgName>. ב-
+            <date notBefore="1976-01-01" notAfter="1976-12-31">1976</date>
+            ראה אור ספרה ה
+            <num value="1">ראשון</num>
+            בסדרת 
+            <name type="book">"ציון"</name>
+            , 
+            <name type="book">אל עצמי</name>
+            , המתאר את חוויותיו של 
+            <persName>ציון</persName>
+            , ילד שנפלט ממשפחתו קשת היום ב
+            <placeName ref="#BEIT-S">בית שאן</placeName>
+            ומגיע למשפחה אומנת ב
+            <placeName ref="#HAIFA">חיפה</placeName>
+            . "
+            <name type="book">ג'ינג'י</name>
+            ", סדרת הספרים המצליחה ביותר של ה<roleName>סופרת</roleName>, נכתבה בשנים 
+            <date notBefore="1980-01-01" notAfter="2010-12-31">1980­-2010</date>
+            ועוסקת בהרפתקאותיהם המסתוריות של 
+            <persName>אודי שחר</persName>
+            וחבריו. מבחר מסדרות ספריה הבולטות: "
+            <name type="book">כס"ח חברי כוח סיירות חוקר</name>
+               " הפותרים תעלומות ברחבי הארץ, "
+            <name type="book">מנהרת הזמן</name>
+            " המתארת אירועים משמעותיים בהיסטוריה היהודית והציונית, "
+            <name type="book">טולי תעלולי</name>
+            ", קורותיה של ילדה שובבה בכפר נופש המנוהל על ידי אביה, ו"
+            <name type="book">סיירת המדע</name>
+            " המפרה את הקוראים בהשכלה מדעית בסיסית. מרבה לכתוב ספרי הרפתקאות, שחלקם מתרחשים בהקשרים היסטוריים או מדעיים, אך ככלל קיימת בכתיבתה מגמה חינוכית המעלה לדיון נושאים כגון: חינוך מיני ושימוש בסמים ובאלכוהול. כמו כן, היא משתמשת בשפה המכילה סלנג ומתקרבת אל שפת הדיבור המקובלת בקרב קהל היעד של הספר.
+               </p>
+            </div>
+         <div type="publications2">
+            <p>
+            פירסמה עד כה 
+            <num value="7">שבעה</num>
+            ספרים למבוגרים. הראשון מתוכם: 
+            <name type="book">יש אישה אחרת</name>
+            , יצא לאור ב-
+            <date notBefore="1994-01-01" notAfter="1994-12-31">1994</date>
+            (מודן) והוא עוקב אחר דמותה של 
+            <persName>יעלי</persName>
+            , שסוד בחיי בעלה מביא אותה לבחינת חייה ויחסיה מחדש. ספרה האחרון למבוגרים, 1
+            <name type="book">חיפושים</name>
+            (
+               <date notBefore="2006-01-01" notAfter="2006-12-31">2006</date>
+            ), מתאר את מסעה של 
+            <persName type="fiction">רננה רז</persName>
+            , <roleName>שחקנית</roleName> מצליחה, היוצאת למרכז מדיטציה ב
+            <placeName>בורמה</placeName>
+            , ואת חברתה 
+               <persName type="fiction">נעמי</persName>
+            , <roleName>פרופסור למקרא</roleName>, המתחקה אחריה. הרומן ממשיך מגמה בכתיבתה על מסעות נשיים לחיפוש עצמי ב
+            <placeName ref="#EAST">מזרח הרחוק</placeName>
+            , המתגלה גם בספרה 
+            <name type="book">אמא של תרמילאי</name>
+            (
+               <date notBefore="2002-01-01" notAfter="2002-12-31">2002</date>
+            ). ב-
+               <date notBefore="2012-01-01" notAfter="2012-12-31">2012</date>
+            פירסמה את הספר 
+            <name type="book">אומרים אהבה יש: סיפורו של
+            <persName>חיים נחמן ביאליק</persName></name>
+            .
+         </p>
+         </div>
+      </body>
+  </text>
+</TEI>

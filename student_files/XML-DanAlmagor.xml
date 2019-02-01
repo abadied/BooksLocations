@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>אלמגור, דן</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>נכתב על ידי גידי נבו</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>
+               <persName>דן אלמגור</persName>
+            </p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <head>
+            <persName>דן אלמגור</persName>
+            (<date when="1935" type="birth">1935</date>)
+            <roleName>פזמונאי, מחזאי, מתרגם</roleName>
+         </head>
+         
+         <div>
+            <div type="bio">
+               <p>
+                  למד ספרות עברית לתואר ראשון ושני ב<orgName> אוניברסיטה העברית</orgName> ב<placeName type="city">ירושלים</placeName>. כתב את עבודת הדוקטור על הסופר <persName> מ"י ברדיצ'בסקי </persName>ב<orgName>אוניברסיטת קליפורניה</orgName>
+                  ב<placeName type="city">לוס אנגל'ס</placeName> (<orgName>UCLA</orgName>).
+               </p>
+            </div>
+            <div type="lifework">
+               <p>
+                  תירגם ועיבד כמאה מחזות,
+                  שהועלו על במות מרבית התיאטרונים בארץ, בהם מחזות קלאסיים כ<name type="theater">הנשים הפיניקיות לאוריפידס</name>, ה<name type="theater">אלכימאי לבן ג'ונסון</name>, 
+                  <name type="theater"> קומדיה של טעויות</name>
+                  (זכה ב<name type="prize">פרס לתרגום מחזות על שם עדה בן נחום</name>)
+                  ו<name type="theater"> כטוב בעיניכם</name> ל<persName>וויליאם שקספיר</persName>;
+                  מחזות מודרניים כגון  ו
+                  <name type="theater"> מותו של סוכן</name> ל<persName>ארתור מילר</persName>;
+                  ומחזות זמר, בהם <name type="theater"> גברתי הנאווה</name>, <name type="theater"> כנר על הגג</name>
+                  , <name type="theater"> המלך ואני</name>, <name type="theater"> ברנשים </name> ו<name type="theater">חתיכות והמפיקים</name>. 
+                  ב-<date when="1968">1968</date> ערך ועיבד את החומר למחזמר <name type="theater"> איש חסיד היה </name>על יסוד שירים, ניגונים וסיפורים חסידיים. 
+                  ב-<date when="1969">1969</date> כתב את המחזמר <name type="theater"> ירושלים שלי</name>
+                  , שהיה ההצגה הראשונה שנכתבה על <placeName type="city">ירושלים</placeName> ואנשיה לאחר סיפוח מזרח העיר בעקבות מלחמת ששת הימים. 
+                  ב-<date when="1970">1970</date> הועלה מחזהו מחברות החשק, שהתבסס על סיפורי עגבים עבריים מימי הביניים ומן הרנסנס. ב-1971 חיבר את המחזמר עיר הגברים על בסיס סיפוריו של דיימון ראניון. 
+                  ב-1972 חיבר את המחזמר אל תקרא לי שחור, הסב סביב אפליית השחורים ב<placeName type="city">ארצות הברית</placeName>
+                  . על פעילותו בתחום התיאטרון קיבל את פרס <orgName>אקו"ם</orgName> על מפעל חיים (1986).  
+                  
+               </p>
+               <p>
+                  כתב מאות פזמונים ללהקות שונות, ובכלל זה להקות צבאיות, ולזמרים. פזמוניו שולבו גם במחזות זמר ובהצגות תיאטרון.
+                  כמו כן תירגם פזמונים מ<lang>צרפתית</lang>, מ<lang>רוסית</lang>, מ<lang>גמנית</lang> ומ<lang>אנגלית</lang>. רבים מפזמוניו הפכו לנכסי צאן ברזל של הזמר העברי.
+                  טובי המלחינים הלחינו מנגינות למילותיו,
+                  ובהם <persName>משה וילנסקי</persName>, <persName>אלכסנדר (סשה) ארגוב</persName>, <persName>מתי כספי</persName>, <persName>יאיר רוזנבלום</persName> ו<persName>מאיר נוי</persName>. 
+               </p>
+               <p>
+                  ביצירותיו שלובים לרוב שנינות והומור 
+                  ("ונצואלה"),
+                  פאתוס ציוני ופטריוטי
+                  ("בלדה לחובש", "שומר החומות")
+                  ואלמנטים הומניסטיים אוניברסליסטיים
+                  ("יום יבוא","צלם אדם").
+                  ב-<date when="2006">2006</date> יצא אוסף כפול הכולל ארבעים ושלושה מפזמוניו בשם חוץ מזה הכול בסדר.
+                  ב-<date when="2011">2011</date> יצא אלבום אוסף נוסף משיריו כחלק מהפרויק
+                  <name type="project">13 ביולי</name> 
+                  (הכולל גם משירי <persName>נעמי שמר</persName> ו<persName>אהוד מנור</persName>).
+               </p>
+               <p>
+                  <date when="1988">בדצמבר 1988,</date>
+                  בהפגנת מחאה של תנועות השמאל בישראל שנערכה במלאות שנה לאינתיפאדה הראשונה, קרא את שירו הארוך
+                  "<name type="song">הם יורים גם בילדים</name>",
+                  שבו גינה בחריפות את הכיבוש הישראלי בשטחים ותופעות הכרוכות בו, וקרא להכין את כלובי הזכוכית שבהם ישבו גם משתתפי ההפגנה.
+                  בעקבות דברים אלה הוחרם על ידי כל הגופים הממסדיים שעמם עבד; הוא קיבל איומים על חייו ומכוניתו וביתו הוצתו על ידי גורמי ימין קיצוניים. 
+               </p>
+            </div>
+            
+            <div type="quote">
+               <p>
+                  שירו "<name type="song">צלם אדם</name>, המכיל את המילים
+                  "כָּל בְּנֵי הָאָדָם בְּרוּאִים בְּצֶלֶם אֱלוֹהִים,/ כָּל בְּנֵי הָאָדָם, כּוּלָּם./
+                  וְאֵין טוֹבִים יוֹתֵר וְאֵין שָׁוִוים יוֹתֵר,/ כִּי כָּל בְּנֵי הָאָדָם בְּרוּאִים,/ בְּצֶלֶם אֱלוֹהִים, בְּצֶלֶם אָדָם",
+                  יצא בתחילה כסינגל ואז נאסר לשידור ועותקיו נגנזו או הושמדו.
+               </p>
+            </div>
+         </div>
+         <div type="bibliography">
+            <docAuthor>
+               אוריין, דן. "חיפוש הזהות היהודית בתיאטרון הישראלי, על 'איש חסיד היה'". במה 140. <date when="1996">1996</date>. 99¬-114; מוצ'ניק, מלכה.
+               "בחזרה אל המקורות, על תרגומו של <persName>דן אלמגור</persName> למחזה 'כטוב בעיניכם'".
+               לשוננו ס"ז (1). <date when="1997">1997</date>. 79¬-91; <persName>קניוק, יורם</persName>. "חסידים וחסידות מטעם". דבר לספרות ולאמנות. <date when="1968">25.10.1968</date>. 10.
+            </docAuthor>
+         </div>
+      </body>
+  </text>
+</TEI>

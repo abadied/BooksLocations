@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a" xml:lang="heb">
+               <hi rend="bold"><persName><surname type="linked" >אבן-שושן</surname> <surname>רוזנשטיין</surname>), <forename>שלמה</forename></persName> 
+                  ( <date>1910</date>-¬<date>2004</date>)</hi> 
+            </title>
+            <title level="m">לקסיקון הקשרים לסופרים ישראלים</title>
+            <author xml:lang="heb"><persName><forename>אלישע</forename> 
+               <surname>פורת</surname></persName></author>
+         </titleStmt>
+         <publicationStmt>
+           <publisher>  A DH CS course in  </publisher>
+            <distributor ><orgName>BGU </orgName>  </distributor>
+            <date>17.12.18 </date>
+         </publicationStmt>
+         <sourceDesc>
+            <bibl>   <title> לקסיקון הקשרים לסופרים ישראלים
+            </title>
+               <publisher> <orgName> ואוניברסיטת בן גוריון בנגב</orgName> <orgName>כנרת זמורה-ביתן דביר </orgName></publisher>
+               <date>2014</date> </bibl>
+         </sourceDesc>
+      </fileDesc>
+     <encodingDesc>
+        <projectDesc>
+           <p>DH course HW number 1</p>
+        </projectDesc>
+     </encodingDesc>
+  </teiHeader>
+   <text xml:lang="he">
+      <body >
+         
+         <div type = "biography"><p> 
+            <l> <hi rend= "bold"><roleName> מתרגם, עורך וסופר</roleName>    </hi></l>
+            <l> נולד 
+                ב<placeName>מינסק, בלארוס </placeName> 
+               .זכה לחינוך עברי מאביו,
+               <persName><forename>חיים</forename> <forename>דוד</forename> <surname>רוזנשטיין</surname></persName>
+               , שהיה 
+               <listPerson> <person> <occupation>סופר עברי  </occupation></person></listPerson>.
+               עלה ארצה 
+               <date>ב-1925,  </date>  </l>
+            <l>
+              
+              <listPerson><person> <education>-למד בבית הספר החקלאי 
+               <orgName>"מקווה ישראל"</orgName></education></person></listPerson>
+               . נדד בארץ ועבד בחקלאות ביישובים שונים, עד שהצטרף ב- </l>
+            <l><date>1937</date>
+               לגרעין המייסדים של 
+               <placeName>קיבוץ שדה נחום</placeName>, 
+               שבו הקים את ביתו וחי כל שנותיו. אחיו של
+               ה<roleName>מילונאי</roleName>  
+               הנודע  </l>
+            <l><persName><forename>אברהם</forename> <surname type = "linked">אבן-שושן</surname></persName>
+               , שעל חייו פירסם את הספר 
+               <listPerson> <person><persName><forename>אברהם</forename> <surname type = "linked">אבן-שושן</surname></persName>
+               <occupation>מחנך  </occupation>
+                <occupation>ומילונאי  </occupation></person></listPerson>
+                 , פרקי ביוגרפיה (<date>1999</date>).  </l>
+            
+            
+         </p></div>
+        
+        <div> <p>
+            <l>את יצירותיו הראשונות, 
+               <name>שירה</name> ו<name>סיפורת</name>,
+               פירסם בעיתון
+               <orgName>"הנוער העובד"</orgName> 
+               במעלה 
+               (<date>1931</date>)
+               . היה מעורכי </l>
+            <l>העיתונים הקיבוציים מבפנים וצרור מכתבים ומהעורכים הראשונים 
+               ב<orgName>הוצאת הקיבוץ המאוחד</orgName>.
+               ערך את  </l>
+            <l>כתבי
+               <persName><forename>פניה</forename> <surname>ברגשטיין</surname></persName>
+               , <forename>יצחק</forename> <surname>קצנלסון</surname>
+               , ספרי זיכרון לאישים ולקהילות ועוד.</l>
+            
+         </p></div>
+         <div><p>
+            <l>מוכר בעיקר כ
+               <roleName>מתרגם</roleName>  
+               פורה. תירגם עשרות ספרים שכתבו גדולי היוצרים היהודים ברוסית וביידיש  </l>
+            <l>ומיצירותיהם של גדולי הספרות הרוסית. בין השאר: 
+               <name>אנשי פאנפילוב</name> 
+               מאת 
+                 <persName><forename>אלכסנדר</forename> <surname>בק</surname></persName> 
+                 (<date>1946</date>)               
+               <name> ;בחלום  </name></l>
+            <l> <name>ובהקיץ: סיפורי ילדים מאת 
+              <persName> <forename>יצחק</forename> <surname>קצנלסון</surname> </persName>         
+               (<date>1955</date>)</name>
+               <name>; כביש הנלהבים: שירים מאת 
+              <persName> <forename>יבגני</forename> <surname>יבטושנקו</surname></persName> 
+               (<date>1962</date>);</name>  </l>
+            <l><name>כיוון לא צפוי: שירים, מקור ותרגום מאת 
+               <persName><surname>פרץ</surname> <forename>מרקיש</forename></persName> 
+               (<date>1978</date>)</name>
+              <name> ; שירים מאת 
+                 <persName><forename>אוסיפ</forename> <surname>מנדלשטם</surname> </persName>
+                 (<date>2000</date>);</name>  </l>
+            <l><name>ושירים מאת 
+               <persName><forename>מרינה</forename> <surname>צווטאייבה</surname></persName> 
+               (<date>2002</date>)</name>
+               . קשר קשרים עם כמה מהיוצרים היהודים 
+               ב<placeName><country>ברית המועצות</country></placeName> 
+               לשעבר  </l>
+            <l> כאשר אלה היו אסורים, כגון: 
+               <persName><forename>בוריס</forename> <forename>דב</forename> <surname>גפונוב</surname></persName>,
+               <persName><forename>דוד</forename> <surname>מרקיש</surname></persName>
+               ואחרים.</l>
+         </p></div>
+         
+         <div type="bibliogrphy"> <p >
+            <bibl> <title><quote>העברית עודנה חיה</quote> </title>    
+               <author> <persName> <forename>בדאור</forename>, <surname>שמוליק</surname> </persName></author>
+               <publisher > קיבוץ מוסף לדבר 30</publisher>
+               <date> 26.7.1989</date>
+               <biblScope>6-7</biblScope>
+            </bibl>
+            <bibl> <title> <quote>כחכות שלמה</quote></title>
+               <author> <persName><surname>בירן</surname>,<forename>דני</forename></persName></author>
+               <publisher> על המשמר הדף הירוק 258</publisher>
+               <date>29.11.1988</date>
+               <biblScope>14</biblScope>
+            </bibl>
+            
+         </p></div>
+         <docAuthor> Omri Attiya and Eran Grinshpoun</docAuthor>
+      </body>
+  </text>
+</TEI>

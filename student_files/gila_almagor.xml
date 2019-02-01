@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>אלמגור, גילה</title>
+            <author>נעה ולדן</author>
+         </titleStmt>
+         <publicationStmt>
+            <publisher/>
+            <pubPlace/>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <head><persName>אלמגור, גילה</persName>(<date when="1939"
+            type="birth">1939</date>) </head>
+         <p> נולדה <placeName>בפתח תקווה</placeName>. <rs>אביה</rs>, ששירת כשוטר ב<orgName>משטרה
+               הבריטית</orgName>, נרצח ארבעה חודשים לפני שנולדה, <rs>ואמה</rs> סבלה ממחלת נפש קשה.
+            בגיל שלוש-עשרה נשלחה לפנימייה, <rs>שאותה</rs> עזבה בגיל חמש-עשרה, כאשר עברה להתגורר
+               ב<placeName>תל אביב</placeName> במטרה לעסוק במשחק, תחום שהפך לעיסוקה המרכזי. </p>
+         <p> פירסמה חמישה ספרים, ארבעה מתוכם עוסקים בעולמם של ילדים ובהתבגרותם. ספרה האחרון עד כה,
+               <name>כוכבים יש רק בשמיים</name> (<date when="2010">2010</date>), הוא אוטוביוגרפיה המתארת את <rs>חייה</rs>,
+            מימי <rs>ילדותה</rs> ועד <rs>הפיכתה</rs> לשחקנית קולנוע ותיאטרון מצליחה. </p>
+         <p> ספריה המוכרים במיוחד הם<name> הקיץ של אָבִיהָ</name> (עם עוב<orgName>ד, </orgName><date>1985</date>)
+               ו<name>עץ הדומים תפוס</name> (<date when="1992">1992</date>). הספרים בעלי המרכיבים
+            האוטוביוגרפיים, המתארים את ילדותה והתבגרותה של
+               <name>אָבִיהָ</name>, בת לאם ניצולת שואה ופגועת נפש,
+            פתחו צוהר אל עולמם של ניצולי השואה בארץ בשנות החמישים. </p>
+         <p>
+            <name>הקיץ של אָבִיהָ </name>מתאר את ילדותה הקשה של <rs>אביה</rs>, קשריה הטעונים עם
+               <rs>אִמה</rs>, והיחס הקשה ועמוס הסטריאוטיפים של החברה הישראלית אל <rs>האם</rs>
+               ו<rs>בתה</rs>. ישראל של שנות החמישים, טרום ימי משפט
+                  <persName>אייכמן</persName>, מתוארת בספר כחברה אטומה לכאביהם של
+            הפליטים המצולקים מאימי <name>מלחמת העולם השנייה</name>. הספר הצליח מאוד, ובעקבות זאת
+            עובד להצגה ולסרט, שבהם כיכבה <rs>אלמגור</rs> בדמות האם. <rs>עץ הדומים
+               תפוס</rs> עוקב אחר אביה החיה בפנימייה, לצדם של בני נוער ניצולי שואה, המנסים לבנות
+            עולם חדש במקום זה שאבד להם, וגם לשמר את זהותם ואת זיכרונותיהם. </p>
+         <listRef>
+            <ref><persName>הנדלזלץ, מיכאל</persName>.
+                     "'<name><name>כוכבים יש רק בשמיים</name>' מאת גילה אלמגור, בתפקיד עצמה</name>".
+                  <name>הארץ ספרים</name>. <date when="2010-03-10">10.3.2010</date>. 14</ref>
+            <ref><persName>קרן, עדה</persName>. <name>"עץ
+                  הדומים תפו</name>ס".<name> ספרות ילדים ונוע</name>ר י"ט (א). <date when="1992">1992</date>. 51­-52.</ref>
+         </listRef>
+      </body>
+
+   </text>
+</TEI>

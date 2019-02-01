@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>חוקר ספרות, ביבליוגרף ועורך - אלקושי (אלקס) גדליה</title>
+            <author>אלקושי (אלקס) גדליה (1910-¬1988)</author>
+            <respStmt>
+               <resp>נערך על ידי</resp>
+               <name xml:id="student_name_shortened">יקותיאל גולברג ונבו בונה בונומו</name>
+            </respStmt>
+         </titleStmt>
+         
+         <publicationStmt>
+            <p>נערך עבור עבודה מספר 1 בקורס מדעי הרוח הדיגיטליים</p>
+         </publicationStmt>
+         
+         <sourceDesc>
+            <bibl>
+               <author>זיסי סתוי ופרופ' יגאל שוורץ</author>
+               <title type="main">לקסיקון הקשרים לסופרים ישראלים</title>
+               <publisher>בהוצאת דביר ואוניברסיטת בן-גוריון בנגב.</publisher>
+               <date>יוני, 2014.</date>
+               <editor>סבטלנה נטקוביץ'</editor>
+               <title type="main">אלקושי (אלקס), גדליה </title>
+               <note type="Sources_edited_from">
+                  <title>אלקושי,גדילה. אוטוביוגרפיה</title>
+                  <title>גדליה אלקושי ז"ל ידיעון האיגוד העולמי למדעי היהדות </title>
+               </note>
+            </bibl>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <head type="main"><hi rend="bold">גדליה, אלקושי</hi></head>
+         <head type="sub"><hi rend="bold">חוקר ספרות, ביבליוגרף ועורך</hi></head>
+         <p>
+            נולד <placeName>באוסטרוב מזובייצק</placeName>, <country>פולין</country>. ב- <date>1925 </date>עבר עם הוריו ל<placeName>וורשה</placeName>, שם סיים <placeName>גימנסיה יהודית-פולנית</placeName>, וב-<date>1931</date> החל ללמוד היסטוריה ופילוסופיה <placeName>באוניברסיטת ורשה</placeName> <placeName>ובמכון לחוכמת ישראל</placeName>. ב-<date>1932</date> עלה ארצה, המשיך את לימודיו <placeName>באוניברסיטה העברית בירושלים </placeName> (ספרות עברית, היסטוריה וסוציולוגיה), וב-<date>1935</date> הוענק לו התואר מוסמך. בשנים <date>1934¬-1943</date> עבד <title>כספרן  </title>     <placeName>בבית הספרים הלאומי</placeName>. ב-<date>1944</date> קיבל תואר <title>דוקטור</title> בזכות מחקרו על יצירתו של יל"ג, שנעשה בהדרכתו של <persName>יוסף קלוזנר</persName> .    
+         </p>
+         
+         <p>
+            בשנים <date>1944-¬1953</date> לימד ספרות עברית ותנ"ך <placeName>בגימנסיה העברית</placeName> <placeName>בירושלים</placeName>. מ-<date>1954</date> שימש <title>עורך</title> בהוצאת <orgName>מסדה</orgName> ו<title>חבר</title> <orgName>מערכת האנציקלופדיה העברית</orgName>. ב-<date>1956</date> התמנה <title>למרצה לספרות עברית חדשה</title> <placeName>באוניברסיטת תל אביב</placeName>. פרסומיו בתחום הביבליוגרפיה והביקורת החלו עוד ב-<date>1928</date> <orgName>בשבועון העברי לנוער הכוכב</orgName>, שראה אור <placeName>בפולין</placeName>. בהמשך השתתף בכתבי עת ובעיתונים רבים, בהם <orgName>הצפירה</orgName>, <orgName>גליונות</orgName>, <orgName>מאזניים</orgName> <orgName>וקרית ספר</orgName>. 
+         </p>
+         
+         <p>
+            מחקריו העיקריים הוקדשו לתקופת ההשכלה והתחייה בספרות העברית. המחקר הארכיונאי המדוקדק היה לסימן היכר של עבודתו, שהוקדשה ברובה למפעלי הוצאה לאור, ביבליוגרפיה וביוגרפיה של יוצרי תקופת ההשכלה. 
+            מעבודותיו אשר ליקט, ערך וביאר :
+            <list>
+               <item>כתביו של <persName>שד"ל </persName> <date>(1948) </date></item>
+               <item>כתביו של <persName>נפתלי הרץ ויזל</persName> <date> (1952) </date></item>
+               <item>כתביו  של <persName>דוד פרישמן</persName> <date> (1955) </date></item>
+               <item>כתביו  של <persName>סמולנסקין </persName> <date> (1959)</date> </item>
+               <item>כתביו  של  <persName>וקלמן שולמן</persName> <date> (1960) </date> </item>
+               <item><name>התנ"ך בראי הספרות העברית החדשה</name> <date> (1954) </date></item>
+               <item><name>אוצר פתגמים וניבים לאטיניים: מתורגמים לעברית בליווי ביאורים, הסברים ומקבילות עבריות וארמיות </name> <date> (1959) </date>. </item>
+               <item> <name>מבוא לביבליוגרפיה </name> <persName>יאנוש קורצ'אק</persName> בעברית <date> (1972) </date></item>
+               <item><name>סיפורי יהודה יערי </name> <date> (1969) </date></item>
+               <item><name>לירושלים:דברי ספרות והגות לכבוד ירושלים משוחררת </name> <date> (1968)</date> </item>
+               <item><name>שני הכרכים הראשונים של אנציקלופדיה כללית מסדה </name> <date> (1958¬-1959) </date>. </item>
+            </list>
+            
+         </p>
+      </body>
+  </text>
+</TEI>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>יורם טהרלב</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>
+               <persName>מרדכי נאור</persName>. "<name type="article">פזמונאי נגד קבלנים
+                  ומתווכים</name>". <name type="publications">הארץ ספרים</name>
+               <date>20.4.2005</date>. 20; <persName>דני קרמן</persName>. "<name type="article"
+                  >המבקר היחיד שאהב אותי - מת: ראיון עם יורם טהרלב</name>". <name
+                  type="publications">ידיעות אחרונות ספרות</name>. <date>28.3.2003</date>. 26. </p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <head>
+            <persName>
+               <forename>יורם</forename>
+               <surname>טהרלב</surname>
+               <date when="1938" type="birth">1938</date>
+               <roleName>משורר, מתרגם ופזמונאי</roleName>
+            </persName>
+         </head>
+         <div>
+            <div type="bio">
+            <p> נולד ב<placeName>קיבוץ יגור</placeName> להורים שעלו ארצה כחלוצים
+                     מ<placeName>ליטא</placeName>. אביו, <persName>חיים טרלובסקי-טהרלב</persName>,
+                  חיבר שירים ומחזות ב<lang>עברית</lang> וב<lang>יידיש</lang>, ובהם ספרו המרכזי,
+                  יצירה שירית מקיפה מחיי הקיבוץ בשם<name type="book">נוה הסעלים</name> שהוצאה לאור
+                     ב-<date when="1998">1998</date> מעיזבונו בידי בנו. שירת בצבא ככתב העיתון <name
+                     type="journal">במחנה גדנ"ע</name> ורכש בו מיומנויות של כתיבה עיתונאית. ב-<date
+                     when="1964">1964</date> חיבר את שירו הראשון, "<name type="song">את ואני
+                     והרוח</name>", שהולחן בידי <persName>נחום הימן</persName> וזכה להצלחה רבה. מאז
+                  נעשה פיזמונאי ידוע ומבוקש וחיבר כאלף שירי זמר ללהקות צבאיות, לזמרים ולמחזות זמר,
+                  שמבחר מהם כונס בספרים אחדים (<name type="book">מצעד הפזמונים</name>, <date
+                     when="1970">1970</date>; <name type="book">אוהבים את האביב</name>, <date
+                     when="1981">1981</date>; <name type="book">בפרדס ליד השוקת</name>, <date
+                     when="1991">1991</date>; <name type="book">אין כבר דרך חזרה</name>, <date
+                     when="2005">2005</date>). מהנודעים בשיריו: "<name type="song">הבלדה על יואל משה
+                     סלומון</name>", "<name type="song">גבעת התחמושת</name>" ו"<name type="song">קום
+                     והתהלך בארץ"</name>". מ-<date when="1866">1966</date> חיבר, תירגם ועיבד יותר
+                  משישים ספרי ילדים. כעשרים שנה עבד כעורך ב<name type="publicaitons">הוצאה לאור של משרד
+                     הביטחון</name>. מאז תחילת שנות השמונים הוא מגיש מופעי קריאה וזמר לפני קהל,
+                  המבוססים על קטעי הומור בנושאים שונים מפרי עטו, בשילוב עם שיריו המבוצעים בידי
+                  זמרים.</p>
+               <p> שירתו ה"רצינית" מרוכזת בארבעה ספרים, הניזונים בעיקרם מחוויות הילדות והבגרות
+                  המוקדמת בקיבוץ: <name type="book">משק יגור טיוטה</name>, (<date when="1975"
+                     >1975</date>); <name type="book">הנשיקה הראשונה</name>, (<date when="1979"
+                     >1979</date>); <name type="book">שיישאר בינינו</name>, (<date when="1982"
+                     >1982</date>); <name type="book">הנשיקה השנייה</name>, (<date when="1985"
+                     >1985</date>). השירים קצרצרים ברובם, ומציגים ברגישות ובהומור עדין שלל חוויות
+                  מרות-מתוקות, מקומיות ואוניברסליות: החל בלחצי החיים בחברה קולקטיבית קטנה, קשוחה,
+                  ותובענית, וכלה בגילוי קסמי המין בגיל ההתבגרות. </p>
+               <p> מספרי העיון שחיבר: <name type="book">שירו הביטו וראו: הסיפורים שמאחורי
+                     השירים</name>, (<date when="1992">1992</date>) עם <persName>מרדכי
+                     נאור</persName>; <name type="book">מדריך טהרלב לכתיבת שירים ומקאמות </name>,
+                     (<date when="1997">1997</date>); ו<name type="book">איזו מדינה - החוויה
+                     הישראלית בשירים</name>, (<date when="2007">2007</date>). כמו כן פרסם כמה לקטים
+                  מספרות המוסר היהודית, חלקם בנימה הומוריסטית (<name type="book">וטהר לבנו</name>,
+                     <date when="1992">1991</date><name type="book">שמע בני</name>, <date
+                     when="1992">2002</date>; <name type="book">ואהבת</name>, <date when="2006"
+                     >2006</date>. בספרו <name type="book">מצע אשה מצע טוב</name>, (<date
+                     when="2003">2003</date>) הגיש הנימה קלה נוסחים שיריים מחורזים של פרשיות אהבים
+                  מן ה<name type="book">תנ"ך</name>. זכה בשני פרסים של על מפעל חיים בזמר העברי:
+                     <name type="prize">פרס אקו"ם</name> (<date when="1996">1996</date>) ו<name
+                     type="prize">פרס תמו"ז</name> (<date when="2003">2003</date>). אשתו הראשונה ואם
+                  שתיים מבנותיו היא המשוררת <persName>נורית זרחי</persName>. </p>
+              </div>
+         </div>
+      </body>
+   </text>
+</TEI>

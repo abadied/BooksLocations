@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-stylesheet type="text/xsl" href="custom.xsl"?>
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title level="a" xml:lang="heb">נבו אשכול</title>
+            <title level="m">לקסיקון הקשרים לסופרים ישראלים</title>
+            <author xml:lang="heb">אסתי אדיבי-שושן </author>
+            
+            <respStmt>
+               <orgName> BGU</orgName>
+               <resp>
+                  <name>Noa Mishtein and Sapir Gali</name>
+               </resp>
+            </respStmt>
+            
+         </titleStmt>
+         <publicationStmt>
+            <publisher>DH CS Course in BGU
+            </publisher> 
+            <date>2018</date>
+    
+         </publicationStmt>
+         <sourceDesc>
+            <bibl>
+               <date>2014</date>לקסיקון,998 עמודים 
+               <orgName>BGU</orgName>
+               <orgName>כנרת זמורה- ביתן דביר</orgName>
+            </bibl>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>DH course etc</p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <settingDesc>
+            <listPlace>
+               <place xml:id="TLV">
+                  <placeName>תל אביב</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q33935"/> </bibl>
+               </place>
+               <place xml:id="HAF">
+                  <placeName> חיפה </placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q41621"/> </bibl>
+               </place>
+               <place xml:id="RAN">
+                  <placeName>רעננה</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q309164"/> </bibl>
+               </place>
+               <place xml:id="JE">
+                  <placeName>ירושלים</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q1218"/> </bibl>
+               </place>
+               <place xml:id="US">
+                  <placeName>ארה"ב</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q30"/> </bibl>
+               </place>
+               <place xml:id="DT">
+                  <placeName>דטרויט</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q12439"/> </bibl>
+               </place>
+               <place xml:id="LEV">
+                  <placeName>לבנון</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q822"/> </bibl>
+               </place>
+               <place xml:id="ISL">
+                  <placeName>ישראל</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q801"/> </bibl>
+               </place>
+               <place xml:id="EUP">
+                  <placeName>אירופה</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q46"/> </bibl>
+               </place>
+               <place xml:id="GEV">
+                  <placeName>גבעתיים</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q152413"/> </bibl>
+               </place>
+               <place xml:id="OZ">
+                  <placeName>אוסטרליה</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q408"/> </bibl>
+               </place>
+               <place xml:id="MZ">
+                  <placeName>מבשרת ציון</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q1025294"/> </bibl>
+               </place>
+               <place xml:id="SA">
+                  <placeName>דרום אמריקה</placeName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q18"/> </bibl>
+               </place>
+            </listPlace>
+         </settingDesc>
+         <langUsage> <language ident="he">Hebrew</language></langUsage>
+         <particDesc>
+            <listPerson >
+               <person xml:id="RABIN">
+                  <persName> 
+                     <forename>יצחק</forename>
+                     <surname>רבין</surname>
+                  </persName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q34060"/> </bibl>
+               </person>
+               <person xml:id="LEVI">
+                  <persName> 
+                     <forename>לוי </forename>
+                     <surname>אשכול</surname>
+                     <roleName>ראש ממשלה</roleName>
+                  </persName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q191123"/> </bibl>
+               </person>
+               <person xml:id="HEZEL">
+                  <persName> 
+                     <forename>תיאודור </forename>
+                     <surname>הרצל</surname>
+                  </persName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q44003"/> </bibl>
+               </person>
+               <person xml:id="ESHCHOL">
+                  <persName> 
+                     <forename>אשכול </forename>
+                     <surname>נבו</surname>
+                     <roleName>סופר</roleName>
+                  </persName>
+                  <bibl type="wikidata"><ptr target="https://www.wikidata.org/wiki/Q971997"/> </bibl>
+               </person>
+            </listPerson>
+         </particDesc>
+      </profileDesc> 
+   </teiHeader>
+   <text xml:lang="he">
+      <body>
+         <head><persName><surname>נבו</surname>, <forename>אשכול</forename> (<date when="1971"
+                  type="birth">1971</date>) <roleName>סופר
+              </roleName></persName></head>
+         <div>
+            <div type="bio">
+               <p>
+                  נולד ב<placeName ref="#JE" type="place">ירושלים</placeName> ונקרא על שם סבו
+                  <name ref="#LEVI" type="person">לוי אשכול</name>, ראש הממשלה השלישי
+                  בילדותו ובנעוריו עברה משפחתו בתים רבים, והדבר ניכר במוסדות הלימוד השונים שלמד בהם
+                  עובדה ביוגרפית זו מופיעה כמוטיב חוזר ביצירתו
+                  בגן הילדים למד ב<placeName ref="#DT" type="place">דטרויט</placeName>,
+                  <placeName ref="#US" type="place">ארצות הברית</placeName>, למד בבית הספר היסודי ב
+                  <placeName ref="#HAF" type="place">חיפה</placeName>, בחטיבת הביניים ב<orgName>"תיכון ליד האוניברסיטה" </orgName>ב
+                  <placeName ref="#JE" type="place">ירושלים</placeName>
+                  וכיתות י' עד י"ב בבית הספר "<orgName>הריאלי</orgName>" ב<placeName ref="#HAF" type="place">חיפה</placeName>.
+                  שירת בצבא כקצין מודיעין. מתגורר ב<placeName ref="#RAN" type="place">רעננה</placeName>. 
+               </p>
+            </div>
+
+           
+         <div type="works" >
+            <p> 
+               ספרו הראשון, שהיה גם פרסומו הראשון, קובץ הסיפורים <name type="book" >צימר ב<placeName ref="#GEV" type="place">גבעתיים</placeName></name>, 
+               ראה אור בהוצאת <orgName>זמורה-ביתן</orgName> ב-<date>2001</date>. כעבור שנה הופיע <name type="book">נפרדנו טראח – המדריך לנפרד המתחיל</name>, 
+               ספרון קומי שנוצר עם המאיירת <persName><forename>אורית</forename><surname>עריף</surname></persName>.
+            </p>
+            
+            <p>
+               ב-<date>2004</date> 
+               יצא לאור <name type="book">ארבעה בתים וגעגוע</name>, רומן רב-קולי שבו דמויות שונות ב<placeName ref="#ISL" type="place">ישראל</placeName> שלפני 
+               רצח <name ref="#RABIN" type="person">רבין</name> 
+               ואחריו מתארות את חייהן במדינה האחוזה בטראומת הרצח. דמותו של <forename>צאדק</forename>, פועל פלסטיני
+               העובד בשיפוץ בתי יהודים בשכונת <placeName ref="#MZ" type="place">מבשרת ציון</placeName> בכניסה
+               ל<placeName ref="#JE" type="place">ירושלים</placeName> ותוך כדי כך מזהה את הבית שממנו גורשה משפחתו ב-
+               <date>1948</date>, היא דמות ייחודית בנוף הספרות העברית בשנים אלה. כזו היא גם דמותו של <forename>יותם</forename>, 
+               שאחיו <forename>גידי</forename> נהרג ב<placeName ref="#LEV" type="place">לבנון</placeName> 
+               ומשפחתו מחליטה לעזוב ל<placeName ref="#OZ" type="place">אוסטרליה</placeName>. סצנת עזיבת הארץ פותחת את הרומן 
+               וחוזרת לקראת סיומו, כאמירת נגד.
+               המשפט החותם את הרומן הוא של <forename>מודי</forename>, תרמילאי ישראלי המטייל ב
+               <placeName ref="#SA" type="place">דרום-אמריקה</placeName>: "אני רוצה הביתה". 
+            </p>
+            
+            <p>
+               ספר זה זכה להתקבלות נלהבת הן על ידי הקוראים והן על ידי הביקורת. 
+               <persName><forename>סמדר</forename><surname>שיפמן</surname></persName>, בספרה <name type="book">דברים שרואים מכאן</name> 
+               (<date>2007</date>), 
+               כותבת ש<name ref="#ESHCHOL" type="person">נבו</name>, כמו 
+               <persName><forename>מאיר</forename><surname>שלו</surname></persName>, יוצר על קו התפר שבין המודרניזם לפוסט-מודרניזם.
+               מהמודרניזם הוא נוטל
+               את מרכזיותה של התודעה האנושית, 
+               ומהפוסט-מודרניזם את הזכות שלא להתחייב ואת האופציה לשחק גם כשהוא נוגע בחומרים טעונים וכואבים.
+               הספר היה מועמד ל<name type="literature_prize">פרס ספיר</name>, זכה ב"<name type="literature_prize">ספר הזהב</name>" וב"<name type="literature_prize">ספר הפלטינה</name>" 
+               של התאחדות המו"לים ותורגם לשפות שונות.
+            </p>
+            
+            <p>
+               ספרו הבא של 
+               <name ref="#ESHCHOL" type="person">נבו</name>, <name type="book">משאלה אחת ימינה</name>
+               (<date>2007</date>), מעמיד במרכזו את מיתוס החברות הישראלית:
+               ארבעה נערים חיפאים עוברים יחד את התחנות הטיפוסיות המעצבות את סיפור ההתבגרות הישראלי: בית ספר
+                תיכון, צבא, הטיול לחו"ל, מעבר ל<placeName ref="#TLV" type="place">תל אביב</placeName>, 
+               לימודים באוניברסיטה
+               והיווצרות יחסי זוגיות ומשפחה. אהבת הכדורגל והצפייה המשותפת במשחקים הן ציר העלילה, והן מייצרות ומשמרות את חברותם
+               בתחילת הרומן כותבים הארבעה את משאלותיהם למונדיאל הבא, והספר עוקב אחר דרכי התממשותן. התקבלותו של הספר היתה מעורבת
+               . הביקורות ציינו את הרף הגבוה שהעמיד ספרו הראשון ותהו לגבי יכולתו של הסופר לעמוד בו. כך למשל ציין
+               <persName><forename>עמרי</forename><surname>הרצוג</surname></persName> 
+               (<date>2007</date>) שהספר מאכזב משום שלמרות יכולת הכתיבה הגבוהה, היא מוצאת מפלט בחיק החמים של סיסמאות ידועות מראש, 
+               שהחזרה עליהן מבדרת אבל אינה יוצרת משמעות לקורא. מבקרים אחרים ציינו לחיוב את השפה, שמצד אחד היא דיבורית 
+               מאוד ומצד אחר אינה מוותרת על המורכבות הניכרת, בין השאר, בהתכתבויות עם יצירות שונות.
+               גם ספר זה זכה ב"<name type="literature_prize">פרס הזהב</name>"  וב"<name type="literature_prize">פרס הפלטינה</name>" של אגודת המו"לים, וב-<date>2008</date> עובד לסדרת טלוויזיה.  
+               
+            </p>
+            <p>
+               
+               ב- <date>2010</date> הוציא ספר
+               ילדים בשם <name type="book">אבא של <forename>עמליה</forename> נוסע ל<placeName ref="#OZ" type="place">אוסטרליה</placeName></name> בהוצאת <orgName>זמורה-ביתן</orgName> 
+               (איורים: <persName><forename>דיוויד</forename><surname>הול</surname></persName>) 
+               ב-<date>2011</date> הוציא את ספרו <name type="book">נוילנד</name>, שהפך לרב-מכר. לצורך כתיבת הספר נסע 
+               <name ref="#ESHCHOL" type="person">נבו</name> ל<placeName ref="#SA" type="place">דרום-אמריקה</placeName>,
+               שם חקר את התרבות המקומית. 
+               הספר מתעסק בייצוגים כמו מסעות ושכול, אהבה וגעגועים, ופורש רשת דימויים בעלת קשר עקיף ל<name type="book">אלטנוילנד</name> של
+               <name ref="#HEZEL" type="person">הרצל</name>.
+            </p>
+            
+            <p>
+               במקביל לכתיבה עובד <name ref="#ESHCHOL" type="person">נבו</name> כמרצה
+               לכתיבה יצירתית ב<orgName>אוניברסיטת <placeName ref="#TLV" type="place">תל אביב</placeName></orgName> ובבית הספר 
+               לקולנוע וטלוויזיה ע"ש
+               <persName><forename>סם</forename><surname>שפיגל</surname></persName> ב<placeName ref="#JE" type="place">ירושלים</placeName>. 
+               השתתף
+               כסופר אורח בפסטיבלים שונים ב<placeName ref="#EUP" type="place">אירופה</placeName>.   
+            </p>
+         </div>
+           
+         </div>
+         <div type="bibliogrphy">
+            <listBibl>
+               <bibl><author><persName><surname>אדיבי-שושן</surname>,<forename>אסתי</forename></persName>.</author>. 
+                  <title level="a"> "הללויה קרירה ושבירה" </title>
+                  <title level="j"> 299 עתון 77 </title>
+                  <date>2005</date>
+                  <biblScope>16-14</biblScope></bibl>
+               <bibl><author><persName><surname>הרציג</surname>,<forename>חנה</forename></persName>.</author>. 
+                  <title level="a"> "ספרות של כ-ו-ל-ם". </title>. 
+                  <title level="m">הארץ ספרים</title>. <date>26.9.2007</date>
+                  <biblScope>8,6</biblScope></bibl>
+               <bibl><author><persName><surname>הרצוג</surname>,<forename>עמרי</forename></persName>.</author>
+                  <title level="m">"מגיע לארץ המובטחת". </title><title level="j">מעריב ספרות</title>.
+                  <date>15.6.2011. </date>
+                  <biblScope>10;</biblScope>
+               </bibl>
+               <bibl><author><persName><forename>שיפמן</forename>,<surname>סמדר</surname></persName>. </author>.
+                  <title level="a"> <name type="book">דברים שרואים מכאן, 
+                     <persName><surname>דויד</surname><forename>גרוסמן</forename></persName>, 
+                  <persName><surname>אורלי</surname><forename>קסטל-בלום</forename></persName> ו
+                     <persName><surname>מאיר</surname><forename>שלו</forename></persName>: מעבר למודרניזם?</name>
+               </title>
+                  <title level="m">כרמל</title>
+                  <date>2007</date>
+                  <biblScope>234-228. </biblScope></bibl>
+            </listBibl>
+         </div>
+         <docAuthor><persName><surname>אסתי</surname><forename>אדיבי-שושן</forename></persName></docAuthor>
+      </body>
+   </text>
+</TEI>

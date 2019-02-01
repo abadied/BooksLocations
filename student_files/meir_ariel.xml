@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>אריאל,מאיר</title>
+            <title>(1999-1942)</title>
+            <title> משורר ופזמונאי</title>
+            <author> ניסים קלדרון</author>
+         </titleStmt>
+         <publicationStmt>
+            <p>הוצאת דביר</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <head><persName><surname>אריאל</surname>,<forename>מאיר</forename>
+            <date when="1942" type="birth">1942</date> - <date when="1999" type="death">1999</date>)            
+            <roleName>עורך ומוזיקאי</roleName></persName></head>
+         <div type="bio"><p>נולד ב<placeName type="city">פתח תקווה</placeName>וגדל ב<placeName type="city">קיבוץ משמרות</placeName>.
+            הוריו היו ממייסדי הקבוצה.  
+            החל לכתוב שירים בשנים האחרונות של לימודיו בבית הספר התיכון. חלקם שירים ליריים שהושפעו מ <persName>אלתרמן</persName>
+            (מעטים מהם הודפסו בניב משמרות) וחלקם שירים הומוריסטיים למסיבות ואירועים.  
+         </p></div>
+         <div type="career"><p>  
+            -ב <date>1960</date>התגייס ל <name type="unit">צנחנים</name>.עם שחרורו מן הצבא הצטרף ללהקת
+            <name type="band">"המשמרון"</name>שהופיעה בעיקר באירועים פנימיים של הקבוצה.
+            כתב טקסטים ללהקה ושר בהופעותיה. בתקופה זו החל הקשר העמוק וארוך השנים שפיתח עם <persName>שלום חנוך</persName>
+            , גם הוא בן למייסדי משמרות.
+            -ב<date>1963</date>כתב את <name type="song">"אגדת דשא"</name>לחתונתו של <persName>דני חנוך</persName>,אחיו של 
+            <persName>שלום חנוך</persName>,שגם היה המבצע הראשון של השיר.
+            השיר נכתב כפרודיה על שירי זמר רוסיים, וגם הלחן, שכתב<persName>חנוך</persName>,
+            נפתח בציטוט פרודי של הלחן לשיר<name type="song">"יצאנו אט"</name>.
+            -ב<date>1966 </date>נשא לאישה את <persName>תרצה הגדיש</persName>.
+            במלחמת<name type="war">ששת הימים </name>השתתף בקרב הקשה של חטיבת ה<name type="unit">צנחנים</name>
+            באזור<placeName>מוזיאון רוקפלר בירושלים</placeName>.
+            בכנס החטיבה שנערך ב<placeName>הר הצופים </placeName>ב-<date>11.6.67</date>שרה <persName>נחמה הנדל </persName>
+            את<name type="song">"ירושלים של זהב"</name>. <persName>אריאל</persName>  
+            ניגש לבמה וביקש לשיר טקסט משלו ללחן של
+            <persName>נעמי שמר</persName>,
+            כמחאה על ההתעלמות ממחיר המלחמה ו  <name type="goup">"קהל השכולות"</name> בשיר המקורי. 
+            <persName>רבקה מיכאלי </persName>שנכחה בכנס הקליטה אותו, ולמחרת שידרה את ההקלטה בתחנת הרדיו
+            <name type="radio_station">"קול ישראל"</name>. זאת היתה נקודת הפריצה שלו לתודעה הציבורית הרחבה. 
+         </p></div>
+         <div type="career"><p>
+            -ב<date>1968</date> יצא לשליחות מטעם תנועת<name type="group">"הבונים"</name>ב <placeName>ארצות הברית</placeName>.
+            כאן התוודע למוזיקה של <persName>בוב דילן</persName>, שהשאירה בו חותם עמוק, ולתרבות הנגד של שנות השישים. 
+            הניתוק מ<persName>חנוך</persName> דחף אותו לחבר לחנים משלו.
+            עוד טרם נסיעתו כתב מילים ל<roleName>זמרים</roleName>  והמשיך בכך ב   <placeName>ארצות הברית</placeName>.
+            -ב<date>1970 </date> חזר למשמרות וב- <date>1971</date>, לאחר התלבטות באשר לחיי הקיבוץ, יצא לחופשה של שנה וחצי והתגורר ב
+            <placeName>תל אביב</placeName> .בתקופה זו החל להופיע עם שיריו ועם קטעי קישור שכתב, אבל מבוכה וחוסר ביטחון הכשילו את רוב ההופעות. 
+         </p></div>
+         <div type="career"><p>
+            -ב<date>1973 </date> לחם בקרבות קשים במלחמת <name type="war">יום הכיפורים</name>,והדבר חיזק בו את ההתנגדות, שנמשכה כל חייו, לכיבוש השטחים.
+            -ב<date>1974 </date> הקליט ארבעה שירים בהפקתו של <persName>מתי כספי</persName>במטרה להוציא תקליט, אבל העבודה נפסקה.
+            -ב<date>1978 </date> הפיק <persName> חנוך </persName>את תקליטו הראשון, <name type="record">שירי חג ומועד ונופל</name>
+            התקליט לא נמכר הרבה, אבל מבקרים רבים התרשמו ממנו, והוא קבע את מעמדו כיוצר איכותי וייחודי. 
+            דמות ה <roleName>זמר</roleName>-<roleName>כותב</roleName>, <roleName>אמן</roleName>          
+            של מילים, לחן וביצוע, היתה מוכרת מן הרוק האמריקני, אבל  <persName>אריאל </persName>
+            היה מבוניה של דמות זו בתרבות הישראלית, והציב אותה כמרד, שיש בו גם מידה של המשך, למסורת הזמר העברי. 
+         </p></div>
+         <div type="style"><p> 
+            ערכם הספרותי של שיריו זכה להכרה של רבים. <persName>אריאל</persName>
+            כ <roleName>זמר</roleName>-<roleName>כותב</roleName>– ובעקבותיו הלכו<roleName>זמרים</roleName>-<roleName>כותבים</roleName> 
+            אחרים – סירב לכתוב <name type="ditty">"פזמונים"</name>.  
+            הוא סירב לקבל את החלוקה בין השיר המושר, השייך לכאורה לרובד הנמוך של התרבות, ובין השיר הכתוב, השייך לרובד הגבוה שלה. 
+            בשיריו עיצב פרסונה של אדם לא-הרואי ה <name type="persona">"הולך ומסתבך"</name>. 
+            הקול המדבר והשר שלו הוא לעתים ליצני, לעתים דיכאוני ולעתים מתפרץ בכעס חסר אונים. ההתרוצצות של הפרסונה הזאת בין כישלון להחמצה אינה מובילה אותה אל רחמים עצמיים; להפך: יש בה קסם-של-חלשים.
+            ברבות מן הדמויות שיצר בשיריו יש מיזוג של חדווה ומבט ביקורתי, כשל מי שמוצץ גבעול מתחת גשר מט לנפול בשעה שעגלתם של הבטוחים-בדרכם עוברת מעליו.
+            אותו קסם-של-חלשים מופיע גם בעברית המיוחדת: הוא מתלבט ומתרוצץ בווירטואוזיות בין לשון רחוב ללשון ה <name type="book">תנ"ך</name>, 
+             בין מילים שגורות למילים שהמציא.  
+         </p></div>
+         <div type="publication"><p> 
+            -ב<date>1982 </date> לחם במלחמת <name type="war"> לבנון </name> ואחר כך היה בין מתנגדיה. 
+            -ב<date>1948 </date> הפיק <persName>יהודה עדר </persName> את תקליטו השני, ...<name type="record">וגלוי עיניים</name>.
+            -ב<date>1986 </date> עזב את הקיבוץ ועבר לחיות ב <placeName>תל אביב </placeName>.
+            -ב<date>1987 </date> נפטר אביו. הקשר העמוק והסבוך ביניהם בא לידי ביטוי בשיחות ארוכות ביניהם, שהוא יזם והקליט והדפיס בספר למשפחה. 
+            אביו החל לכנס במשמרות מפגשים שעסקו בפרשת השבוע והיתה בהם התקרבות אל האמונה היהודית. <persName>אריאל</persName>
+            השתתף במפגשים, ומאז ואילך עבר תהליך של התקרבות מלאת שאלות אל האמונה היהודית.
+         </p></div>
+         <div type="publication"><p> 
+            -ב<date>1988 </date> יצא התקליט השלישי שלו, <name type="record">ירוקות</name>,
+            בהפקת <persName>אלונה טוראל</persName>.ב-<date>1987  </date>פירסם את הספר שירים 
+            (<name type="book">ענבל</name>) ובו טקסטים שלו ותווים ללחנים שחיבר <persName>יהודה עדר</persName>.
+            באותה שנה יצא למסע בארץ, מלווה ב <persName>יהודה עדר</persName>,  <persName>מיקי שביב</persName> , <persName>אדם מדר </persName> ו<persName>רע מוכיח </persName>.הוא שר וקרא טקסטים מחויכים. 
+            <persName>אידו סלע </persName> צילם את הפרויקט, וב- <date>1989</date> יצא לאקרנים הסרט 
+            <name type="movies">מסע הבחירות של מאיר אריאל </name>.
+            ב- <date>1990  </date>,הוציא מיני-תקליט <name type="record">עברנו את פרעה</name>, ובו ארבעה שירים.
+            הוא המשיך לכתוב טקסטים לאחרים וכמה משיריו – כמו <name type="song">"שלל שרב" </name> ששר
+            <persName>גידי גוב </persName> – הצליחו מאוד. 
+            -ב<date>1991  </date> הוציא ספר שני, <name type="book">נשל הנחש</name>, ובו שירים וכמה קטעי פרוזה (מרביתה של הפרוזה שפירסם לא כונסה).                
+         </p></div>
+         <div type="publication"><p> 
+            ב-<date>1995 </date> הוציא את התקליט <name type="record">רישומי פחם</name>.
+            כאן קיבלה יצירתו תפנית אפוקליפטית, ויש הרואים בתקליט זה את העמוקה ביצירותיו. 
+            ב<date>מאי 1995</date> השתתף בכנס <name type="conference">"השמאל עם הגולן"</name>
+            וקרא להחזרת ה<placeName>גולן</placeName> ריבונות סורית תמורת שלום אמת, אבל לא לעקירת ההתנחלויות בו.
+            -ב<date>1997</date> הפיק <persName>משה לוי</persName> את התקליט <name type="record">ברנרד ולואיז</name>.
+            שנה לאחר מכן הוציא תקליט-הופעה, <name type="record">דלתות נפתחות מעצמן</name>.
+         </p></div>
+         <div type="bio"><p> 
+            ב<date>אוגוסט 1988</date> תקף בריאיון עיתונאי את ההומוסקסואליות. הכעס על התקפה זו קיבל ביטויים אגרסיביים, והופעותיו הופרעו.
+            <persName>אריאל</persName> הודיע על פרישה מהופעות, התעקש על עמדותיו ואחרי כמה שבועות פירסם התנצלות.
+            אולם הפגיעה בו היתה קשה. הוא עבר לגור ב <placeName>פרדס חנה</placeName> ולא הופיע כשנה.
+            -ב<date>18 ביולי 1999</date> נפטר בפתאומיות מ <name type="Disease">קדחת הבהרות</name> שלא אובחנה במועד.
+         </p></div>
+         <div type="present"><p> 
+            שנה לאחר מותו ערכו  <persName>שלום חנוך</persName>,<persName>משה לוי </persName> ו 
+            <persName>דורי בן זאב</persName> תקליט של שירים שאריאל הספיק להקליט בהקלטות ביתיות, 
+            <name type="record">מודה אני</name>.
+            הם שיפרו את איכות ההקלטה והוסיפו ליווי מוזיקלי משלהם.
+            -ב<date>2008 </date> ערך  <persName>יונתן גת </persName> הקלטה של שתי הופעות אחרונות
+            -ב<date>1999 </date> - <persName>מאיר אריאל </persName> בהופעה אחרונה במועדון <name type="club">בארבי </name> 1999.
+            אחת לשנה מתקיים מופע גדול – בפני קהל אלפים ש <persName>אריאל</persName> לא זכה לו בהופעותיו – ובו חוזרים ושרים את שיריו מיטב אמני המוזיקה ב <placeName>ישראל</placeName>.
+         </p></div>
+         <div type="present"><p> 
+            דמותו האמנותית של <persName>מאיר אריאל </persName> קיבלה לאחר מותו תהודה שעלתה על זו שקיבלה בחייו. שיריו מושמעים יותר ומוכרים יותר, וגברה מאוד ההערכה למקומו הייחודי בתרבות הישראלית. 
+         </p></div>
+         <div type="bibliography"><p><persName><surname>גילת</surname>,<forename>צבי</forename></persName>.
+            <name type="article">"מאיר אריאל. חומר משובח"</name>.  <name type="journal">מעריב סופשבוע</name>. <date>4.4.1997</date>. 76; 
+            <persName><surname>גפן</surname>,<forename>יונתן</forename></persName>. <name type="article">"זרעי מאיר: שיחה עם הזמר מאיר אריאל"</name>.
+            <name type="journal">מעריב סופשבוע</name>. <date>10.9.1993</date>.64;
+            <name type="article">"והנה נשארת מאחור"</name>. <name type="journal">Ynet</name>. <date>1.4.2010</date>;--.
+            <name type="article">'ס'אוחתו אעפעס 3#': כשהנמלה העניינית אותו מודדת"</name>.<name type="journal">חברה 48</name>.<date>2011</date>.30-29; 
+            <persName><surname>שוייצר</surname>,<forename>ארז</forename></persName>.<name type="article">"דרך דמעה שקופה: עצמאי בשטח מאת מאיר אריאל – כינוס השירים"</name>.<name type="journal">הארץ ספרים</name>.<date>2011</date><date>24.3.2010</date>.56.
+            <name type="author"> ניסים קלדרון</name>
+         </p></div>  
+      </body>
+   </text>
+</TEI>
