@@ -82,8 +82,8 @@ def tei_parser(predicted_file_path, correct_parsed_file_path, improve=False):
         conf_mat_for_type[list_key]['fp'] /= max(len(pred_list), 1)
         conf_mat_for_type[list_key]['tn'] /= max(len(negative_dict[list_key]), 1)
 
-    return conf_mat_for_type
     # print_conf_mat_from_dict(conf_mat_for_type)
+    return conf_mat_for_type
 
 
 def parse_brute_force(xml_text):
