@@ -243,9 +243,9 @@ def main():
         conf_mat_improved = tei_parser(predicted_file_path, true_labeled_file_path, improve=True)
         for inner_tag in conf_mat_regular:
             print('compare ' + inner_tag + ': ')
-            for inner_value in conf_mat_regular[inner_tag]:
-                print(inner_value + ' changed in: ')
-                print(conf_mat_improved[inner_tag][inner_value] - conf_mat_regular[inner_tag][inner_value])
+            # for inner_value in conf_mat_regular[inner_tag]:
+            print('tp changed in: ' + str(conf_mat_improved[inner_tag]['tp'] - conf_mat_regular[inner_tag]['tp']))
+            print('tn changed in: ' + str(conf_mat_improved[inner_tag]['tn'] - conf_mat_regular[inner_tag]['tn']))
 
 
 if __name__ == '__main__':
