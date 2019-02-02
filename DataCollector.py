@@ -77,7 +77,7 @@ class DataCollector(object):
                                          'title': row[1],
                                          'cover_url': row[2],
                                          'release_year': row[3],
-                                         'lang': row[4],
+                                         'lang': [] if row[4] == '' else ast.literal_eval(row[4]),
                                          'author': row[5],
                                          'author_key': row[6],
                                          'illustrator': row[7],
