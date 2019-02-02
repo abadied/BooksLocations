@@ -5,6 +5,7 @@ import copy
 import re
 import requests
 import ast
+import os
 
 MIN_NUM_OF_COLUMNS = 3
 
@@ -19,7 +20,7 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
     for line in parsed_file:
         splitted_line = line.split(' ')
         if len(splitted_line) > MIN_NUM_OF_COLUMNS:
-            splitted_line[-1] = splitted_line[-1].replace('null', '').replace('\t', '').replace('\n', '')
+            splitted_line[-1] = splitted_line[-1].replace('null', '').replace('\t', '').replace('\n', '').replace('\r', '')
             base_df.loc[base_index] = splitted_line  # adding a row
             base_index += 1
             # base_df.index = base_df.index + 1  # shifting index
@@ -28,7 +29,6 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
 
     # try to improve tagger
     # improve_tagger(base_df)
-
     adler_pers_list = base_df.loc[base_df['unspecified_12'] == 'I_PERS']['base_word'].tolist()
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
     adler_org_list = base_df.loc[base_df['unspecified_12'] == 'I_ORG']['base_word'].tolist()
@@ -75,10 +75,10 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
         conf_mat_for_type[list_key]['tn'] = max(0, len(negative_dict[list_key]) - conf_mat_for_type[list_key]['fn'])
 
         # normalize
-        conf_mat_for_type[list_key]['fn'] /= len(negative_dict[list_key])
-        conf_mat_for_type[list_key]['tp'] /= len(pred_list)
-        conf_mat_for_type[list_key]['fp'] /= len(pred_list)
-        conf_mat_for_type[list_key]['tn'] /= len(negative_dict[list_key])
+        conf_mat_for_type[list_key]['fn'] /= max(len(negative_dict[list_key]), 1)
+        conf_mat_for_type[list_key]['tp'] /= max(len(pred_list), 1)
+        conf_mat_for_type[list_key]['fp'] /= max(len(pred_list), 1)
+        conf_mat_for_type[list_key]['tn'] /= max(len(negative_dict[list_key]), 1)
 
     print_conf_mat_from_dict(conf_mat_for_type)
 
@@ -138,7 +138,7 @@ def parse_by_dictionary_inner(xml_text):
                     yield (_key, _value, upper_tag)
 
     for key, value, upper_tag in recursive_items(xml_dict, None):
-        if '#' not in value:
+        if value is not None and '#' not in value:
             if key == 'placeName' or upper_tag == 'placeName':
                 value_list = get_splitted_value_list(value)
                 place_list.extend(value_list)
@@ -229,9 +229,14 @@ def print_conf_mat_from_dict(res_dict):
 
 
 def main():
-    predicted_file_path = 'adler_files/1171_רון-פדר-עמית_גלילה.txt'
-    true_labeled_file_path = 'student_files/ron_feder.xml'
-    tei_parser(predicted_file_path, true_labeled_file_path)
+    adler_base_path = 'adler_files/'
+    students_base_path = 'student_files/'
+    files_list = os.listdir(adler_base_path)
+    files_list = [x.replace('.txt', '') for x in files_list]
+    for file in files_list:
+        predicted_file_path = adler_base_path + file + '.txt'
+        true_labeled_file_path = students_base_path + file + '.xml'
+        tei_parser(predicted_file_path, true_labeled_file_path)
 
 
 if __name__ == '__main__':

@@ -280,12 +280,31 @@ class DataCollector(object):
 
         return json_dict
 
+    @staticmethod
+    def combine_json_files(json_path_1, json_path_2, new_json_path):
+        with open(json_path_1, "r") as read_file_1:
+            json_1 = json.load(read_file_1)
+        with open(json_path_2, "r") as read_file_2:
+            json_2= json.load(read_file_2)
+
+        new_json = {"type": "FeatureCollection",
+                    "features": []}
+        new_features_list = json_1['features']
+        new_features_list.extend(json_2['features'])
+        new_json['features'] = new_features_list
+
+        with open(new_json_path, 'w') as fp:
+            json.dump(new_json, fp)
+
 
 def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
-    DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json.json')
+    # DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json.json')
+    # DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json2.json')
+
+    # DataCollector.combine_json_files('db_json.json', 'db_json2.json', 'final_json.json')
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
