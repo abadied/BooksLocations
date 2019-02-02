@@ -33,7 +33,7 @@ class DataCollector(object):
 
     @staticmethod
     def get_address_coordinates(address: str):
-        geolocator = Nominatim(user_agent="we_try_things")
+        geolocator = Nominatim(user_agent="hi_try_things")
         geocode = RateLimiter(geolocator.geocode, min_delay_seconds=2)
 
         try:
