@@ -197,11 +197,11 @@ def improve_tagger(base_df):
                 # get confidence for each
                 for desc in desc_list:
                     if 'name' in desc and 'organization' in desc:
-                        found_tag_loc += 1
-                    elif 'name' in desc and ('male' in desc or 'family' in desc or 'female' in desc):
-                        found_tag_pers += 1
-                    elif 'name' in desc and ('place' in desc or 'location' in desc):
                         found_tag_org += 1
+                    elif 'name' in desc and ('given' in desc or 'male' in desc or 'family' in desc or 'female' in desc):
+                        found_tag_pers += 1
+                    elif 'country' in desc or 'city' in desc or 'place' in desc or 'location' in desc:
+                        found_tag_loc += 1
 
                 # norm values
                 found_tag_pers /= len(desc_list)
