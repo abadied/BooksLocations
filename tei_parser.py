@@ -10,7 +10,7 @@ import os
 MIN_NUM_OF_COLUMNS = 3
 
 
-def tei_parser(predicted_file_path, correct_parsed_file_path):
+def tei_parser(predicted_file_path, correct_parsed_file_path, improve=False):
     base_df = pd.DataFrame({'index': [], 'base_word': [], 'origin': [], 'prefix less': [], 'morphology': [],
                             'unspecified_6': [], 'unspecified_7': [], 'unspecified_8': [], 'unspecified_9': [],
                             'unspecified_10': [], 'unspecified_11': [], 'unspecified_12': []})
@@ -28,7 +28,9 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
     print('done parsing adler file.')
 
     # try to improve tagger
-    # improve_tagger(base_df)
+    if improve:
+        improve_tagger(base_df)
+
     adler_pers_list = base_df.loc[base_df['unspecified_12'] == 'I_PERS']['base_word'].tolist()
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
     adler_org_list = base_df.loc[base_df['unspecified_12'] == 'I_ORG']['base_word'].tolist()
@@ -80,7 +82,8 @@ def tei_parser(predicted_file_path, correct_parsed_file_path):
         conf_mat_for_type[list_key]['fp'] /= max(len(pred_list), 1)
         conf_mat_for_type[list_key]['tn'] /= max(len(negative_dict[list_key]), 1)
 
-    print_conf_mat_from_dict(conf_mat_for_type)
+    return conf_mat_for_type
+    # print_conf_mat_from_dict(conf_mat_for_type)
 
 
 def parse_brute_force(xml_text):
@@ -236,7 +239,13 @@ def main():
     for file in files_list:
         predicted_file_path = adler_base_path + file + '.txt'
         true_labeled_file_path = students_base_path + file + '.xml'
-        tei_parser(predicted_file_path, true_labeled_file_path)
+        conf_mat_regular = tei_parser(predicted_file_path, true_labeled_file_path, improve=False)
+        conf_mat_improved = tei_parser(predicted_file_path, true_labeled_file_path, improve=True)
+        for inner_tag in conf_mat_regular:
+            print('compare ' + inner_tag + ': ')
+            for inner_value in conf_mat_regular[inner_tag]:
+                print(inner_value + ' changed in: ')
+                print(conf_mat_improved[inner_tag][inner_value] - conf_mat_regular[inner_tag][inner_value])
 
 
 if __name__ == '__main__':

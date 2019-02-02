@@ -10,7 +10,7 @@ import random
 from collections import Counter
 from geopy.exc import GeocoderTimedOut
 from geopy.extra.rate_limiter import RateLimiter
-
+import ast
 
 COVER_IDS = set()
 MAX_CORD_ADDITION = 0.003
@@ -82,10 +82,10 @@ class DataCollector(object):
                                          'author_key': row[6],
                                          'illustrator': row[7],
                                          'category': row[8],
-                                         'line': row[9],
+                                         'line': ast.literal_eval(row[9]),
                                          },
                           'geometry': {'type': "MultiPoint",
-                                       "coordinates": row[9]
+                                       "coordinates": ast.literal_eval(row[9])
                                        }
                           }
 
@@ -301,10 +301,10 @@ def main():
     if Constants.init_db:
         DBInit.create_books_db(Constants.db_path)
     db_handler = DBHandler(Constants.db_path)
-    # DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json.json')
-    # DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json2.json')
+    DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json.json')
+    DataCollector.create_json_from_db(db_handler=db_handler, json_path='db_json2.json')
 
-    # DataCollector.combine_json_files('db_json.json', 'db_json2.json', 'final_json.json')
+    DataCollector.combine_json_files('db_json.json', 'db_json2.json', 'final_json.json')
     DataCollector.collect_data_from_source(Constants.main_url, db_handler)
 
 
