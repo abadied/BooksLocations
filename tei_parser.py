@@ -216,7 +216,7 @@ def improve_tagger(base_df):
                 # improve decision rule
                 if max_confidence < 0.1:
                     curr_row['unspecified_12'] = 'O'
-                else:
+                elif max_confidence > 0.5:
                     if max_confidence == found_tag_org:
                         curr_row['unspecified_12'] = 'I_ORG'
                     elif max_confidence == found_tag_loc:
