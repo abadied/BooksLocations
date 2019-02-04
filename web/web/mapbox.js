@@ -26,13 +26,14 @@ var filterEl = document.getElementById('feature-filter');
 var listingEl = document.getElementById('feature-listing');
 
 function showPopAndLine(feature_) {
-   var lang_arr = "Not available";
+   var lang_arr = ["Not Available"];
    var illustrator = "";
    if (feature_.properties.illustrator!=""){
-    illustrator = 'illustrator: '+ feature_.properties.illustrator;
+    illustrator = "illustrator: "+ feature_.properties.illustrator;
    }
-   
-   if (feature_.properties.lang!=""){
+   console.log(feature_.properties.lang);
+   if (feature_.properties.lang.length){
+       console.log(feature_.properties.lang);
     lang_arr = JSON.parse(feature_.properties.lang);
    } 
 //    var cords = "["+feature_.geometry.coordinates+"]"
