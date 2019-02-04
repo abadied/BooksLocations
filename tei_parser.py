@@ -10,7 +10,7 @@ import os
 MIN_NUM_OF_COLUMNS = 3
 
 
-def tei_parser(predicted_file_path, correct_parsed_file_path, improve=False):
+def tei_parser(predicted_file_path, correct_parsed_file_path, improve=False, min_confidence=0.05, replace_confidence=0.6):
     base_df = pd.DataFrame({'index': [], 'base_word': [], 'origin': [], 'prefix less': [], 'morphology': [],
                             'unspecified_6': [], 'unspecified_7': [], 'unspecified_8': [], 'unspecified_9': [],
                             'unspecified_10': [], 'unspecified_11': [], 'unspecified_12': []})
@@ -29,7 +29,7 @@ def tei_parser(predicted_file_path, correct_parsed_file_path, improve=False):
 
     # try to improve tagger
     if improve:
-        improve_tagger(base_df)
+        improve_tagger(base_df,min_confidence=min_confidence, replace_confidence=replace_confidence)
 
     adler_pers_list = base_df.loc[base_df['unspecified_12'] == 'I_PERS']['base_word'].tolist()
     adler_loc_list = base_df.loc[base_df['unspecified_12'] == 'I_LOC']['base_word'].tolist()
@@ -162,7 +162,7 @@ def get_splitted_value_list(value):
     return value_list
 
 
-def improve_tagger(base_df):
+def improve_tagger(base_df, min_confidence=0.1, replace_confidence=0.5):
     wiki_url_search_1 = 'https://www.wikidata.org/w/api.php?action=wbsearchentities&search='
     wiki_url_search_2 = '&language=he&format=json'
 
@@ -214,9 +214,9 @@ def improve_tagger(base_df):
                 max_confidence = max(found_tag_loc, found_tag_pers, found_tag_org)
 
                 # improve decision rule
-                if max_confidence < 0.1:
+                if max_confidence < min_confidence:
                     curr_row['unspecified_12'] = 'O'
-                elif max_confidence > 0.5:
+                elif max_confidence > replace_confidence:
                     if max_confidence == found_tag_org:
                         curr_row['unspecified_12'] = 'I_ORG'
                     elif max_confidence == found_tag_loc:
@@ -232,11 +232,50 @@ def print_conf_mat_from_dict(res_dict):
             print(inner_score_key + ': ' + str(res_dict[key][inner_score_key]))
 
 
+def parameter_tuning(adler_base_path, students_base_path):
+    # parameter_tuning
+
+    files_list = os.listdir(adler_base_path)
+    files_list = [x.replace('.txt', '') for x in files_list]
+
+    max_value = 0
+    max_parameters = None
+    for min_threshold in [0.05, 0.1, 0.15]:
+        for replace_threhold in [0.4, 0.5, 0.6]:
+            total_improve_tp = 0
+            total_improve_tn = 0
+            for file in files_list:
+                print('started analyzing ' + file)
+                predicted_file_path = adler_base_path + file + '.txt'
+                true_labeled_file_path = students_base_path + file + '.xml'
+                conf_mat_regular = tei_parser(predicted_file_path, true_labeled_file_path, improve=False,
+                                              min_confidence=min_threshold, replace_confidence=replace_threhold)
+                conf_mat_improved = tei_parser(predicted_file_path, true_labeled_file_path, improve=True,
+                                               min_confidence=min_threshold, replace_confidence=replace_threhold)
+                for inner_tag in conf_mat_regular:
+                    print('compare ' + inner_tag + ': ')
+                    # for inner_value in conf_mat_regular[inner_tag]:
+                    improve_tp = conf_mat_improved[inner_tag]['tp'] - conf_mat_regular[inner_tag]['tp']
+                    improve_tn = conf_mat_improved[inner_tag]['tn'] - conf_mat_regular[inner_tag]['tn']
+                    total_improve_tp += improve_tp
+                    total_improve_tn += improve_tn
+                    print('tp changed in: ' + str(improve_tp))
+                    print('tn changed in: ' + str(improve_tn))
+            if max_value < total_improve_tn + total_improve_tp:
+                max_value = total_improve_tp + total_improve_tn
+                max_parameters = (min_threshold, replace_threhold)
+    print('max improvement: ' + str(max_value))
+    print('max parameters: ' + str(max_parameters))
+
+
 def main():
     adler_base_path = 'adler_files/'
     students_base_path = 'student_files/'
     files_list = os.listdir(adler_base_path)
     files_list = [x.replace('.txt', '') for x in files_list]
+
+    total_improve_tp = 0
+    total_improve_tn = 0
     for file in files_list:
         print('started analyzing ' + file)
         predicted_file_path = adler_base_path + file + '.txt'
@@ -246,8 +285,12 @@ def main():
         for inner_tag in conf_mat_regular:
             print('compare ' + inner_tag + ': ')
             # for inner_value in conf_mat_regular[inner_tag]:
-            print('tp changed in: ' + str(conf_mat_improved[inner_tag]['tp'] - conf_mat_regular[inner_tag]['tp']))
-            print('tn changed in: ' + str(conf_mat_improved[inner_tag]['tn'] - conf_mat_regular[inner_tag]['tn']))
+            improve_tp = conf_mat_improved[inner_tag]['tp'] - conf_mat_regular[inner_tag]['tp']
+            improve_tn = conf_mat_improved[inner_tag]['tn'] - conf_mat_regular[inner_tag]['tn']
+            total_improve_tp += improve_tp
+            total_improve_tn += improve_tn
+            print('tp changed in: ' + str(improve_tp))
+            print('tn changed in: ' + str(improve_tn))
 
 
 if __name__ == '__main__':
